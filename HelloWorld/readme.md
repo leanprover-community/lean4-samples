@@ -233,4 +233,15 @@ and
 #eval (fun (n : Nat) => Nat.repr n) 5
 ```
 
+The funky brackets `⟨...⟩` is a shorthand for find me a constructor on the required type `ToString`
+that takes a single string argument, and it finds `ToString.mk`, so it is equivalent to writing:
+
+```lean
+ToString.mk (fun n => Nat.repr n)
+```
+
+This is calling the ToString constructor named `mk`
+because we have to return something that matches the type
+`ToString Nat`.
+
 Read [more about functions](https://leanprover.github.io/theorem_proving_in_lean4/dependent_type_theory.html#function-abstraction-and-evaluation).
