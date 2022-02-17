@@ -17,8 +17,8 @@ lake build
 
 And you will see the console output `Hello, world!`.
 
-While it is designed for mathematicians and for writing proofs, it is still a general-purpose programming language.  Let's take a
-closer look at the code:
+While Lean is designed for mathematicians and for writing proofs, it is still a general-purpose
+programming language.  Let's take a closer look at the code:
 
 ```lean
 def main : IO Unit :=
@@ -43,7 +43,7 @@ def println [ToString α] (s : α) : IO Unit := …
 
 The `[ToString α] (s : α)` part of this definition means println has 2 parameters, the first one in
 square brackets is a `context` parameter, meaning `println` could need to use some `ToString` type
-inferencing to convert various object to the `string` type.  This one we’ll explain in more detail
+inferencing to convert its input parameter to a `string` type.  This one we’ll explain in more detail
 later.
 
 ### Parameters
@@ -167,3 +167,70 @@ that it is `ok` for println to have a side effect on the IO output stream.
 You can now dive even deeper and look at the implementation of `println` which you can do from
 Visual Studio Code by simply placing your cursor inside this `println` and press F12 to
 Goto Definition.  This kind of exploration can be very useful in leaning the language.
+
+### Type Inferencing
+
+So back to the `ToString` type inferencing.  Well Lean provides a concept
+called `Type Class` which is a special type of class that can participate
+in type inferencing.  `ToString` is such a type:
+
+```
+class ToString (α : Type u) where
+  toString : α → String
+```
+
+This says `ToString` type class takes one parameter of any `Type`
+(and from any type univers `u`) and it provides a `method` called
+`toString`.  This method is actually just a property but because
+the property has the function type `α → String` it is actually a
+method that you can call passing any object `` of any type
+and you get back a String.  Yep, that sounds like a ToString to me!
+
+Lean builds up a library of code that looks like this:
+```
+instance : ToString Nat :=
+  ⟨fun n => Nat.repr n⟩
+```
+
+These are `instances` of the type class ToString, bound to specific
+types - this one is the instance for converting natural numbers (`Nat`)
+to strings.  The implementation of this instance is using another built
+in function named `Nat.repr` which is defined to return the string
+representation of `n`.
+
+This instances allows you to then do this:
+
+```lean
+#eval toString 5     -- "5"
+```
+
+And you get back the string representation of the natural number 5.
+
+Type inferencing is not a closed system.  Your programs can add to the
+library of ToString instances so that your programs can build on it.
+
+Read more about [Type Classes](https://leanprover.github.io/theorem_proving_in_lean4/type_classes.html).
+
+## Lambdas
+
+The syntax we just saw `⟨fun n => Nat.repr n⟩` is also very interesting.
+Inside the funky brackets `⟨...⟩` is a lambda, an inline function
+definition.  The `fun` keyword defines an anonymous function that
+in this case takes a parameter `n` and returns the result of the
+function call `Nat.repr n`.  Notice no types are definition for the
+parameter `n` or for the return type.  You can add this type information
+if you want, but in most cases Lean is clever enough to `infer` what
+the types are from the context.
+
+You can test this out in your VS Code instance:
+
+```lean
+#eval (fun n => Nat.repr n) 5
+```
+and
+
+```lean
+#eval (fun (n : Nat) => Nat.repr n) 5
+```
+
+Read [more about functions](https://leanprover.github.io/theorem_proving_in_lean4/dependent_type_theory.html#function-abstraction-and-evaluation).
