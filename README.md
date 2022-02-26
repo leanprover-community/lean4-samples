@@ -10,3 +10,7 @@ instructions on how to set that up.
 ## Hello world
 
 Every language needs a [simple hello world sample](HelloWorld/readme.md).
+
+## CSV Parser
+
+[CSV parser](CSVParser/README.md) is the simplest practical parser in the world.
