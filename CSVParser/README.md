@@ -62,7 +62,7 @@ abbrev Csv := Array Record
 
 Different from that in imperative parser, in functional parser combinator you first have small parsers and then combine them into bigger ones. The overview structure of our parsers is of the same structure of ABNF:
 
-![Parsers Overview](./ParsersOverview.drawio.svg)
+![Parsers Overview](./parsers-overview.drawio.svg)
 
 As we said we will ignore the header path and focus on record only.
 
