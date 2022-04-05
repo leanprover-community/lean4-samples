@@ -10,3 +10,7 @@ instructions on how to set that up.
 ## Hello world
 
 Every language needs a [simple hello world sample](HelloWorld/readme.md).
+
+## Guess My Number
+
+Program generates a number, and user guesses it. [simple guess-my-number game](GuessMyNumber/Readme.md).
