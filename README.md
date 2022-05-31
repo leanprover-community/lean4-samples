@@ -13,4 +13,4 @@ Every language needs a [simple hello world sample](HelloWorld/readme.md).
 
 ## CSV Parser
 
-[CSV parser](CSVParser/README.md) is the simplest practical parser in the world.
+[CSV parser](CSVParser/README.md) is the simplest practical CSV parser you can write in Lean.

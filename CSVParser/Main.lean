@@ -22,7 +22,7 @@ abbrev Csv := Array Record
 
 def textData : Parsec Char := satisfy fun c =>
   0x20 ≤ c.val ∧ c.val ≤ 0x21 ∨
-  0x23 ≤ c.val ∧ c.val ≤ 0x2B ∨ 
+  0x23 ≤ c.val ∧ c.val ≤ 0x2B ∨
   0x2D ≤ c.val ∧ c.val ≤ 0x7E
 
 def cr : Parsec Char := pchar '\r'
@@ -49,7 +49,8 @@ def manySep (p : Parsec α) (s : Parsec β) : Parsec $ Array α := do
 
 def record : Parsec Record := manySep field comma
 
-def file : Parsec $ Array Record := manySep record (crlf <* notFollowedBy eof) <* (optional crlf) <* eof
+def file : Parsec $ Array Record :=
+  manySep record (crlf <* notFollowedBy eof) <* (optional crlf) <* eof
 
 #eval file csvString.mkIterator
 
@@ -62,7 +63,7 @@ def parse (s : String) : Except String $ Array $ Array $ String :=
 
 
 /-!
-  ## Chanllenge: Homogenous
+  ## Challenge: Homogenous
 -/
 
 def csvString' : String := "a,\"b\nc\"\r\n1,2\r\n4,5,6"
@@ -75,16 +76,16 @@ def csvString' : String := "a,\"b\nc\"\r\n1,2\r\n4,5,6"
   Many arrays of `p` with the same size.
 -/
 partial def manyHomoCore (p : Parsec $ Array α) (acc : Array $ Array α) : Parsec $ Array $ Array α :=
-  (do 
+  (do
     let first ← p
     -- if accumulator is empty (the first element) we won't check size
     if acc.size = 0 then
       manyHomoCore p (acc.push first)     -- recursively
     else
       -- check whether the new arr is of the same size
-      if acc.back.size = first.size then 
+      if acc.back.size = first.size then
         manyHomoCore p (acc.push first)   -- recursively
-      else 
+      else
         fail "expect same size"
   )
   -- if not homo, fail and return the accumulator
@@ -103,4 +104,7 @@ def parse' (s : String) : Except String $ Array $ Array $ String :=
   | Parsec.ParseResult.success _ res => Except.ok res
   | Parsec.ParseResult.error it err  => Except.error s!"offset {it.i.repr}: {err}"
 
+/-
+Notice that in Lean the order of a source file matters.  This following #eval looks the same as before
+but it will pick up the new code we just wrote and behave differently. -/
 #eval parse' csvString'

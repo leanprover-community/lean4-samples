@@ -35,7 +35,7 @@ The sample then uses a special command to the Lean interpreter `#eval` which eva
 in place, and in this evaluation, we pass no arguments because the main function we just defined has
 none.
 
-To understand what this more deeply let’s look at how the `println` function is defined:
+To understand this more deeply let’s look at how the `println` function is defined:
 
 ```lean
 def println [ToString α] (s : α) : IO Unit := …
@@ -107,9 +107,8 @@ def IO.RealWorld : Type := Unit
 
 Hmmm, so it too is a function that takes no parameters and returns a Type, and the implementation is
 the void-like type `Unit`, meaning it returns a Type that kind of represents nothing.  Notice this
-function is operating on Types, not object, yet it is treating types like objects.  This is the magic
-of Lean where Types themselves are first class objects.  This allows this `IO.RealWorld` function to
-be used in the declaration of a Type, namely the type of our `println` function earlier.
+function is operating on Types, not objects, yet it is treating types like objects.  This is the magic
+of Lean where Types themselves are first class objects.  This allows you to call the `IO.RealWorld` function in the declaration of a Type, namely, the type of our `println` function earlier.
 
 `IO.RealWorld` is actually a mechanism that tells the Lean type system it is something that has a
 `side effect` of playing with the real world (outside of the scope of the Lean environment), but
@@ -157,8 +156,8 @@ now know are `Error`, `IO.RealWorld` and `Unit`. Phew!  What all this means is t
 returns a `Result` object, and depending on what happens this result object might contain an `ok`
 result of  `IO.RealWorld` and `Unit` or it might contain an `error` with `Error` and `IO.RealWorld`.
 So both cases can have a side effect on the real world.  This is exactly right, the side effect in
-this case is output to the console window where you see the following message is printed: 1Hello,
-world!1.
+this case is output to the console window where you see the following message is printed: `"Hello,
+world!"`".
 
 Functional Programming Languages generally don’t like unexplained side effects.  The RealWorld
 abstraction is a way for Lean to deal with this kind of side effect, explaining to the compiler
@@ -166,37 +165,32 @@ that it is `ok` for println to have a side effect on the IO output stream.
 
 You can now dive even deeper and look at the implementation of `println` which you can do from
 Visual Studio Code by simply placing your cursor inside this `println` and press F12 to
-Goto Definition.  This kind of exploration can be very useful in leaning the language.
+Goto Definition.  This kind of exploration can be very useful in learning the language.
 
 ### Type Inferencing
 
-So back to the `ToString` type inferencing.  Well Lean provides a concept
-called `Type Class` which is a special type of class that can participate
-in type inferencing.  `ToString` is such a type:
+So back to the `ToString` type inferencing.  Well Lean provides a concept called `Type Class` which
+is a special type of class that can participate in type inferencing.  `ToString` is such a type:
 
-```
+```lean
 class ToString (α : Type u) where
   toString : α → String
 ```
 
-This says `ToString` type class takes one parameter of any `Type`
-(and from any type univers `u`) and it provides a `method` called
-`toString`.  This method is actually just a property but because
-the property has the function type `α → String` it is actually a
-method that you can call passing any object `` of any type
-and you get back a String.  Yep, that sounds like a ToString to me!
+This says `ToString` type class takes one parameter of any `Type` (and from any type univers `u`)
+and it provides a `method` called `toString`.  This method is actually just a property but because
+the property has the function type `α → String` it is actually a method that you can call passing
+any object `α` of any type and you get back a String.  Yep, that sounds like a ToString to me!
 
-Lean builds up a library of code that looks like this:
-```
+Lean then builds up a library of instances of this type class that look like this:
+```lean
 instance : ToString Nat :=
   ⟨fun n => Nat.repr n⟩
 ```
 
-These are `instances` of the type class ToString, bound to specific
-types - this one is the instance for converting natural numbers (`Nat`)
-to strings.  The implementation of this instance is using another built
-in function named `Nat.repr` which is defined to return the string
-representation of `n`.
+These `instances` are bound to specific types - this one is the instance for converting natural
+numbers (`Nat`) to strings.  The implementation of this instance is using another built-in function
+named `Nat.repr` which is defined to return the string representation of the natural number `n`.
 
 This instances allows you to then do this:
 
@@ -206,21 +200,19 @@ This instances allows you to then do this:
 
 And you get back the string representation of the natural number 5.
 
-Type inferencing is not a closed system.  Your programs can add to the
-library of ToString instances so that your programs can build on it.
+Type inferencing is not a closed system.  Your programs can add to the library of ToString instances
+so that your programs can build on it.
 
 Read more about [Type Classes](https://leanprover.github.io/theorem_proving_in_lean4/type_classes.html).
 
 ## Lambdas
 
-The syntax we just saw `⟨fun n => Nat.repr n⟩` is also very interesting.
-Inside the funky brackets `⟨...⟩` is a lambda, an inline function
-definition.  The `fun` keyword defines an anonymous function that
-in this case takes a parameter `n` and returns the result of the
-function call `Nat.repr n`.  Notice no types are definition for the
-parameter `n` or for the return type.  You can add this type information
-if you want, but in most cases Lean is clever enough to `infer` what
-the types are from the context.
+The syntax we just saw `⟨fun n => Nat.repr n⟩` is also very interesting. Inside the funky brackets
+`⟨...⟩` is a lambda, an inline function definition.  The `fun` keyword defines an anonymous function
+that in this case takes a parameter `n` and returns the result of the function call `Nat.repr n`.
+Notice no types are defined for the parameter `n` or for the return type.  You can add this type
+information if you want, but in most cases Lean is clever enough to `infer` what the types are from
+the context.
 
 You can test this out in your VS Code instance:
 
@@ -233,15 +225,14 @@ and
 #eval (fun (n : Nat) => Nat.repr n) 5
 ```
 
-The funky brackets `⟨...⟩` is a shorthand for find me a constructor on the required type `ToString`
-that takes a single string argument, and it finds `ToString.mk`, so it is equivalent to writing:
+The funky brackets `⟨...⟩` is a shorthand for "find me a constructor on the required type `ToString`
+that takes a single string argument", and it finds `ToString.mk`, so it is equivalent to writing:
 
 ```lean
 ToString.mk (fun n => Nat.repr n)
 ```
 
-This is calling the ToString constructor named `mk`
-because we have to return something that matches the type
-`ToString Nat`.
+This is calling the ToString constructor named `mk` because we have to return something that matches
+the type `ToString Nat`.
 
 Read [more about functions](https://leanprover.github.io/theorem_proving_in_lean4/dependent_type_theory.html#function-abstraction-and-evaluation).
