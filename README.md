@@ -14,3 +14,8 @@ Every language needs a [simple hello world sample](HelloWorld/readme.md).
 ## Guess My Number
 
 Program generates a number, and user guesses it. [simple guess-my-number game](GuessMyNumber/Readme.md).
+
+## CSV Parser
+
+[CSV parser](CSVParser/README.md) is the simplest practical CSV parser you can write in Lean.
+
