@@ -16,6 +16,6 @@ structure RubiksProps where
   seq : Array String := #[]
   deriving ToJson, FromJson, Inhabited
 
-def eg : RubiksProps := {seq := #["D", "D", "D⁻¹", "R⁻¹"]}
+def eg : RubiksProps := {seq := #["U", "L", "D⁻¹", "U⁻¹", "L", "D", "D", "L", "U⁻¹", "R", "D", "F", "F", "D"]}
 
 #widget rubiks (toJson eg)

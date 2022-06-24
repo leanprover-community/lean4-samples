@@ -102,6 +102,7 @@ function generatorToRotation(generator: string, cubelet: string, time = 1.0): TH
   if (generator == "B" && cubelet[2] == "0") {
     return new THREE.Matrix4().makeRotationZ(θ)
   }
+  console.warn(`Invalid generator ${generator}. Skipping.`)
   return new THREE.Matrix4()
 }
 
@@ -153,7 +154,7 @@ function Cubelet(props: any) {
       me.current.setRotationFromMatrix(m)
       me.current.position.setFromMatrixPosition(m)
     }
-  }, [props.cid, props.time])
+  }, [props.cid, props.time, props.seq])
   return (
     // @ts-ignore
     <mesh ref={me}>
@@ -175,6 +176,7 @@ export default function (props: any) {
   const [t, setT] = React.useState(100)
   return <div style={{ height: 300 }}>
     <input type="range" min="0" max="100" value={t} onChange={e => setT(e.target.value as any)} />
+    <div>Sequence: {JSON.stringify(seq)}</div>
     <Canvas >
       <pointLight position={[150, 150, 150]} intensity={0.55} />
       <ambientLight color={0xffffff} />
