@@ -57,7 +57,7 @@ def file : Parsec $ Array Record :=
 def parse (s : String) : Except String $ Array $ Array $ String :=
   match file s.mkIterator with
   | Parsec.ParseResult.success _ res => Except.ok res
-  | Parsec.ParseResult.error it err  => Except.error s!"offset {it.i.repr}: {err}"
+  | Parsec.ParseResult.error it err  => Except.error s!"offset {it.i.byteIdx}: {err}"
 
 #eval parse csvString
 
@@ -102,7 +102,7 @@ def file' : Parsec $ Array Record := manySepHomo record (crlf <* notFollowedBy e
 def parse' (s : String) : Except String $ Array $ Array $ String :=
   match file' s.mkIterator with
   | Parsec.ParseResult.success _ res => Except.ok res
-  | Parsec.ParseResult.error it err  => Except.error s!"offset {it.i.repr}: {err}"
+  | Parsec.ParseResult.error it err  => Except.error s!"offset {it.i.byteIdx}: {err}"
 
 /-
 Notice that in Lean the order of a source file matters.  This following #eval looks the same as before
