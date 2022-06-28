@@ -4,23 +4,15 @@ Let's implement a classic "Guess My Number" game. The program generates a random
 
 ```
 I am thinking of a number between 0 and 99...
-Please guess what it is?
-83
-Too large, try again?
-50
-Too large, try again?
-25
-Too small, try again?
-30
-Too small, try again?
-40
-Too small, try again?
-45
-Too small, try again?
-47
-Too large, try again?
-46
-It's correct! The number was 46!
+Please guess what it is: 50
+Too large, try again: 25
+Too small, try again: 35
+Too small, try again: 43
+Too large, try again: 37
+Too small, try again: 41
+Too large, try again: 39
+Too small, try again: 40
+It's correct! The number was 40!
 ```
 
 ### Generate the secret number
@@ -216,33 +208,6 @@ Then find the program output and run it:
 ```
 ./build/bin/guess
 ```
-
-And thanks to the check for `str.length == 0` you can also run the program non-interactively
-as follows:
-
-```
-echo 4 70 55 23 88 19 12 45 67 22 | ./build/bin/guess
-```
-
-And you will see something like this:
-
-```
-I am thinking of a number between 0 and 99...
-Please guess what it is?
-Too small, try again?
-Too large, try again?
-Too large, try again?
-Too large, try again?
-Too large, try again?
-Too large, try again?
-Too small, try again?
-Too large, try again?
-Too large, try again?
-Too large, try again?
-Giving up? Well the number was 17
-```
-
-Unless of course it really does pick one of those 3 numbers!
 
 
 Enjoy the game!
