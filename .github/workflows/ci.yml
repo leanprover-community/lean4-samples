@@ -63,7 +63,6 @@ jobs:
         run: |
           cd HelloWorld
           lake build
-          ./build/bin/HelloWorld
 
       - name: Run HelloWorld
         run: |
@@ -73,7 +72,6 @@ jobs:
         run: |
           cd CSVParser
           lake build
-          ./build/bin/CSVParser
 
       - name: Run CSVParser
         run: |
@@ -83,8 +81,7 @@ jobs:
         run: |
           cd GuessMyNumber
           lake build
-          ./build/bin/GuessMyNumber
 
       - name: Run GuessMyNumber
         run: |
-          echo 11 75 82 | ./build/bin/GuessMyNumber
+          echo 11 75 82 | ./GuessMyNumber/build/bin/GuessMyNumber
