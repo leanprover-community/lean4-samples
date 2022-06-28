@@ -55,7 +55,7 @@ recursion:
 ```lean
 partial def guess (secret : Nat) (prompt : String) : IO Unit := do
   IO.println prompt
-  let stdin := (←IO.getStdin)
+  let stdin ← IO.getStdin
   let mut str ← stdin.getLine
   str := str.trim
 
@@ -108,23 +108,22 @@ let mut y            := [1,2,3]       -- mut
 Ok so we can use `let` to read a line from user input (stdin):
 
 ```lean
-let stdin := (←IO.getStdin)
+let stdin ← IO.getStdin
 let str ← stdin.getLine
 ```
 
 The `←` notation is just to get things out of the IO box. The type of `stdin.getLine` is `IO
-String`, and `str` is of type `String`. Notice the second let here uses a short form of assignment
-without the need for the `:=` operator and this is the preferred way of doing it.
+String`, and `str` is of type `String`.
 
 We made the `str` mutable so we can trim whitespace from it as follows:
 
 ```lean
 str := str.trim
 ```
-By the way, `str.trim` is just equivalent to `String.trim str`.  Now what if user hits `^D` (ctrl-D)
-(on Linux) or just `ENTER`? Simply add `IO.println str` and see what happens. It turns out that
-`stdin.getLine` just gives empty string. So we can just check if the string length is zero and tease
-the user for giving up.
+
+By the way, `str.trim` is equivalent to `String.trim str`. Now what if user hits `^D` (ctrl-D) (on
+Linux) or just `ENTER`? It turns out that `stdin.getLine` just gives empty string. So we can just
+check if the string length is zero and tease the user for giving up.
 
 ```lean
   if str.length == 0 then

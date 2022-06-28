@@ -9,7 +9,7 @@ def getSecret : IO Nat := do
 
 partial def guess (secret : Nat) (prompt : String) : IO Unit := do
   IO.println prompt
-  let stdin := (←IO.getStdin)
+  let stdin ← IO.getStdin
   let mut str ← stdin.getLine
   str := str.trim
 
