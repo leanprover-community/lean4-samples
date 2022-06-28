@@ -5,7 +5,7 @@ package GuessMyNumber {
   -- add package configuration options here
 }
 
-lean_lib GuessMyNumber {
+lean_lib guessMyNumber {
   -- add library configuration options here
 }
 
