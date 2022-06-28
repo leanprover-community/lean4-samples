@@ -34,6 +34,10 @@ jobs:
           echo "Checking location $HOME/.elan/bin..."
           elan --version
 
+      - name: Set path to elan
+        run: |
+          echo "$HOME/.elan/bin" >> $GITHUB_PATH
+
       - name: Build HelloWorld
         run: |
           cd HelloWorld
