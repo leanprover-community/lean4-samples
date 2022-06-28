@@ -87,4 +87,4 @@ jobs:
 
       - name: Run GuessMyNumber
         run: |
-          echo 11 75 82 | ./build/bin/GuessMyNumber.exe
+          echo 11 75 82 | ./build/bin/GuessMyNumber
