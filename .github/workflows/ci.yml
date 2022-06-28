@@ -17,8 +17,19 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    strategy:
+      matrix:
+        include:
+          - name: Linux
+            os: ubuntu-latest
+            artifact: build-Linux release
+          - name: Windows
+            os: windows-latest
+            artifact: build-Windows
+
+    name: ${{ matrix.name }}
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -31,15 +42,46 @@ jobs:
           curl -O --location https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh
           chmod u+x elan-init.sh
           ./elan-init.sh -y --default-toolchain leanprover/lean4:nightly
-          echo "Checking location $HOME/.elan/bin..."
+          echo "Adding location $HOME/.elan/bin to PATH..."
+          echo "$HOME/.elan/bin" >> $GITHUB_PATH
+
+      - name: Setup elan toolchain on Windows
+        if: matrix.os == 'windows-latest'
+        shell: pwsh
+        run: |
+          curl -O --location https://raw.githubusercontent.com/leanprover/elan/master/elan-init.ps1
+          .\elan-init.ps1 -NoPrompt 1 -DefaultToolchain leanprover/lean4:nightly
+          echo "Adding location $HOME\.elan\bin to PATH..."
+          echo "$HOME\.elan\bin" >> $env:GITHUB_PATH
+
+      - name: Test elan & lean are working
+        run: |
           elan --version
+          lean --version
 
       - name: Build HelloWorld
         run: |
           cd HelloWorld
           lake build
-          ./build/bin/HelloWorld
 
       - name: Run HelloWorld
         run: |
           ./HelloWorld/build/bin/HelloWorld
+
+      - name: Build CSVParser
+        run: |
+          cd CSVParser
+          lake build
+
+      - name: Run CSVParser
+        run: |
+          ./CSVParser/build/bin/CSVParser
+
+      - name: Build GuessMyNumber
+        run: |
+          cd GuessMyNumber
+          lake build
+
+      - name: Run GuessMyNumber
+        run: |
+          echo 11 75 82 | ./GuessMyNumber/build/bin/GuessMyNumber
