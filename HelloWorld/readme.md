@@ -58,11 +58,9 @@ later.
 ### Parameters
 
 The second argument `(s : α)` is a traditional parameter definition.  Here it defines a parameter
-named `s` of type `α`.  What is `α` you ask?  I'm glad you asked :-) There’s a special shorthand in
-Lean that single letter type names like `α` are `inferred` to mean any `Type`.  So, to complete this
-picture Lean also has `implicit` arguments that you don’t need to pass and this `α` name is an
-example of that.  You can actually be explicit about it and define `α` as an implicit argument using
-curly braces as follows:
+named `s` of type `α`.  What is `α` you ask?  I'm glad you asked :-) Notice alpha is a type variable
+that is not defined, so it will be implicitly defined to be anything of type `Type`.  This means
+`println` will be able to receive arguments of any `Type`.  You can actually define `α` as an implicit type argument using curly braces as follows:
 
 ```lean
 def println {α : Type} [ToString α] (s : α) : IO Unit :=
@@ -78,7 +76,8 @@ The important thing for you to see right now is that in Lean you can write varia
 
 You might be asking what does the return type `IO Unit` mean exactly?  Well, the `Unit` part is
 pretty easy, it is kind of like the `void` type in other languages, namely, the `main` function
-doesn't return anything.  The `IO` is connected to the fact that we call `IO.println`:
+doesn't return anything.  The `IO` is connected to the fact that we call `IO.println` and is
+defined like this:
 
 ```lean
 abbrev IO : Type → Type := EIO Error
@@ -90,10 +89,10 @@ after the `:=` symbol, the implementation which calls the `EIO` function passing
 
 The type of `IO` here is interesting, it says `Type → Type`.  The arrow here means `function type`,
 IO is a function that transforms some input Type to some output Type.  Wow, so you can see now that
-Lean is a Functional programming language because you can reason about functions, and manipulate
-functions and their types like they are objects. This is similar to how delegates or lambas are
-first class objects in C#, Python and Javascript, but here it is even more deeply integrated into
-the type system.
+Lean is a Functional programming language because you can reason about function types, and
+manipulate functions and their types like they are objects. This is similar to how delegates or
+lambas are first class objects in C#, Python and Javascript, but here it is even more deeply
+integrated into the type system.
 
 What is `Error`, well turns out `Error` is like a fancy `enum` that lists all the types of
 exceptions that can be raised in the system. So what is `EIO`?  Well, it is the following one line
@@ -138,7 +137,8 @@ inductive Result (ε σ α : Type u) where
 ```
 
 This inductive Type definition takes 3 parameters of type `Type u`, (notice you can collapse
-multiple parameters of the same type into the compact form `( ε σ α : Type u)`.
+multiple parameters, when they all have the same type, into the compact form `( ε σ α : Type u)`.
+Ignore the `u` here for now, it is referencing a type universe which we'll cover later.
 
 Inductive types are a core building block in Lean.  Normally in an object-oriented language you
 might define a new custom type using a "class" or a "struct", but in lean you can define a new type
@@ -179,19 +179,20 @@ Goto Definition.  This kind of exploration can be very useful in learning the la
 ### Type Inferencing
 
 So back to the `ToString` type inferencing.  Well Lean provides a concept called `Type Class` which
-is a special type of class that can participate in type inferencing.  `ToString` is such a type:
+is not at all like a `class` in other languages.  It is an inductive type that can participate in
+type inferencing.  `ToString` is such a type class:
 
 ```lean
 class ToString (α : Type u) where
   toString : α → String
 ```
 
-This says `ToString` type class takes one parameter of any `Type` (and from any type univers `u`)
+This says `ToString` type class takes one parameter of any `Type` (and from any type universe `u`)
 and it provides a `method` called `toString`.  This method is actually just a property but because
 the property has the function type `α → String` it is actually a method that you can call passing
 any object `α` of any type and you get back a String.  Yep, that sounds like a ToString to me!
 
-Lean then builds up a library of instances of this type class that look like this:
+Lean then builds up a library of type instances that look like this:
 ```lean
 instance : ToString Nat :=
   ⟨fun n => Nat.repr n⟩
@@ -209,8 +210,8 @@ This instances allows you to then do this:
 
 And you get back the string representation of the natural number 5.
 
-Type inferencing is not a closed system.  Your programs can add to the library of ToString instances
-so that your programs can build on it.
+The really cool thing is that Type inferencing is not a closed system.  Your programs can add to the
+library of ToString instances so that your programs can build on it.
 
 Read more about [Type Classes](https://leanprover.github.io/theorem_proving_in_lean4/type_classes.html).
 
@@ -242,6 +243,7 @@ ToString.mk (fun n => Nat.repr n)
 ```
 
 This is calling the ToString constructor named `mk` because we have to return something that matches
-the type `ToString Nat`.
+the type `ToString Nat`. and `mk` just happens to be the default name for the constructor created by
+Lean just like in C++ the constructor is really called `.ctor`.
 
 Read [more about functions](https://leanprover.github.io/theorem_proving_in_lean4/dependent_type_theory.html#function-abstraction-and-evaluation).
