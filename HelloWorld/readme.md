@@ -16,12 +16,12 @@ lake build
 
 [Windows]
 ```
-.\build\bin\HelloWorld.exe
+.\build\bin\hello
 ```
 
 [Linux]
 ```
-./build/bin/HelloWorld
+./build/bin/hello
 ```
 
 And you will see the console output `Hello, world!`.

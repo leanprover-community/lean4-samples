@@ -20,7 +20,7 @@ Too small, try again?
 47
 Too large, try again?
 46
-It's correct!
+It's correct! The number was 46!
 ```
 
 ### Generate the secret number
@@ -67,7 +67,7 @@ partial def guess (secret : Nat) (prompt : String) : IO Unit := do
   | none   => guess secret "Please enter a valid number"
   | some i =>
     match compare i secret with
-    | .eq => IO.println "It's correct!"
+    | .eq => IO.println s!"It's correct! The number was {secret}!"
     | .lt => guess secret "Too small, try again?"
     | .gt => guess secret "Too large, try again?"
 ```
@@ -89,20 +89,20 @@ Lean is a pure functional programming language. But with the [`do`
 notation](https://leanprover.github.io/lean4/doc/do.html), you can think more imperatively and write
 a sequence of statements, like the `IO.println` and the `let` statements and so on. This is pretty
 cool, the Lean syntax is itself extensible so you can create whatever DSL you want to make your
-programs easier to write and `do` just just an example of that.
+programs easier to write and `do` is just an example of that.
 
 `IO.println prompt` prints the `prompt` string argument to the standard out (your terminal window).
 
 `let` notation is like a local variable where that variable can be used in the following block. It
 can be shadowed but not reassigned. Use `let mut` to allow reassignment. You can specify the type
-manually, or let Lean deduct the type if it is omitted:
+manually, or let Lean deduct the type if it is omitted, here's some examples of that:
 
 ```lean
 let     x : List Nat := [1,2,3]       -- full form
 let     x            := [1,2,3].tail! -- type omitted.
---      x            := x.tail!       -- 'x' cannot be reassigned
+        x            := x.tail!       -- error: 'x' cannot be reassigned
 let mut y            := [1,2,3]       -- mut
-        y            := y.tail!       -- re-assign
+        y            := y.tail!       -- re-assignment ok on mutables
 ```
 
 Ok so we can use `let` to read a line from user input (stdin):
@@ -113,19 +113,18 @@ let str ← stdin.getLine
 ```
 
 The `←` notation is just to get things out of the IO box. The type of `stdin.getLine` is `IO
-String`, and `str` is of type `String`. Notice the second let here uses a short form without the
-need for the `:=` operator.
+String`, and `str` is of type `String`. Notice the second let here uses a short form of assignment
+without the need for the `:=` operator and this is the preferred way of doing it.
 
-We made the `str` mutable so we can trim whitespace from it as follows: By the way, `str.trim` is
-just equivalent to `String.trim str`.
+We made the `str` mutable so we can trim whitespace from it as follows:
 
 ```lean
 str := str.trim
 ```
-
-What if user hits `^D` (ctrl-D) (on Linux) or just `ENTER`? Simply add `IO.println str` and see what
-happens. It turns out that `stdin.getLine` just gives empty string. So we can just check if the
-string length is zero and tease the user for giving up.
+By the way, `str.trim` is just equivalent to `String.trim str`.  Now what if user hits `^D` (ctrl-D)
+(on Linux) or just `ENTER`? Simply add `IO.println str` and see what happens. It turns out that
+`stdin.getLine` just gives empty string. So we can just check if the string length is zero and tease
+the user for giving up.
 
 ```lean
   if str.length == 0 then
@@ -211,13 +210,40 @@ Then find the program output and run it:
 
 [Windows]
 ```
-.\build\bin\guessMyNumber.exe
+.\build\bin\guess
 ```
 
 [Linux]
 ```
-./build/bin/guessMyNumber
+./build/bin/guess
 ```
+
+And thanks to the check for `str.length == 0` you can also run the program non-interactively
+as follows:
+
+```
+echo 4 70 55 23 88 19 12 45 67 22 | ./build/bin/guessMyNumber
+```
+
+And you will see something like this:
+
+```
+I have generated a new number between 0 and 99.
+Please guess what it is?
+Too small, try again?
+Too large, try again?
+Too large, try again?
+Too large, try again?
+Too large, try again?
+Too large, try again?
+Too small, try again?
+Too large, try again?
+Too large, try again?
+Too large, try again?
+Giving up? Well the number was 17
+```
+
+Unless of course it really does pick one of those 3 numbers!
 
 
 Enjoy the game!

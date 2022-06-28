@@ -21,7 +21,7 @@ partial def guess (secret : Nat) (prompt : String) : IO Unit := do
   | .none   => guess secret "Please enter a valid number"
   | .some i =>
     match Ord.compare i secret with
-    | .eq => IO.println "It's correct!"
+    | .eq => IO.println s!"It's correct! The number was {secret}!"
     | .lt => guess secret "Too small, try again?"
     | .gt => guess secret "Too large, try again?"
 

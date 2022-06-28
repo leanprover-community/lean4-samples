@@ -1,15 +1,15 @@
 import Lake
 open Lake DSL
 
-package CSVParser {
+package cSVParser {
   -- add package configuration options here
 }
 
-lean_lib cSVParser {
+lean_lib CSVParser {
   -- add library configuration options here
 }
 
 @[defaultTarget]
-lean_exe CSVParser {
+lean_exe csv {
   root := `Main
 }

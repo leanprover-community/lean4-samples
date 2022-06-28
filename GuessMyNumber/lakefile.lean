@@ -1,15 +1,15 @@
 import Lake
 open Lake DSL
 
-package GuessMyNumber {
+package guessMyNumber {
   -- add package configuration options here
 }
 
-lean_lib guessMyNumber {
+lean_lib GuessMyNumber {
   -- add library configuration options here
 }
 
 @[defaultTarget]
-lean_exe GuessMyNumber {
+lean_exe guess {
   root := `Main
 }
