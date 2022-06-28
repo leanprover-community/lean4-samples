@@ -26,6 +26,6 @@ partial def guess (secret : Nat) (prompt : String) : IO Unit := do
     | .gt => guess secret "Too large, try again?"
 
 def main : IO Unit := do
-  IO.println "I have generated a new number between 0 and 99."
+  IO.println "I am thinking of a number between 0 and 99..."
   let secret ← getSecret
   guess secret "Please guess what it is?"

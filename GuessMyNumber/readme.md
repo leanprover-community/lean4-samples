@@ -3,7 +3,7 @@
 Let's implement a classic "Guess My Number" game. The program generates a random number between 0-99 and prompts if your guess is correct, too high, or too low. For example:
 
 ```
-I have generated a new number between 0 and 99.
+I am thinking of a number between 0 and 99...
 Please guess what it is?
 83
 Too large, try again?
@@ -196,7 +196,7 @@ To finish up we need a main function:
 
 ```lean
 def main : IO Unit := do
-  IO.println "I have generated a new number between 0 and 99."
+  IO.println "I am thinking of a number between 0 and 99..."
   let secret ← getSecret
   guess secret "Please guess what it is?"
 ```
@@ -222,13 +222,13 @@ And thanks to the check for `str.length == 0` you can also run the program non-i
 as follows:
 
 ```
-echo 4 70 55 23 88 19 12 45 67 22 | ./build/bin/guessMyNumber
+echo 4 70 55 23 88 19 12 45 67 22 | ./build/bin/guess
 ```
 
 And you will see something like this:
 
 ```
-I have generated a new number between 0 and 99.
+I am thinking of a number between 0 and 99...
 Please guess what it is?
 Too small, try again?
 Too large, try again?
