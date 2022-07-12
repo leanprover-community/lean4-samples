@@ -1,7 +1,7 @@
 import Lake
 open System Lake DSL
 
-package UserWidget
+package Rubiks
 
 def tsxTarget (tsxName : String) : FileTarget :=
   let jsFile := __dir__ / s!"widget/dist/{tsxName}.js"
@@ -21,4 +21,4 @@ def tsxTarget (tsxName : String) : FileTarget :=
 target rubiks : FilePath := tsxTarget "rubiks"
 
 @[defaultTarget]
-lean_lib UserWidget
+lean_lib Rubiks
