@@ -1,23 +1,24 @@
 import Lake
 open System Lake DSL
 
-def jsTarget (pkgDir : FilePath) : FileTarget :=
-  let jsFile := pkgDir / "widget/dist/rubiks.js"
-  let srcFiles := inputFileTarget <| pkgDir / "widget/src/rubiks.tsx"
+package UserWidget
+
+def tsxTarget (tsxName : String) : FileTarget :=
+  let jsFile := __dir__ / s!"widget/dist/{tsxName}.js"
+  let srcFiles := inputFileTarget <| __dir__ / s!"widget/src/{tsxName}.tsx"
   fileTargetWithDep jsFile srcFiles fun _srcFile => do
     proc {
       cmd := "npm"
       args := #["install"]
-      cwd := some <| pkgDir / "widget"
+      cwd := some <| __dir__ / "widget"
     }
     proc {
       cmd := "npm"
       args := #["run", "build"]
-      cwd := some <| pkgDir / "widget"
+      cwd := some <| __dir__ / "widget"
     }
 
-package Rubiks (pkgDir) {
-  extraDepTarget := jsTarget pkgDir |>.withoutInfo
-  defaultFacet := PackageFacet.oleans
-  dependencies := #[ ]
-}
+target rubiks : FilePath := tsxTarget "rubiks"
+
+@[defaultTarget]
+lean_lib UserWidget
