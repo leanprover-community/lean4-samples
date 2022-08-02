@@ -1,8 +1,7 @@
 import * as THREE from 'three';
-import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer'
-import { OrbitControls, Plane, Sphere, Text } from '@react-three/drei'
-import React, { useRef, useState } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+import * as React from 'react';
+import { OrbitControls } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
 
 /*
 Idea: represent the group as
@@ -127,10 +126,10 @@ function elementToRotation(seq: string[], cubelet: string, time = 1.0): THREE.Ma
   return m
 }
 
-function* range(i) {
+function* range(i: number) {
   for (let j = 0; j < i; j++) { yield j }
 }
-function* prod(...iters) {
+function* prod(...iters: any[]): Generator<any[]> {
   if (iters.length === 0) {
     yield []
     return
