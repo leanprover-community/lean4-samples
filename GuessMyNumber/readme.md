@@ -22,22 +22,20 @@ First we need to generate a random secret number.
 ```lean
 
 -- Generate a "random" number in [0, 99]
--- It's not actually random. We'll talk about it later.
-def getSecret : IO Nat := do
-  let seed := (← IO.getRandomBytes 8).toUInt64LE!.toNat
+def getSecret : IO Nat :=
   IO.rand 0 99
 ```
 
-What is `IO Nat`? You can simply imagine that it's an integer inside a box called `IO`. There are
-plenty of good tutorials explaining `IO Monad` but this simple analogy should be sufficient for our
-purpose.
+Here `getSecret` is a function that takes no arguments and returns `IO Nat`. `Nat` is a natural
+number but what is `IO Nat`?  You can simply imagine that it's an integer inside a box called `IO`.
+There are plenty of good tutorials explaining the `IO Monad` but this simple analogy should be
+sufficient for our purpose.  How do you call this function?
 
-Now, `IO.rand` is not actually a random number. It's a pseudo random number generator and the
-default seed is zero.  So in order to ensure we have a different random number every time the
-program executes we use the `IO.getRandomBytes` as a seed for the random number generator.
-We use `ByteArray.toUInt64LE!` to convert the ByteArray containing 8 random bytes to a UInt64, then we
-use the `UInt64.toNat` function to convert that to a natural number.  Note that in Lean the `!`
-character is just part of the name `toUInt64LE!` it is not some sort of special operator.
+```lean
+let secret ← getSecret
+```
+
+The `←` notation is just to get things out of the IO box, so `secret` is of type `Nat`.
 
 ### Recursively prompt for the correct answer
 

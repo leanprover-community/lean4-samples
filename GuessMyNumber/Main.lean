@@ -1,7 +1,5 @@
 /-- Generate a "random" number in [0, 99] -/
-def getSecret : IO Nat := do
-  let seed ← (UInt64.toNat ∘ ByteArray.toUInt64LE!) <$> IO.getRandomBytes 8
-  IO.setRandSeed seed
+def getSecret : IO Nat :=
   IO.rand 0 99
 
 /-- Prompt user to guess the secret number -/
