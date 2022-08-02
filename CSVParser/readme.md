@@ -300,7 +300,7 @@ def csvString' : String := "a,\"b\nc\"\r\n1,2\r\n4,5,6"
 Notice that the 3rd record has 3 items while the first two records only have 2. So how can you
 enforce that the records are all the same length?
 
-The answer to the question is provided in [Main.lean](./Main.lean), but you might learn a lot
+The answer to the question is provided in [CSVParser.lean](./CSVParser.lean), but you might learn a lot
 if you think about it yourself.
 
 *HINT:* Also similar to the `many*` series of combinators.
