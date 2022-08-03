@@ -49,6 +49,25 @@ const R2 = compose(
   cycle(["01", "10", "21", "12"])
 )
 
+/** Converts a permutation on a 2D grid to a permutation
+ * on a 3D cube by adding an extra axis to the permutation values.
+ *
+ * ### Parameters
+ * - `p2d : Perm` is the 2D permutation
+ * - `newaxis : number` is the axis to introduce. That is, `0` is the X-axis, `1` is the Y-axis, and `2` is the Z-axis.
+ * - `axisvals : string[]` are the values to insert at `newaxis`.  So for example `inject(R2, 1, ["0","1","2"])` corresponds to rotating
+ *   the entire Rubik's cube around the Y-axis.
+ *   `inject(R2, 1, ["0"])` rotates just the top layer around the Y-axis.
+ *
+ * ### Example:
+ * ```ts
+ * inject(cycle(["00", "20", "22", "02"]), 1, [1])
+ *   ≡ cycle(["010", "210", "212", "012"])
+ *
+ * inject(cycle(["00", "20", "22", "02"]), 0, [1])
+ *   ≡ cycle(["100", "120", "122", "102"])
+ * ```
+ */
 function inject(p2d: Perm, newaxis: number, axisvals: string[]) {
   function ins(x: string, v: string) {
     const xs = x.split("")
@@ -65,16 +84,21 @@ function inject(p2d: Perm, newaxis: number, axisvals: string[]) {
   return o
 }
 
-const generators: { [k: string]: Perm } = {
+type genstr =
+  | "U" | "D" | "L" | "R" | "F" | "B"
+  | "U⁻¹" | "D⁻¹" | "L⁻¹" | "R⁻¹" | "F⁻¹" | "B⁻¹"
+
+const generators: { [k in genstr]: Perm } = {
   U: inject(R2, 0, ["2"]),
   D: inject(R2, 0, ["0"]),
   L: inject(R2, 1, ["2"]),
   R: inject(R2, 1, ["0"]),
   F: inject(R2, 2, ["2"]),
   B: inject(R2, 2, ["0"]),
-}
+} as any
 
-for (let k in generators) {
+for (const k of Object.getOwnPropertyNames(generators)) {
+  // @ts-ignore
   generators[`${k}⁻¹`] = invert(generators[k])
 }
 
@@ -109,7 +133,7 @@ function clamp(number: number, min = 0, max = 1) {
   return Math.max(min, Math.min(number, max));
 }
 
-function elementToRotation(seq: string[], cubelet: string, time = 1.0): THREE.Matrix4 {
+function elementToRotation(seq: genstr[], cubelet: string, time = 1.0): THREE.Matrix4 {
   const pos: [number, number, number] = cubelet.split("").map(x => (Number(x) - 1) * (1.0 + 0.1)) as any
   const trans = new THREE.Matrix4().makeTranslation(...pos)
   const m = new THREE.Matrix4()
@@ -118,7 +142,7 @@ function elementToRotation(seq: string[], cubelet: string, time = 1.0): THREE.Ma
     if (i > time * seq.length) {
       break
     }
-    const g = seq[i]
+    const g : genstr = seq[i]
     m.premultiply(generatorToRotation(g, apply(p, cubelet), clamp((time * seq.length) - i)))
     p = compose(p, generators[g] ?? {})
   }
@@ -126,9 +150,6 @@ function elementToRotation(seq: string[], cubelet: string, time = 1.0): THREE.Ma
   return m
 }
 
-function* range(i: number) {
-  for (let j = 0; j < i; j++) { yield j }
-}
 function* prod(...iters: any[]): Generator<any[]> {
   if (iters.length === 0) {
     yield []
@@ -144,7 +165,13 @@ function* prod(...iters: any[]): Generator<any[]> {
 
 const cubelets = [...prod([0, 1, 2], [0, 1, 2], [0, 1, 2])].map(x => x.join(""))
 
-function Cubelet(props: any) {
+interface CubeletProps {
+  time: number;
+  seq: genstr[];
+  cid: string;
+}
+
+function Cubelet(props: CubeletProps) {
   const me = React.useRef<THREE.Mesh>()
 
   React.useEffect(() => {
@@ -164,7 +191,13 @@ function Cubelet(props: any) {
     </mesh>
   )
 }
-function Cube(props: any) {
+
+interface CubeProps {
+  time: number;
+  seq: genstr[]
+}
+
+function Cube(props: CubeProps) {
   return <group>
     {cubelets.map(cubelet => <Cubelet key={cubelet} cid={cubelet} time={props.time} seq={props.seq} />)}
   </group>

@@ -14,3 +14,7 @@ Every language needs a [simple hello world sample](HelloWorld/readme.md).
 ## CSV Parser
 
 [CSV parser](CSVParser/README.md) is the simplest practical CSV parser you can write in Lean.
+
+## [Rubik's cube](RubiksCube/README.md)
+
+An example showing how to build custom widgets for the InfoView using TypeScript and Lake. Given a sequence of moves, it renders a Rubik's cube in 3D which can be animated with the movement of a slider.
