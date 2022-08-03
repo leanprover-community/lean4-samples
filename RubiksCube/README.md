@@ -1,3 +1,6 @@
+![A screenshot showing the rubiks cube in operation.](/images/screenshot.png)
+
+
 # Rubik's cube visualiser
 
 This project is a demo of the user widgets system. It displays a Rubik's cube in the Lean infoview.
