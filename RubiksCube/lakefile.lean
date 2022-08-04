@@ -3,12 +3,15 @@ open System Lake DSL
 
 package Rubiks
 
+def npmCmd : String :=
+  if Platform.isWindows then "npm.cmd" else "npm"
+
 target packageLock : FilePath :=
   let packageFile := inputFileTarget <| __dir__ / s!"widget/package.json"
   let packageLockFile := __dir__ / s!"widget/package-lock.json"
   fileTargetWithDep packageLockFile packageFile fun _srcFile => do
     proc {
-      cmd := "npm"
+      cmd := npmCmd
       args := #["install"]
       cwd := some <| __dir__ / "widget"
     }
@@ -23,7 +26,7 @@ def tsxTarget (tsxName : String) : FileTarget :=
   ]
   fileTargetWithDepArray jsFile deps fun _srcFile => do
     proc {
-      cmd := "npm"
+      cmd := npmCmd
       args := #["run", "build", "--", "--tsxName", tsxName]
       cwd := some <| __dir__ / "widget"
     }
