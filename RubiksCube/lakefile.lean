@@ -6,32 +6,35 @@ package Rubiks
 def npmCmd : String :=
   if Platform.isWindows then "npm.cmd" else "npm"
 
-target packageLock : FilePath :=
-  let packageFile := inputFileTarget <| __dir__ / s!"widget/package.json"
-  let packageLockFile := __dir__ / s!"widget/package-lock.json"
-  fileTargetWithDep packageLockFile packageFile fun _srcFile => do
+target packageLock : FilePath := do
+  let widgetDir := __dir__ / "widget"
+  let packageFile ← inputFile <| widgetDir / "package.json"
+  let packageLockFile := widgetDir / "package-lock.json"
+  buildFileAfterDep packageLockFile packageFile fun _srcFile => do
     proc {
       cmd := npmCmd
       args := #["install"]
-      cwd := some <| __dir__ / "widget"
+      cwd := some widgetDir
     }
 
-def tsxTarget (tsxName : String) : FileTarget :=
-  let jsFile := __dir__ / s!"widget/dist/{tsxName}.js"
-  let deps : Array FileTarget := #[
-    inputFileTarget <| __dir__ / s!"widget/src/{tsxName}.tsx",
-    inputFileTarget <| __dir__ / s!"widget/rollup.config.js",
-    inputFileTarget <| __dir__ / s!"widget/tsconfig.json",
-    packageLock.target
+def tsxTarget (pkg : Package) (tsxName : String) [Fact (pkg.name = _package.name)]
+    : IndexBuildM (BuildJob FilePath) := do
+  let widgetDir := __dir__ / "widget"
+  let jsFile := widgetDir / "dist" / s!"{tsxName}.js"
+  let deps : Array (BuildJob FilePath) := #[
+    ← inputFile <| widgetDir / "src" / s!"{tsxName}.tsx",
+    ← inputFile <| widgetDir / "rollup.config.js",
+    ← inputFile <| widgetDir / "tsconfig.json",
+    ← fetch (pkg.target ``packageLock)
   ]
-  fileTargetWithDepArray jsFile deps fun _srcFile => do
+  buildFileAfterDepArray jsFile deps fun _srcFile => do
     proc {
       cmd := npmCmd
       args := #["run", "build", "--", "--tsxName", tsxName]
-      cwd := some <| __dir__ / "widget"
+      cwd := some widgetDir
     }
 
-target rubiksJs : FilePath := tsxTarget "rubiks"
+target rubiksJs (pkg : Package) : FilePath := tsxTarget pkg "rubiks"
 
 -- TODO: https://github.com/leanprover/lake/issues/86#issuecomment-1185028364
 @[defaultTarget]
