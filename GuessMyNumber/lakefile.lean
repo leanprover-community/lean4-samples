@@ -1,15 +1,15 @@
 import Lake
 open Lake DSL
 
-package cSVParser {
+package guessMyNumber {
   -- add package configuration options here
 }
 
-lean_lib CSVParser {
+lean_lib GuessMyNumber {
   -- add library configuration options here
 }
 
 @[defaultTarget]
-lean_exe csv {
+lean_exe guess {
   root := `Main
 }
