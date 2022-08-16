@@ -93,12 +93,11 @@ def testCatch := do
     return s!"Caught exception: {e}"
 ```
 
-Note that the type inferred by Lean for this function is `ExceptT String Id String` so the
-`ExceptT String Id Float` return type from the divide has been transformed. The ok type changed from `Float`
+Note that the type inferred by Lean for this function is `ExceptT String Id String` so the `ExceptT
+String Id Float` return type from the divide has been transformed. The ok type changed from `Float`
 to `String`. This is called "monad transformation" and is what the T stands for in `ExceptT`.  The
 secret to Lean is how easily it does monad transformation for you in most cases.  Notice here you
-didn't have to do any extra work for the compiler to figure out the transform you were
-trying to do.
+didn't have to do any extra work for the compiler to figure out the transform you were trying to do.
 
 You can now see the try/catch working in this eval:
 
@@ -106,12 +105,12 @@ You can now see the try/catch working in this eval:
 #eval testCatch -- Except.ok "Caught exception: can't divide by zero"
 ```
 
-Notice the `Caught exception:` wrapped message is returned, and that it is returned
-as an `Except.ok` value, meaning `testCatch` eliminated the error result as expected.
+Notice the `Caught exception:` wrapped message is returned, and that it is returned as an
+`Except.ok` value, meaning `testCatch` eliminated the error result as expected.
 
-So we've interleaved a new concept into our functions (exception handling) and the
-compiler is still able to type check everything just as well as it does for pure functions
-and it's been able to infer some things along the way to make it every easier to manage.
+So we've interleaved a new concept into our functions (exception handling) and the compiler is still
+able to type check everything just as well as it does for pure functions and it's been able to infer
+some things along the way to make it every easier to manage.
 
 ## Under the covers
 
@@ -123,9 +122,9 @@ inductive Except (ε : Type u) (α : Type v) where
   | ok    : α → Except ε α -- A success value of type `α`
 ```
 
-It can represent an error case where the error is any type `ε` or an ok case where
-the ok value is any type `α`.  So the type `Except String Float` represents an exception
-that has a string in the error case or a floating point value in the ok case.
+It can represent an error case where the error is any type `ε` or an ok case where the ok value is
+any type `α`.  So the type `Except String Float` represents an exception that has a string in the
+error case or a floating point value in the ok case.
 
 This Except type is then turned into a Monad by declaring this Monad type instance:
 
@@ -167,11 +166,10 @@ def pure {ε : Type u} (a : α) : Except ε α :=
   Except.ok a
 ```
 
-So in the case of `Except String Float` the implicit error type `ε` is `String` and the
-pure value is a `Float` and the `Except.pure` implementation then simply
-uses the `Except.ok` constructor passing the pure value to be wrapped in an Except
-object.  So `pure (x / y)` converts the pure value `x / y` into something that
-matches the return type `Except String Float`.
+So in the case of `Except String Float` the implicit error type `ε` is `String` and the pure value
+is a `Float` and the `Except.pure` implementation then simply uses the `Except.ok` constructor
+passing the pure value to be wrapped in an Except object.  So `pure (x / y)` converts the pure value
+`x / y` into something that matches the return type `Except String Float`.
 
 All this is built on the `Monad` type class which is defined as follows:
 
@@ -185,19 +183,18 @@ class Monad (m : Type u → Type v) extends Applicative m, Bind m : Type (max (u
 
 ![Monad](./assets/monads.png)
 
-Remember that type classes in Lean allow the compiler to do type inference using
-the declared instances.  So the instance `Monad (Except ε)` allows the compiler to
-invoke `Except.pure` when we call the `pure` method, and `Except.bind` if we call
-`bind` and so on.
+Remember that type classes in Lean allow the compiler to do type inference using the declared
+instances.  So the instance `Monad (Except ε)` allows the compiler to invoke `Except.pure` when we
+call the `pure` method, and `Except.bind` if we call `bind` and so on.
 
-Notice the `instance : Monad (Except ε) ` doesn't define the ok type `(α : Type v)`.
-If you `#check (Except String)` you will find you get a function that operates on types.
+Notice the `instance : Monad (Except ε) ` doesn't define the ok type `(α : Type v)`. If you `#check
+(Except String)` you will find you get a function that operates on types.
 ```lean
 Except String : Type u_1 → Type (max 0 u_1)
 ```
 
-Notice this matches the inputs to the Monad class: `(m : Type u → Type v)` and is why
-you can think of a Monad as something that transforms types.
+Notice this matches the inputs to the Monad class: `(m : Type u → Type v)` and is why you can think
+of a Monad as something that transforms types.
 
 The next method to consider is the Monad `bind` method which is defined on the `Bind` type class as:
 
@@ -208,8 +205,8 @@ class Bind (m : Type u → Type v) where
   bind : {α β : Type u} → m α → (α → m β) → m β
 ```
 
-Here you can see that `bind` is using a function to transform the return type
-from `m α` to `m β` and is specialized in the case of the `Except.bind` as follows:
+Here you can see that `bind` is using a function to transform the return type from `m α` to `m β`
+and is specialized in the case of the `Except.bind` as follows:
 
 ```lean
 namespace Except
@@ -219,43 +216,40 @@ namespace Except
   | Except.ok v      => f v
 ```
 
-So this bind function can be used to transform the type `Except String Float`
-to `Except String String`.  First we need a function that takes `Float → Except String String`
-and it then unwraps the given `Except String Float` into its `error` and `ok` cases,
-passing the error through unchanged as `Except.error err` but using the function to
-transform the `ok` variable `v` into a string by applying `f v` which returns a new type
-`Except String String`.
+So this bind function can be used to transform the type `Except String Float` to `Except String
+String`.  First we need a function that takes `Float → Except String String` and it then unwraps the
+given `Except String Float` into its `error` and `ok` cases, passing the error through unchanged as
+`Except.error err` but using the function to transform the `ok` variable `v` into a string by
+applying `f v` which returns a new type `Except String String`.
 
-This transformation happened automatically in the `testCatch` function earlier
-because we used the `do` notation which is a powerful tool that can chain monad actions
-finding and applying the right bind operations automatically when needed.
-In the `testCatch` function the following line of code shows how this works:
+This transformation happened automatically in the `testCatch` function earlier because we used the
+`do` notation which is a powerful tool that can chain monad actions finding and applying the right
+bind operations automatically when needed. In the `testCatch` function the following line of code
+shows how this works:
 
 ```lean
     return toString r -- ExceptT String Id String
 ```
-Here the `toString` function was composed into something that contructs an
-`Except.ok string` result.  So this monad type inference and composition of binding
-operations is pretty powerful.
+Here the `toString` function was composed into something that contructs an `Except.ok string`
+result.  So this monad type inference and composition of binding operations is pretty powerful.
 
-You can also use `bind` manually if you want to control how it works which
-we'll see below.
+You can also use `bind` manually if you want to control how it works which we'll see below.
 
 
 ## Monad Composition
 
-This is great, but how do you add another dimension to your program using monads?
-Well it turns out in Lean monads compose very nicely, their side effects can be chained.
+This is great, but how do you add another dimension to your program using monads? Well it turns out
+in Lean monads compose very nicely, their side effects can be chained.
 
-Suppose now you want to add some logging to your program so you know how many times
-divide succeeds without throwing an exception.  Logging is very useful in large complex programs
-to figure out what is really happening.
+Suppose now you want to add some logging to your program so you know how many times divide succeeds
+without throwing an exception.  Logging is very useful in large complex programs to figure out what
+is really happening.
 
 You have probably already used the IO monad to do terminal IO like `IO.println "Hello, world!"` but
 that's not the kind of logging we want here. Sometimes you need something more structured, and more
 light weight, and easier to consume programmatically.  So let's create a counter that is simply
-incremented every time divide succeeds and pass that "logging state" into our program so you
-can then also read that state when the program is finished.
+incremented every time divide succeeds and pass that "logging state" into our program so you can
+then also read that state when the program is finished.
 
 There is a monad already defined for this kind of stateful side effect, it is called `MonadStateOf`:
 
@@ -266,12 +260,11 @@ instance [Monad m] : MonadStateOf σ (StateT σ m) where
   modifyGet := StateT.modifyGet
 ```
 
-Notice it provides a `get` function to read the state, `set` function to update it, and
-a `modifyGet` that does a read and an update.
+Notice it provides a `get` function to read the state, `set` function to update it, and a
+`modifyGet` that does a read and an update.
 
 If your "context state" is a simple natural number - the count of the number of times divide
-succeeds -- then you could create a divide function that logs this state information
-as follows:
+succeeds -- then you could create a divide function that logs this state information as follows:
 
 ```lean
 def divideLog (x: Float ) (y: Float): StateT Nat Id Float :=
@@ -284,10 +277,9 @@ def divideLog (x: Float ) (y: Float): StateT Nat Id Float :=
 
 `modify` is a helper that makes it easier to use modifyGet.
 
-You can call this function in a test function, passing in the state on each
-call, and storing the updates in a mutable state variable and with the nested for loops
-this will divide by zero exactly 10 times, which means the result of successful
-divides should be 90:
+You can call this function in a test function, passing in the state on each call, and storing the
+updates in a mutable state variable and with the nested for loops this will divide by zero exactly
+10 times, which means the result of successful divides should be 90:
 
 ```lean
 def testDivideLog := do
@@ -301,17 +293,15 @@ def testDivideLog := do
 #eval testDivideLog -- 90
 ```
 
-Great, a completely different example of adding an orthogonal dimension to our code
-(logging).  But now what if we want both logging and exception handling?
-Well you can chain StateT, and ExceptT because remember they take a monad as
-input.  We were passing `Id` before, but now we can pass the monad `ExceptT String Id` instead
-resulting in the return type `StateT Nat (ExceptT String Id) Float`! Phew, that's a
-mouth full.  Lean allows very sophisticated type construction.
+Great, a completely different example of adding an orthogonal dimension to our code (logging).  But
+now what if we want both logging and exception handling? Well you can chain StateT, and ExceptT
+because remember they take a monad as input.  We were passing `Id` before, but now we can pass the
+monad `ExceptT String Id` instead resulting in the return type `StateT Nat (ExceptT String Id)
+Float`! Phew, that's a mouth full.  Lean allows very sophisticated type construction.
 
-So this means `StateT` will transform `Except String Float` into some new return
-type, in this case it will become `Except String (Float × Nat)` because we need
-the modified state to be returned as well as the division result, so they are
-returned as a pair.
+So this means `StateT` will transform `Except String Float` into some new return type, in this case
+it will become `Except String (Float × Nat)` because we need the modified state to be returned as
+well as the division result, so they are returned as a pair.
 
 Here's the combined monadic function:
 
@@ -325,23 +315,20 @@ def divideIt (x:Float) (y:Float) : StateT Nat (ExceptT String Id) Float :=
 #check divideIt -- Float → Float → StateT Nat (ExceptT String Id) Float
 ```
 
-But how does adding a return type of `StateT` allow stateful "inputs" to be
-passed to the divideIt function?  How can a return type add an input?
-You can use "currying", check the reduced type:
+But how does adding a return type of `StateT` allow stateful "inputs" to be passed to the divideIt
+function?  How can a return type add an input? You can use "currying", check the reduced type:
 
 ```lean
 #reduce StateT Nat (ExceptT String Id) Float -- Nat → Except String (Float × Nat)
 ```
 
-So StateT has turned the return type into a function that takes a natural number
-as input and returns the natural number in the pair `Float × Nat`.
-So it has essentially then added an input parameter to our function,
-but it doesn't have a name, and can only be accessed by the StateT interface
-`get`, and `modifyGet`.
+So StateT has turned the return type into a function that takes a natural number as input and
+returns the natural number in the pair `Float × Nat`. So it has essentially then added an input
+parameter to our function, but it doesn't have a name, and can only be accessed by the StateT
+interface `get`, and `modifyGet`.
 
-You can now use `bind` manually to chain the 2 monadic functions, in this case
-(`modify` from StateT and `pure` from `ExceptT`) and the `bind` function on StateT
-is defined as:
+You can now use `bind` manually to chain the 2 monadic functions, in this case (`modify` from StateT
+and `pure` from `ExceptT`) and the `bind` function on StateT is defined as:
 
 ```lean
 @[inline] protected def bind (x : StateT σ m α) (f : α → StateT σ m β) : StateT σ m β :=
@@ -355,12 +342,11 @@ type `Float × Nat`:
 #eval divideIt 5 1 0 -- Except.ok (5.000000, 1)
 ```
 
-The 3rd parameter passed here is the initial value of the `StateT Nat` being passed in.
-The function incremented this state and returned it as the second member of the pair
-`(5.000000, 1)`.
+The 3rd parameter passed here is the initial value of the `StateT Nat` being passed in. The function
+incremented this state and returned it as the second member of the pair `(5.000000, 1)`.
 
-You can test this new composite `divideIt` function in a very similar way to `testDivideLog`
-and you can add a try/catch so the test doesn't stop when it hits a divide by zero:
+You can test this new composite `divideIt` function in a very similar way to `testDivideLog` and you
+can add a try/catch so the test doesn't stop when it hits a divide by zero:
 
 ```lean
 def testIt := do
@@ -377,13 +363,13 @@ def testIt := do
 #eval testIt -- 90
 ```
 
-Notice here the extracted value in `r` is the pair `Float × Nat` so `r.2` then is
-the updated `state`, or the count of times we did a successful divide and we get
-the same result, 90 good divides.
+Notice here the extracted value in `r` is the pair `Float × Nat` so `r.2` then is the updated
+`state`, or the count of times we did a successful divide and we get the same result, 90 good
+divides.
 
-Ok, now to bring it all together, you don't need to use `bind` manually like this
-because the `do Notation` can chain monadic actions using bind automatically,
-so you can rewrite the divideIt function as:
+Ok, now to bring it all together, you don't need to use `bind` manually like this because the `do
+Notation` can chain monadic actions using bind automatically, so you can rewrite the divideIt
+function as:
 
 ```lean
 def divideDo (x:Float) (y:Float) : (StateT Nat (ExceptT String Id)) Float := do
@@ -401,10 +387,10 @@ So an imperative program can be modelled in functional language as a chain of mo
 
 ## Add one more for fun!
 
-`ReaderT` is like `StateT` but it is read only, so it is ideal for "context" or "global state".
-We can use it to pass around our command line arguments so different parts of our program can
-behave differently as a result of those arguments.  Let's first see the manual binding so
-you get a better idea of how they compose:
+`ReaderT` is like `StateT` but it is read only, so it is ideal for "context" or "global state". We
+can use it to pass around our command line arguments so different parts of our program can behave
+differently as a result of those arguments.  Let's first see the manual binding so you get a better
+idea of how they compose:
 
 ```lean
 def divide (x:Float) (y:Float) : ReaderT (List String) (StateT Nat (ExceptT String Id)) Float :=
@@ -454,9 +440,9 @@ Oooh, isn't that loverly.
 ## Lifting
 
 An important part of any program is functional decomposition, breaking large functions up into
-smaller ones. When you do that you don't always want the smaller functions to have the big
-complex return types of the outer function.  Let's take a look at an example.  Remember
-our first divide function that throws on divide by zero?
+smaller ones. When you do that you don't always want the smaller functions to have the big complex
+return types of the outer function.  Let's take a look at an example.  Remember our first divide
+function that throws on divide by zero?
 
 ```lean
 def divide (x: Float ) (y: Float): ExceptT String Id Float :=
@@ -485,9 +471,9 @@ Very cool - but some magic happened here. The smaller `divide` function has a di
 `ExceptT String Id Float` yet you returned it's value no problem and the compiler turned it into
 `ReaderT (List String) (StateT Nat (ExceptT String Id)) Float` for you somehow.
 
-This is called "monad lifting" and is another secret sauce that Lean provides that make monads
-super easy to use.  You could imagine manual monad lifting would be very tedious indeed.
-You can see this in action with the following test:
+This is called "monad lifting" and is another secret sauce that Lean provides that make monads super
+easy to use.  You could imagine manual monad lifting would be very tedious indeed. You can see this
+in action with the following test:
 
 ```lean
 def lift1 (x : ExceptT String Id Float) : (StateT Nat (ExceptT String Id)) Float :=
@@ -509,9 +495,9 @@ def lift2 (x : StateT Nat (ExceptT String Id) Float) : ReaderT (List String) (St
 So you can see how the lifts compose nicely, we can pass in the ReaderT args, and the initial state, and
 we get back the divide result and the returned state.
 
-So what Lean did for you here is a transitive closer of lifting operations.
-Let's see how that works.  If you `#print` lift1 you will see it is implemented
-as `fun x => liftM x` and `liftM` is an abbreviation for `monadLift` from `MonadLiftT`.
+So what Lean did for you here is a transitive closer of lifting operations. Let's see how that
+works.  If you `#print` lift1 you will see it is implemented as `fun x => liftM x` and `liftM` is an
+abbreviation for `monadLift` from `MonadLiftT`.
 
 ```lean
 class MonadLiftT (m : Type u → Type v) (n : Type u → Type w) where
@@ -519,9 +505,9 @@ class MonadLiftT (m : Type u → Type v) (n : Type u → Type w) where
   monadLift : {α : Type u} → m α → n α
 ```
 
-The `T` in `MonadLiftT` stands for "transitive" it is able to transitively
-lift monadic computations using `MonadLift` which is a function for
-for lifting a computation from an inner `Monad` to an outer `Monad`.
+The `T` in `MonadLiftT` stands for "transitive" it is able to transitively lift monadic computations
+using `MonadLift` which is a function for for lifting a computation from an inner `Monad` to an
+outer `Monad`.
 
 So now we can check all the `MonadLift` instances defined in Lean, and in our case we will be using:
 
@@ -530,21 +516,20 @@ instance : MonadLift m (StateT σ m)  -- to lift to StateT
 instance  : MonadLift m (ReaderT ρ m) -- to lift to ReaderT
 ```
 
-These instances override the `lift` function for these types, showing the compiler
-how to generate that code.  Let's see how that works for StateT:
+These instances override the `lift` function for these types, showing the compiler how to generate
+that code.  Let's see how that works for StateT:
 
 ```lean
 @[inline] protected def lift {α : Type u} (t : m α) : StateT σ m α :=
   fun s => do let a ← t; pure (a, s)
 ```
 
-So given some implicit type `α` and a monad `m` that acts on `α` it is able to
-generate the return type `StateT σ m α` by returning a function that takes some
-state `s` from which it can then create the pair (a, s) where `a` is the result
-of applying the monad `m α`.  And this is what we saw, the state `0` passed in
-resulted in a pair coming back out as `(5.000000, 0)`.  It is not inventing
-the state, it is lifting that state so it is an input and an output resulting in
-a valid `StateT Nat (ExceptT String Id)`.
+So given some implicit type `α` and a monad `m` that acts on `α` it is able to generate the return
+type `StateT σ m α` by returning a function that takes some state `s` from which it can then create
+the pair (a, s) where `a` is the result of applying the monad `m α`.  And this is what we saw, the
+state `0` passed in resulted in a pair coming back out as `(5.000000, 0)`.  It is not inventing the
+state, it is lifting that state so it is an input and an output resulting in a valid `StateT Nat
+(ExceptT String Id)`.
 
 Similarly, for `ReaderT` we find:
 
@@ -552,47 +537,46 @@ Similarly, for `ReaderT` we find:
 instance  : MonadLift m (ReaderT ρ m) where
   monadLift x := fun _ => x
 ```
-This one is a bit simpler, remember `ReaderT` is about passing in some read-only
-state, but to lift something that does not know about `ReaderT` then it obviously
-doesn't care about this read only state, so we can throw
-it away using the underscore `_` and simply return the type being lifted,
+This one is a bit simpler, remember `ReaderT` is about passing in some read-only state, but to lift
+something that does not know about `ReaderT` then it obviously doesn't care about this read only
+state, so we can throw it away using the underscore `_` and simply return the type being lifted,
 which is what we saw with this eval:
 
 ```lean
 #eval lift2 (lift1 (divide 5 1)) ["discarded", "state"] 0 -- Except.ok (5.000000, 0)
 ```
 
-The ReaderT state here is `["discarded", "state"]` and it is thrown away when
-calling lift1 because `lift1` doesn't know about ReaderT.
+The ReaderT state here is `["discarded", "state"]` and it is thrown away when calling lift1 because
+`lift1` doesn't know about ReaderT.
 
-So looking at `divideRefactored` again, you get an appreciation for what is
-going on under the covers to make that monadic code nice and composable,
-both on the way in with monads like `ReaderT` and `StateT` adding additional
-input parameters, and on the way out with automatic transitive monad lifting.
-Lift happens very often in Lean.
+So looking at `divideRefactored` again, you get an appreciation for what is going on under the
+covers to make that monadic code nice and composable, both on the way in with monads like `ReaderT`
+and `StateT` adding additional input parameters, and on the way out with automatic transitive monad
+lifting. Lift happens very often in Lean.
 
 ## Testing
 
 You can now build the app with `lake build` and try out your main function:
 
 ```lean
-def main (s: List String): IO Unit := do
-  IO.println (match (divideRefactored 5 2 s 10) with
-  | Except.error s => s
-  | Except.ok r => toString r)
+def main (args: List String): IO Unit := do
+  let ret := divideRefactored 5 0 args 10
+  let msg := match ret with
+  | .ok s => toString s
+  | .error e => e
+  IO.println s!"{msg}"
 ```
 
-`lake build` will create a binary named `simpleMonads` which  you can
-run from the command line and you can pass command line parameters
-as follows:
+`lake build` will create a binary named `simpleMonads` which  you can run from the command line and
+you can pass command line parameters as follows:
 
-```shell
+```
 simpleMonads
-(2.500000, 11)
+can't divide by zero
 
 simpleMonads --limit
 too many divides
 ```
 
-So we were able to influence the behavior of our program by passing a
-command line argument all in a purely functional way.
+So we were able to influence the behavior of our program by passing some command line arguments and
+some logging state, and we added some exception handling all in a purely functional way using monads.
