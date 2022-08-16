@@ -85,3 +85,12 @@ jobs:
       - name: Run GuessMyNumber
         run: |
           echo 11 75 82 | ./GuessMyNumber/build/bin/guess
+
+      - name: Build SimpleMonads
+        run: |
+          cd SimpleMonads
+          lake build
+
+      - name: Run SimpleMonads
+        run: |
+          SimpleMonads --limit
