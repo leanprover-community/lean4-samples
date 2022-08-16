@@ -123,9 +123,9 @@ def divideWithArgsDo (x:Float) (y:Float) : ReaderT (List String) (StateT Nat (Ex
     else
       pure (x / y)
 
-#eval divideWithArgsDo 5 2 ["--limit"] 10 -- Except.ok (2.500000, 1)
+#eval divideWithArgsDo 5 2 [] 0 -- Except.ok (2.500000, 1)
+#eval divideWithArgsDo 5 0 [] 0 -- Except.error "can't divide by zero"
 #eval divideWithArgsDo 5 2 ["--limit"] 10 -- Except.error "too many divides"
-#eval divideWithArgsDo 5 0 ["--limit"] 10 -- Except.error "can't divide by zero"
 
 
 def divideRefactored (x:Float) (y:Float) : ReaderT (List String) (StateT Nat (ExceptT String Id)) Float := do
@@ -142,8 +142,10 @@ def divideRefactored (x:Float) (y:Float) : ReaderT (List String) (StateT Nat (Ex
 #reduce ReaderT (List String) (StateT Nat (ExceptT String Id)) Float
 #reduce ExceptT String Id Float
 
-def lift1 : ExceptT String Id Float → (StateT Nat (ExceptT String Id)) Float :=
-  fun x => liftM x
+def lift1 (x : ExceptT String Id Float) : (StateT Nat (ExceptT String Id)) Float :=
+  x
+
+#print lift1
 
 #reduce lift1 -- fun x s => Except.rec (fun a => Except.error a) (fun a => Except.ok (a, s)) x
 
@@ -156,4 +158,5 @@ def transitive (x : StateT Nat (ExceptT String Id) Float) := do
   let x := lift1 (divide 5 1)
   lift2 x
 
-#eval lift2 (lift1 (divide 5 1)) [] 0 -- Except.ok (5.000000, 0)
+
+#eval lift2 (lift1 (divide 5 1)) ["discarded", "state"] 0 -- Except.ok (5.000000, 0)
