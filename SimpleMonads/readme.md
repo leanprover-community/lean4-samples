@@ -560,12 +560,29 @@ You can now build the app with `lake build` and try out your main function:
 
 ```lean
 def main (args: List String): IO Unit := do
-  let ret := divideRefactored 5 0 args 10
-  let msg := match ret with
-  | .ok s => toString s
-  | .error e => e
-  IO.println s!"{msg}"
+  try
+    let ret ← liftIO  (divideRefactored 5 0 args 10)
+    IO.println (toString ret)
+  catch e =>
+    IO.println e
 ```
+
+This function does not compile without the `liftIO` conversion here because `divideRefactored`
+returns our big `ReaderT (List String) (StateT Nat (ExceptT String Id)) Float` but that cannot
+be automatically transformed into the `main` return type of `IO Unit` so `liftIO` is designed
+to do that conversion:
+
+```lean
+def liftIO (t : Except String α ) : IO α :=
+  match t with
+  | .ok r => EStateM.Result.ok r
+  | .error s => EStateM.Result.error s
+```
+
+If you dive into `IO` you will see it is an abbreviation for `EIO Error` and `EIO` is a function
+that transforms into `EStateM Error IO.RealWorld` and `Error` is from the `IO` namespace and is an
+inductive type with lots of possible errors.  `EStateM` creates a `Result` object with `ok` and
+`error` values, very similar to `Except`, but with one more parameter.
 
 `lake build` will create a binary named `simpleMonads` which  you can run from the command line and
 you can pass command line parameters as follows:

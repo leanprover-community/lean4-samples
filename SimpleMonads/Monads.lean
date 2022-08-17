@@ -145,7 +145,7 @@ def divideRefactored (x:Float) (y:Float) : ReaderT (List String) (StateT Nat (Ex
 def lift1 (x : ExceptT String Id Float) : (StateT Nat (ExceptT String Id)) Float :=
   x
 
-#print lift1
+#print lift1  -- fun x => liftM x
 
 #reduce lift1 -- fun x s => Except.rec (fun a => Except.error a) (fun a => Except.ok (a, s)) x
 
