@@ -15,14 +15,9 @@ def test :=
   divide 5 0
 
 #check test  -- ExceptT String Id Float
-
 #eval test -- Except.error "can't divide by zero"
-
 #eval test.run -- this was done implicitly for us
-
 #eval test |>.run -- this is the best way to call run if run takes arguments.
-
-#check  Except.pure 6.5 --  Except ?m.727 Float
 
 def testCatch :=
     try
@@ -32,7 +27,6 @@ def testCatch :=
       return s!"Caught exception: {e}"
 
 #check testCatch -- ExceptT String Id String
-
 #eval testCatch -- Caught exception: can't divide by zero
 
 /- unwrap Except using match -/
@@ -95,9 +89,7 @@ def divideIt (x:Float) (y:Float) : StateT Nat (ExceptT String Id) Float :=
     bind (modify fun s => s + 1) fun _ => pure (x / y)
 
 #check divideIt
-
 #reduce StateT Nat (ExceptT String Id) Float
-
 #eval divideIt 5 2 |>.run 0 -- Except.ok (5.000000, 1)
 
 def testIt := do
@@ -135,11 +127,7 @@ def divideWithArgs (x:Float) (y:Float) : ReaderT (List String) (StateT Nat (Exce
         else
           pure (x / y)
 
-/-
-List String → Nat → Except String (Float × Nat)
--/
-#reduce ReaderT (List String) (StateT Nat (ExceptT String Id)) Float
-
+#reduce ReaderT (List String) (StateT Nat (ExceptT String Id)) Float -- List String → Nat → Except String (Float × Nat)
 #eval divideWithArgs 5 2 |>.run [] |>.run 0 -- Except.ok (2.500000, 1)
 #eval divideWithArgs 5 0 |>.run [] |>.run 0 -- Except.error "can't divide by zero"
 #eval divideWithArgs 5 2 |>.run ["--limit"] |>.run 10 -- Except.error "too many divides"
@@ -163,10 +151,8 @@ def divideWithArgsDo (x:Float) (y:Float) : ReaderT (List String) (StateT Nat (Ex
 example : divideWithArgs x y = divideWithArgsDo x y := by
   simp[divideWithArgs, divideWithArgsDo]    -- Goals accomplished 🎉
 
-abbrev RSEFloat := ReaderT (List String) (StateT Nat (ExceptT String Id)) Float
-
 /- monad composition using lifting -/
-def divideRefactored (x:Float) (y:Float) : RSEFloat := do
+def divideRefactored (x:Float) (y:Float) : ReaderT (List String) (StateT Nat (ExceptT String Id)) Float := do
   modify fun s => s + 1
   let s ← get
   let args ← read
