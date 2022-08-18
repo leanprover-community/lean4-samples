@@ -22,7 +22,7 @@ def test :=
 
 #eval test |>.run -- this is the best way to call run if run takes arguments.
 
-#check  (Except.pure 6.5) --  Except ?m.727 Float
+#check  Except.pure 6.5 --  Except ?m.727 Float
 
 def testCatch :=
     try
@@ -163,8 +163,10 @@ def divideWithArgsDo (x:Float) (y:Float) : ReaderT (List String) (StateT Nat (Ex
 example : divideWithArgs x y = divideWithArgsDo x y := by
   simp[divideWithArgs, divideWithArgsDo]    -- Goals accomplished 🎉
 
+abbrev RSEFloat := ReaderT (List String) (StateT Nat (ExceptT String Id)) Float
+
 /- monad composition using lifting -/
-def divideRefactored (x:Float) (y:Float) : ReaderT (List String) (StateT Nat (ExceptT String Id)) Float := do
+def divideRefactored (x:Float) (y:Float) : RSEFloat := do
   modify fun s => s + 1
   let s ← get
   let args ← read
@@ -199,3 +201,24 @@ def transitive (x : StateT Nat (ExceptT String Id) Float) := do
 
 
 #eval lift2 (lift1 (divide 5 1)) |>.run ["discarded", "state"] |>.run 4 -- Except.ok (5.000000, 4)
+
+#reduce ExceptT String Id -- Except String α
+
+/- some common patterns with structures and abbreviations -/
+structure Config where
+  x : Nat
+  y : Nat
+  deriving Repr
+
+abbrev CoolM := StateT Config (ExceptT Nat Id)
+
+def doSomethingCool : CoolM Nat :=do
+  let s ← get
+  set {s with x := 10}
+  pure 0
+
+#check doSomethingCool -- CoolM Nat
+#reduce CoolM Nat      -- Config → Except Nat (Nat × Config)
+#synth Monad CoolM     -- StateT.instMonadStateT
+#eval doSomethingCool |>.run  {x := 0, y := 0} -- Except.ok (0, { x := 10, y := 0 })
+

@@ -121,11 +121,20 @@ inductive Except (ε : Type u) (α : Type v) where
   | ok    : α → Except ε α
 ```
 
-Notice this is very generic it can represent an error case where the error is any type `ε` or an ok
-case where the ok value is any type `α`.  So the type `Except String Float` represents an Except
-type that has a string in the error case or a floating point value in the ok case.
+This is similar to the `Sum` type shown in the
+[Theorem Proving in Lean chapter on Inductive Types](https://leanprover.github.io/theorem_proving_in_lean4/inductive_types.html#constructors-with-arguments).
 
-This Except type is then turned into a `Monad` by declaring this Monad type instance:
+It can represent an object that contains either an `error` or and `ok` value where the error can be
+any type `ε` and the `ok` value can be any type `α`.
+
+You can use `Except` by filling in those type parameters like this: `Except String Float`.
+This creates a new Type, if you like, that represents an Except object that that has a string
+in the error case or a floating point value in the ok case.
+
+If you partially construct an `Except ε` you have something of type `Type → Type` which
+is a type transformer, for example, it takes type `Float` and returns type `Except String Float`.
+So it transforms types. Monads in Lean are also type transformers, and you can turn `Except ε`
+into an official `Monad` by declaring a Monad type instance:
 
 ```lean
 instance : Monad (Except ε) where
@@ -134,6 +143,7 @@ instance : Monad (Except ε) where
   map  := Except.map
 ```
 
+Where `Except` has defined some helper functions that implement pure, bind and map.
 The `ExceptT` function uses a monad `m` to transform the type `Except ε α`:
 
 ```lean
@@ -148,13 +158,21 @@ transformer.
 
 | side note |
 | ----- |
-| Now remember that in Lean, any function `f (x) (y) (z)` can be turned into compositional subfunctions, so `f x y` is a function that returns a function that takes a `z` and `f x` is a function that returns a function that takes `y z` and so on.  This is a type of currying.  |
+| Now remember that in Lean, any function `f (x) (y) (z)` can be turned into compositional subfunctions, so `f x y` is a function that returns a function that takes a `z` and `f x` is a function that returns a function that takes `y z` and so on.
 
-This means:
+Using this we have this:
 - `ExceptT String` is a monad transformer.
-- `ExceptT String Id` is a monad.
+- `ExceptT String Id` is a monad
 - `ExceptT String Id Float` is a monadic action in the monad `ExceptT String Id` which produces a Float
 when you call the `run` method on that action.
+
+Note that `ExceptT String Id` is a monad because of another instance:
+```lean
+instance {ε : Type u} {m : Type u → Type v}  [Monad m] : Monad (ExceptT ε m) where
+  pure := ExceptT.pure
+  bind := ExceptT.bind
+  map  := ExceptT.map
+```
 
 Yes `ExceptT` also provides a `run` method as follows:
 ```lean
@@ -167,6 +185,9 @@ we were really doing this:
 ```lean
 #eval test.run
 ```
+
+You could think of this as invoke the test function, then run the monadic action returned so you can
+see the Float answer (or Except.error).
 
 Now the `divide` function is using the `Id` monad which is the identity transform so the return type
 in this case will be unchanged `Except String Float`.  This `Id` monad might seem a bit weird right
@@ -647,9 +668,70 @@ covers to make that monadic code nice and composable, both on the way in with mo
 and `StateT` adding additional input parameters, and on the way out with automatic transitive monad
 lifting. Lift happens very often in Lean.
 
+## Common Patterns
+
+Sometimes you want your `StateT` state to be more interesting, like this `Config` structure:
+
+```lean
+structure Config where
+  x : Nat
+  y : Nat
+  deriving Repr
+```
+
+And in real Lean programs people often use abbreviations to come up with a nice name for
+their long monadic types:
+
+```lean
+abbrev CoolM := StateT Config (ExceptT Nat Id)
+```
+
+Now you can use this state and update it like this:
+
+```lean
+def doSomethingCool : CoolM Nat :=do
+  let s ← get             -- read the state Config structure
+  set {s with x := 10}    -- update the state modifying the x component
+  pure 0
+```
+Here we are using [record update syntax](https://leanprover.github.io/theorem_proving_in_lean4/structures_and_records.html#objects)
+`{s with x := 10}` which means start with structure `s` and update just the `x` component.
+
+Now you can see clean type information:
+```lean
+#check doSomethingCool -- CoolM Nat
+```
+
+And you can see what CoolM is using:
+```
+#synth Monad CoolM     -- StateT.instMonadStateT
+```
+
+But you can also see what it really maps to:
+```lean
+#reduce CoolM Nat      -- Config → Except Nat (Nat × Config)
+```
+
+And you can call the function passing an initial Config and see the resulting
+updated state:
+
+```lean
+#eval doSomethingCool |>.run {x := 0, y := 0} -- Except.ok (0, { x := 10, y := 0 })
+```
+
+Abbreviations like this are used heavily in the Lean code base.  Here's some examples:
+
+```lean
+#reduce CliM Unit -- in Lake
+-- ArgList → LakeOptions → IO.RealWorld → EStateM.Result UInt32 PUnit (Except CliError ((PUnit × List String) × LakeOptions))
+
+#reduce IO Unit -- the type for main
+-- IO.RealWorld → EStateM.Result IO.Error PUnit PUnit
+```
+
 ## Add your own Custom Lifting
 
-You can now build the app with `lake build` and try out this main function:
+You can now build the sample app with `lake build` and try out this main function:
 
 ```lean
 def main (args: List String): IO Unit := do
@@ -711,6 +793,7 @@ too many divides
 
 So we were able to influence the behavior of our program by passing some command line arguments and
 some logging state, and we added some exception handling and we did it all in a purely functional
-way using monads.  Then we also showed how monad lifing makes functional decomposition nice and
-manageable.
+way using monads.  Then we also showed how monad chaining and lifing makes functional decomposition
+nice and manageable.
+
 
