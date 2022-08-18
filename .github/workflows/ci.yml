@@ -93,4 +93,4 @@ jobs:
 
       - name: Run SimpleMonads
         run: |
-          SimpleMonads --limit
+          SimpleMonads/build/bin/SimpleMonads --limit
