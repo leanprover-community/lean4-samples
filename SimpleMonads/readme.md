@@ -70,7 +70,7 @@ def test :=
 
 The Lean compiler propagates the type information for you:
 ```lean
-#check test     -- ExceptT String Id PUnit
+#check test     -- ExceptT String Id Float
 ```
 
 And now we can run this test and get the expected exception:
@@ -109,7 +109,7 @@ Notice the `Caught exception:` wrapped message is returned, and that it is retur
 
 So we've interleaved a new concept into our functions (exception handling) and the compiler is still
 able to type check everything just as well as it does for pure functions and it's been able to infer
-some things along the way to make it every easier to manage.
+some things along the way to make it even easier to manage.
 
 ## Under the covers
 
@@ -148,8 +148,9 @@ transformer.
 
 | side note |
 | ----- |
-| Now remember that in Lean, any function `f (x) (y) (z)` can be turned into compositional subfunctions, so `f x y` is a function that returns a function that takes a `z` and `f x` is a function that returns a function that takes `y z` and so on.  This is a type of currying.  This means: |
+| Now remember that in Lean, any function `f (x) (y) (z)` can be turned into compositional subfunctions, so `f x y` is a function that returns a function that takes a `z` and `f x` is a function that returns a function that takes `y z` and so on.  This is a type of currying.  |
 
+This means:
 - `ExceptT String` is a monad transformer.
 - `ExceptT String Id` is a monad.
 - `ExceptT String Id Float` is a monadic action in the monad `ExceptT String Id` which produces a Float
@@ -313,8 +314,8 @@ instance [Monad m] : MonadStateOf σ (StateT σ m) where
   modifyGet := StateT.modifyGet
 ```
 
-Notice it provides a `get` function to read the state, `set` function to update it, and a
-`modifyGet` that does a read and an update.
+Tee `get` function can read the state, the `set` function updates it, and
+`modifyGet` does a read and an update.
 
 If your "context state" is a simple natural number - the count of the number of times divide
 succeeds -- then you could create a divide function that logs this state information as follows:
@@ -328,8 +329,8 @@ def divideLog (x: Float ) (y: Float): StateT Nat Id Float :=
     return x / y
 ```
 
-But how does adding a return type of `StateT` allow stateful "inputs" to be passed to the divideIt
-function?  How can a return type add an input? You can use "currying" again check the reduced type:
+But how does adding a return type of `StateT` allow stateful "inputs" to be passed to the
+`divideLog` function?  How can a return type add an input? You can use "currying" again check the reduced type:
 
 ```lean
 #check divideLog              -- Float → Float → StateT Nat Id Float
