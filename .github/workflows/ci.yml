@@ -72,8 +72,7 @@ jobs:
         run: |
           cd CSVParser
           lake build
-
-      - name: Run CSVParser
+- name: Run CSVParser
         run: |
           ./CSVParser/build/bin/csv
 
@@ -93,4 +92,4 @@ jobs:
 
       - name: Run SimpleMonads
         run: |
-          SimpleMonads/build/bin/SimpleMonads --limit
+          SimpleMonads/build/bin/simpleMonads --limit
