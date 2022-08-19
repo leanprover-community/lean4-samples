@@ -1,9 +1,12 @@
+
+@[inline] def ok {ε : Type u} (a : α) : Except ε α := pure a
+
 /- simple exception handling monad -/
 def divide (x: Float ) (y: Float): ExceptT String Id Float :=
   if y == 0 then
     throw "can't divide by zero"
   else
-    pure (x / y)
+    ok (x / y)
 
 #eval divide 5 0  -- Except.error "can't divide by zero"
 
@@ -21,8 +24,8 @@ def test :=
 
 def testCatch :=
     try
-      let r ← divide 8 0
-      return toString r -- 'r' is type Float
+      let r ← divide 8 0 -- 'r' is type Float
+      return toString r
     catch e =>
       return s!"Caught exception: {e}"
 
@@ -86,7 +89,7 @@ def divideIt (x:Float) (y:Float) : StateT Nat (ExceptT String Id) Float :=
   if y == 0 then
     throw "can't divide by zero"
   else
-    bind (modify fun s => s + 1) fun _ => pure (x / y)
+    bind (modify fun s => s + 1) (fun _ => pure (x / y))
 
 #check divideIt
 #reduce StateT Nat (ExceptT String Id) Float
@@ -100,8 +103,8 @@ def testIt := do
         let r ← divideIt x.toFloat y.toFloat |>.run log
         log := r.2
       catch _  =>
-        pure ()
-  pure log
+        ok ()
+  ok log
 
 #eval testIt -- 90
 

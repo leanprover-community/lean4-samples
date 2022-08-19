@@ -1,7 +1,7 @@
 # Simple Monads in Lean
 
 Lean is a pure Functional programming language.  This means all inputs and outputs must be described
-in the function arguments and return types and no other side effects are allowed to happen and this
+in the function arguments and return values and no other side effects are allowed to happen and this
 is enforced by the Lean compiler.  This allows the Lean Compiler to do some very interesting things,
 like proofs.
 
@@ -56,9 +56,23 @@ that might return an error of type String or it might return a value of type Flo
 case.
 
 Once your function is monadic you also need to use the `pure` constructor
-of the `ExceptT` monad to convert the floating point return value `x / y` into the `Except` object.
+of the `ExceptT` monad to convert the pure non-monadic value `x / y` into the `Except` object.
 
-This return typing would get tedious if you had to include it everywhere that you call this
+If the word `pure` here is confusing to you, you could define a helper function called `ok` that
+maps to `pure` and now your code reads more nicely, you can see a `throw` result and an `ok` result.
+
+```lean
+def ok {ε : Type u} (a : α) : Except ε α := pure a
+
+/- simple exception handling monad -/
+def divide (x: Float ) (y: Float): ExceptT String Id Float :=
+  if y == 0 then
+    throw "can't divide by zero"
+  else
+    ok (x / y)
+```
+
+Now this return typing would get tedious if you had to include it everywhere that you call this
 function, however, Lean type inference can clean this up. For example, you can define a test
 function can calls the `divide` function and you don't need to say anything here about the fact that
 it might throw an error, because that is inferred:
@@ -83,12 +97,12 @@ But with all good exception handling you also want to be able to catch exception
 can continue on, which you can do like this:
 
 ```lean
-def testCatch := do
-  try
-    let r ← divide 8 0
-    return toString r
-  catch e =>
-    return s!"Caught exception: {e}"
+def testCatch :=
+    try
+      let r ← divide 8 0  -- 'r' is type Float
+      return toString r
+    catch e =>
+      return s!"Caught exception: {e}"
 ```
 
 Note that the type inferred by Lean for this function is `ExceptT String Id String` so the
@@ -397,7 +411,7 @@ def testDivideLog := do
   let mut state := 0
   for x in [0:10] do
     for y in [0:10] do
-      let r ← (divideLog x.toFloat y.toFloat) |>.run state
+      let r ← divideLog x.toFloat y.toFloat |>.run state
       state := r.2
   state
 
@@ -455,8 +469,8 @@ def testIt := do
         let r ← divideIt x.toFloat y.toFloat |>.run log
         log := r.2
       catch _  =>
-        pure ()
-  pure log
+        ok ()
+  ok log
 
 #eval testIt -- 90
 ```
@@ -476,6 +490,8 @@ def divideDo (x:Float) (y:Float) : (StateT Nat (ExceptT String Id)) Float := do
   else
     modify fun s => s + 1
     pure (x / y)
+
+#eval divideDo 5 2 |>.run 0 -- Except.ok (2.500000, 1)
 ```
 
 So here the do Notation DSL generated the code `bind (modify fun s => s + 1) (fun _ => pure (x / y))`
@@ -504,7 +520,6 @@ def divideWithArgs (x:Float) (y:Float) : ReaderT (List String) (StateT Nat (Exce
           throw "can't divide by zero"
         else
           pure (x / y)
-
 /-
 List String → Nat → Except String (Float × Nat)
 -/

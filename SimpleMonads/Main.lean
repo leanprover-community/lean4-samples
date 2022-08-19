@@ -6,7 +6,7 @@ def liftIO (t : ExceptT String Id α) : IO α := do
   | .ok r => EStateM.Result.ok r
   | .error s => EStateM.Result.error s
 
-instance myFunkyName : MonadLift (ExceptT String Id) IO where
+instance : MonadLift (ExceptT String Id) IO where
   monadLift := liftIO
 
 -- set_option trace.Meta.synthInstance true in
