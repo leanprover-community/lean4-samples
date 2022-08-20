@@ -49,6 +49,8 @@ def divide (x: Float ) (y: Float): ExceptT String Id Float :=
 #eval divide 5 0  -- Except.error "can't divide by zero"
 ```
 
+All these code snippets are included in [Monads.lean](Monads.lean)
+
 Here the `throw` function is available because our return type includes `ExceptT`. So `throw` is not
 available everywhere like it is in most imperative programming languages.  You have to declare your
 function can throw by including the `ExceptT` type in your result type.  This creates a function
@@ -533,7 +535,7 @@ List String → Nat → Except String (Float × Nat)
 Notice that because we have added 2 monads now, `ReaderT` and `StateT` we want to see 2 `run` method
 calls.
 
-Fortunately, tThe `do` Notation cleans this up very nicely:
+Fortunately, the `do` Notation cleans this up very nicely:
 
 ```lean
 def divideWithArgsDo (x:Float) (y:Float) : ReaderT (List String) (StateT Nat (ExceptT String Id)) Float := do
@@ -810,5 +812,3 @@ So we were able to influence the behavior of our program by passing some command
 some logging state, and we added some exception handling and we did it all in a purely functional
 way using monads.  Then we also showed how monad chaining and lifing makes functional decomposition
 nice and manageable.
-
-
