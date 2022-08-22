@@ -351,7 +351,7 @@ instance [Monad m] : MonadStateOf σ (StateT σ m) where
   modifyGet := StateT.modifyGet
 ```
 
-Tee `get` function can read the state, the `set` function updates it, and
+The `get` function can read the state, the `set` function updates it, and
 `modifyGet` does a read and an update.
 
 If your "context state" is a simple natural number - the count of the number of times divide
@@ -394,12 +394,12 @@ The following 3 ways of calling this function are equivalent:
 
 The first way of simply tacking on the state argument is not recommended because it makes your
 code hard to maintain if the divideLog parameters change or the StateT monad is changed and so on.
-it is better to use the `run` method explicitly which you can do using parentheses, but if you
+It is better to use the `run` method explicitly which you can do using parentheses, but if you
 have lots of monads in your chain the right associative operator '|>' is more convenient as it
 drops the need for parentheses.
 
 An added benefit of calling `run` explicitly is that the Lean type checker will always ensure for
-you that the result of `divideLog 8 4` is a type that has some `run` method and so on, if this is
+you that the result of `divideLog 8 4` is a type that has a `run` method. If this is
 not the case it will highlight the right section of your code instead of giving a confusing big
 error on your entire application that contains some weird monad stack mess. So this is the
 recommended pattern.
@@ -430,6 +430,8 @@ construction.
 So this means `StateT` will transform `Except String Float` into some new return type, in this case
 it will become `Nat → Except String (Float × Nat)` because we need the to be able to pass in the state
 and get back the modified state, so it returns the division result, and the updated state as a tuple.
+But note that the error case is still `String` and not `String × Nat` - this means in the case the
+function throws an exception, you do not get back any updated state - which kind of makes sense.
 
 You can now use `bind` manually to chain the 2 monadic functions, in this case (`modify` from StateT
 and `pure` from `ExceptT`) and the `bind` function on StateT is defined as:
@@ -706,7 +708,7 @@ abbrev CoolM := StateT Config (ExceptT Nat Id)
 Now you can use this state and update it like this:
 
 ```lean
-def doSomethingCool : CoolM Nat :=do
+def doSomethingCool : CoolM Nat := do
   let s ← get             -- read the state Config structure
   set {s with x := 10}    -- update the state modifying the x component
   pure 0
