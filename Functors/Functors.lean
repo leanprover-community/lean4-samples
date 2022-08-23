@@ -1,6 +1,4 @@
-
 #eval [1,2,3].map (λ x => toString x)
-
 
 #eval  (λ x => toString x) <$> [1,2,3]
 
@@ -56,8 +54,10 @@ def LivingSpace.map (f : α → β) (s : LivingSpace α) : LivingSpace β :=
 instance : Functor LivingSpace where
   map := LivingSpace.map
 
+#check LivingSpace -- Type → Type
+
 abbrev SquareMeters := Float
-def squareFeetToMeters (ft : SquareFeet ) : SquareMeters := (ft / 10.764)
+def squareFeetToMeters (ft : SquareFeet ) : SquareMeters := (ft / 10.7639104)
 
 /- use map to convert this to square meters -/
 #eval squareFeetToMeters <$> mySpace
@@ -70,7 +70,7 @@ def squareFeetToMeters (ft : SquareFeet ) : SquareMeters := (ft / 10.764)
   kitchenSize := 37.160907 }
   -/
 
-#eval id <$> mySpace
+#eval id <$> mySpace == mySpace -- true
 
 example : mySpace.map id = mySpace := by
   simp[LivingSpace.map] -- Goals accomplished 🎉
