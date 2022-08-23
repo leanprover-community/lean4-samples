@@ -8,8 +8,7 @@
 
 #eval [1,2,3,4,5].map (fun s => (s.toFloat) ^ 3.0) -- [1, 8, 27, 64, 125]
 
-
-#eval ["chris", "david", "mark"].map (fun s => s.capitalize) -- ["Chris", "David", "Mark"]
+#eval (fun s => s.capitalize) <$> ["chris", "david", "mark"] -- ["Chris", "David", "Mark"]
 
 #check some 5 -- Option Nat
 #eval some 5 -- some 5
@@ -33,7 +32,9 @@ structure LivingSpace (α: Type) where
   deriving Repr, BEq
 
 /- in square feet -/
-def mySpace :LivingSpace (α := Float) :=
+abbrev SquareFeet := Float
+
+def mySpace : LivingSpace SquareFeet :=
   { totalSize := 1800, numBedrooms := 4, masterBedroomSize := 500, livingRoomSize := 900, kitchenSize := 400 }
 
 #eval mySpace
@@ -55,7 +56,8 @@ def LivingSpace.map (f : α → β) (s : LivingSpace α) : LivingSpace β :=
 instance : Functor LivingSpace where
   map := LivingSpace.map
 
-def squareFeetToMeters (ft : Float ) := (ft / 10.764)
+abbrev SquareMeters := Float
+def squareFeetToMeters (ft : SquareFeet ) : SquareMeters := (ft / 10.764)
 
 /- use map to convert this to square meters -/
 #eval squareFeetToMeters <$> mySpace

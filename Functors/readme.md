@@ -11,7 +11,7 @@ elements, where each has been transformed by the function:
 ```lean
 #eval [1,2,3].map (λ x => toString x) -- ["1", "2", "3"]
 ```
-Here you converted a list of natural numbers (Nat) to a list of strings where the lambda function
+Here we converted a list of natural numbers (Nat) to a list of strings where the lambda function
 here used `toString` to do the transformation of each element. Notice that when we apply `map`
 the "structure" of the object remains the same, in this case the resulting List is the same size.
 
@@ -27,24 +27,7 @@ This is a very generic `map` function that can take any function that converts `
 to convert `List α → List β`, notice the function call `f a` above which is producing the converted
 items for the new list.
 
-The Lean Functor defines both `map` and a special case for working on constants
-more efficiently called `mapConst`:
-```lean
-class Functor (f : Type u → Type v) : Type (max (u+1) v) where
-  /-- If `f : α → β` and `x : F α` then `f <$> x : F β`. -/
-  map : {α β : Type u} → (α → β) → f α → f β
-  /-- The special case `const a <$> x`, which can sometimes be implemented more
-  efficiently. -/
-  mapConst : {α β : Type u} → α → f β → f α := Function.comp map (Function.const _)
-```
-
-In general then a "functor" is a function on types `F : Type u → Type v` equipped with an operator
-called `map` such that if `f : α → β` then `map f : F α → F β`, so `F.map f x : F β` if `x : F α`.
-This corresponds to the category-theory notion of
-[functor](https://en.wikipedia.org/wiki/Functor) in the special case where the category is the
-category of types and functions between them.
-
-Lean also defined custom syntax `<$>` for map:
+Lean also defines custom infix operator `<$>` for map:
 ```lean
 @[inheritDoc] infixr:100 " <$> " => Functor.map
 ```
@@ -55,7 +38,7 @@ which simply allows you to write this:
 ```
 
 In this `Functor`, `map` is called a "higher order function" because it takes
-a function as input `(α → β)` and returns another function as output `f α → f β`.
+a function as input `(α → β)` and returns another function as output `F α → F β`.
 
 Let's look at some more examples:
 
@@ -67,11 +50,11 @@ Let's look at some more examples:
 #eval [1,2,3,4,5].map (fun s => (s.toFloat) ^ 3.0) -- [1.000000, 8.000000, 27.000000, 64.000000, 125.000000]
 
 --- List String → List String
-#eval ["chris", "david", "mark"].map (fun s => s.capitalize) -- ["Chris", "David", "Mark"]
+#eval (fun s => s.capitalize) <$> ["chris", "david", "mark"]  -- ["Chris", "David", "Mark"]
 ```
 
 Another example of a Functor is the `Option` type. Option contains a value or nothing and is handy
-for code that might have a value or it might not, like an optional command line argument.
+for code that has to deal with optional values, like optional command line arguments.
 
 Remember you can construct an Option using the type constructors `some` or `none`:
 
@@ -115,16 +98,16 @@ structure LivingSpace {α: Type} where
   deriving Repr, BEq
 ```
 
-Now you can construct a LivingSpace in floating point using square feet:
+Now you can construct a LivingSpace in square feet using floating point values:
 ```lean
 /- in square feet -/
-def mySpace :LivingSpace (α := Float) :=
-  { totalSize := 1800, numBedrooms := 4, masterBedroomSize := 500, livingRoomSize := 900, kitchenSize := 400 }
+def mySpace : LivingSpace SquareFeet :=
+  { totalSize := 1800, numBedrooms := 4, masterBedroomSize := 500,
+    livingRoomSize := 900, kitchenSize := 400 }
 ```
 
 Now, suppose you want to be able to map LivingSpaces from one type of measurement
-unit to another (like square feet to square meters).  Then you would provide a Functor instance
-as follows:
+unit to another.  Then you would provide a `Functor` instance as follows:
 
 ```lean
 def LivingSpace.map (f : α → β) (s : LivingSpace α) : LivingSpace β :=
@@ -139,15 +122,16 @@ instance : Functor LivingSpace where
 ```
 
 This Functor applies a function `f` to convert the units of all the LivingSpace fields,
-except for `numBedrooms` which is a count, not a footage measurement.
+except for `numBedrooms` which is a count (not a measurement to be converted).
 
 So now you can define the conversion function:
 
 ```lean
-def squareFeetToMeters (ft : Float ) := (ft / 10.764)
+abbrev SquareMeters := Float
+def squareFeetToMeters (ft : SquareFeet ) : SquareMeters := (ft / 10.764)
 ```
 
-and use it to map to square meters:
+and you can use it to map mySpace to square meters:
 
 ```lean
 #eval squareFeetToMeters <$> mySpace
@@ -182,19 +166,16 @@ example : mySpace.map id = mySpace := by
 
 The composition law says that if we "map" two functions in succession over our functor, this should
 be the same as "composing" the functions and simply mapping that one super-function.  In Lean
-you can compose two compatible functions using `Function.comp f g` or the syntax `f ∘ g` and you
+you can compose two functions using `Function.comp f g` (or the syntax `f ∘ g`) and you
 will get the same results from both of these showing that the composition law holds:
 
 ```lean
-#eval squareFeetToMeters <$> (id <$> mySpace)
-#eval (squareFeetToMeters ∘ id) <$> mySpace
-
 #eval (squareFeetToMeters <$> (id <$> mySpace)) == ((squareFeetToMeters ∘ id) <$> mySpace) -- true
 ```
 
-If this is confusing, don't worry. If you make your instances intuitively, they should almost
-certainly follow the laws! To break them, you would have to do something like this, introducing an
-arbitrary value into the instance:
+If this is confusing, don't worry. To break these laws, you would have to do something like
+introducing an arbitrary value into the instance that is not the identity value and is
+not based on the function `f : α → β`:
 
 ```lean
 def LivingSpace.map (f : α → β) (s : LivingSpace α) : LivingSpace β :=
@@ -207,15 +188,34 @@ def LivingSpace.map (f : α → β) (s : LivingSpace α) : LivingSpace β :=
 ```
 
 Notice we zero'd out the number of bedrooms.  This will break the `id` law, and the theorem proving
-`mySpace.map id = mySpace` now fails.
+`mySpace.map id = mySpace` now fails.  Similarly, `numBedrooms := s.numBedrooms + s.numBedrooms` would
+also break the `id` law.
 
 # How do Functors help with Monads ?
 
-Functors are an abstract mathematical structure that we represent in Lean with a type class, and
-this structure has particular "laws" associated with it that dictate its expected behavior. Monads
+Functors are an abstract mathematical structure that we represent in Lean with a type class. The
+Lean Functor defines both `map` and a special case for working on constants more efficiently called
+`mapConst`:
+
+```lean
+class Functor (f : Type u → Type v) : Type (max (u+1) v) where
+  /-- If `f : α → β` and `x : F α` then `f <$> x : F β`. -/
+  map : {α β : Type u} → (α → β) → f α → f β
+  /-- The special case `const a <$> x`, which can sometimes be implemented more
+  efficiently. -/
+  mapConst : {α β : Type u} → α → f β → f α := Function.comp map (Function.const _)
+```
+
+In general then a "functor" is a function on types `F : Type u → Type v` equipped with an operator
+called `map` such that if `f : α → β` then `map f : F α → F β`, so `F.map f x : F β` if `x : F α`.
+This corresponds to the category-theory notion of
+[functor](https://en.wikipedia.org/wiki/Functor) in the special case where the category is the
+category of types and functions between them.
+
+This `Functor` has particular "laws" associated with it that dictate its expected behavior. Monads
 are the same way!
 
-However, functors are simpler to understand. The functor type class has only one function and two
+However, functors are simpler to understand. The functor type class has only one function `map` and two
 straightforward laws. We can easily visualize what they do. Monads meanwhile have multiple functions
 and several more complicated laws.
 
