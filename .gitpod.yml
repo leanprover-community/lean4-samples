@@ -1,5 +1,4 @@
-# Commands to start on workspace startup
+# List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
   - name: Install Lean
-    before: printf 'export PATH="$HOME/.elan/bin:$PATH"\n' >> $HOME/.bashrc && exit
-    init: curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- --default-toolchain leanprover/lean4:nightly -y
+    command: curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- --default-toolchain leanprover/lean4:nightly -y
