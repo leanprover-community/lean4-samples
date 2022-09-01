@@ -3,6 +3,6 @@ tasks:
   - name: Install Lean
     command: |
       curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- --default-toolchain leanprover/lean4:nightly -y
-      echo 'export PATH="$HOME/.elan/bin:$PATH"\n' >> $HOME/.bashrc
+      echo 'export PATH="$HOME/.elan/bin:$PATH"' >> $HOME/.bashrc
       echo '### Now you must use use File/Open folder to open the sample you want to play with.'
 
