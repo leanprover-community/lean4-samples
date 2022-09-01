@@ -6,3 +6,6 @@ tasks:
       echo 'export PATH="$HOME/.elan/bin:$PATH"' >> $HOME/.bashrc
       echo '### You can now close this terminal and use use File/Open folder to open the sample you want to play with.'
 
+vscode:
+  extensions:
+    - leanprover.lean4
