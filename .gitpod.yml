@@ -1,4 +1,8 @@
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
   - name: Install Lean
-    command: curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- --default-toolchain leanprover/lean4:nightly -y
+    command: |
+      curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- --default-toolchain leanprover/lean4:nightly -y
+      echo 'export PATH="$HOME/.elan/bin:$PATH"\n' >> $HOME/.bashrc
+      echo '### Now you must use use File/Open folder to open the sample you want to play with.'
+
