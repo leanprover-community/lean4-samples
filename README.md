@@ -24,6 +24,8 @@ If you have a Github Team or Enterprise account you can also play with these sam
 
 [![Open in GitHub Codespaces in West US](images/badge2.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=452801263&machine=standardLinux32gb&location=WestUs2)
 
+See [Demo Video](https://youtu.be/NLdM1_2TrfE) showing how it works.
+
 ## Hello world
 
 Every language needs a [simple hello world sample](HelloWorld/readme.md).
