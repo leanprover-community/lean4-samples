@@ -14,6 +14,14 @@ working Lean 4 environment for you.  Start by pointing your browser at
 [https://gitpod.io/#https://github.com/leanprover/lean4-samples](https://gitpod.io/#https://github.com/leanprover/lean4-samples)
 then when lean is installed use File/Open Folder... to open the sample that you want to play with.
 
+## Use Github Codespaces
+
+If you have a Github Team or Enterprise account you can also play with these samples in a [Github Codespace](https://docs.github.com/en/codespaces).
+
+[![Open in GitHub Codespaces in West Europe](images/badge1.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=452801263&machine=standardLinux32gb&location=WestEurope)
+
+[![Open in GitHub Codespaces in West US](images/badge2.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=452801263&machine=standardLinux32gb&location=WestUs2)
+
 ## Hello world
 
 Every language needs a [simple hello world sample](HelloWorld/readme.md).
