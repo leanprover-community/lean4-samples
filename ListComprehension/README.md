@@ -80,9 +80,9 @@ So for example, you can use this to implement the above python list comprehensio
 -- [(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]
 ```
 
-The difference with python us you need a vertical bar `|` to separate the term
-that computes the items in the list from the `for` loop and `if` test conditions
-and you need a comma separating each of those clauses.
+The difference with python is that you need a vertical bar `|` to separate the term
+that computes the items in the list from the `for` loops and `if` test conditions
+and you need a comma separating each of those comprehension clauses.
 
 Continuing on with more examples from the python documentation we have this one
 which creates a new list with the values doubled:
@@ -93,7 +93,8 @@ def vec : List Int := [-4, -2, 0, 2, 4]
 -- [-8, -4, 0, 4, 8]
 ```
 
-The next one filters the list to exclude negative numbers:
+The next one cannot be done with the `map` function because the result is a different
+sized list, it filters the list to exclude negative numbers:
 
 ```lean
 --
@@ -101,8 +102,8 @@ The next one filters the list to exclude negative numbers:
 -- [0, 2, 4]
 ```
 
-You can apply a function to all the elements, which is the same as using the `map` function
-we saw earlier where the lambda calls `natAbs`.
+You can apply a function to all the elements, here we convert the numbers
+to positive numbers:
 
 ```lean
 --
@@ -110,11 +111,11 @@ we saw earlier where the lambda calls `natAbs`.
 -- [4, 2, 0, 2, 4]
 ```
 
-And you can a method on each element which could also be done using the `map` function
-where the lambda calls that function.
+And you can call a method on each element using dot notation:
 
 ```lean
 def freshfruit := ["  banana", "  loganberry ", "passion fruit  "]
+
 #eval [weapon.trim | for weapon in freshfruit]
 -- ["banana", "loganberry", "passion fruit"]
 ```
@@ -126,7 +127,7 @@ You can create a list of 2-tuples like (number, square):
 -- [(0, 0), (1, 1), (2, 4), (3, 9), (4, 16), (5, 25)]
 ```
 
-and you can flatten a list using a two 'for' clauses where the first walks the
+and you can flatten a list using two 'for' clauses where the first walks the
 3 top level lists, and the second walks the elements in each one of those lists:
 
 ```lean
@@ -135,13 +136,13 @@ def nested := [[1,2,3], [4,5,6], [7,8,9]]
 -- [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-Of course the list comprehensions expression can be any complex expression, in this
+Of course the term on the left of the vertical bar be any complex expression, in this
 example we use a `let` expression to compute i * pi, we then round that and convert
 the result to a string.
 
 ```lean
 def pi := 3.1415926535
-#eval [let x := i.toFloat * pi; Float.round x |> toString | for i in List.range 6]
+#eval [let x := i.toFloat * pi; toString (Float.round x) | for i in List.range 6]
 -- ["0.000000", "3.000000", "6.000000", "9.000000", "13.000000", "16.000000"]
 ```
 
@@ -167,7 +168,9 @@ The following list comprehension will transpose rows and columns:
 ```
 
 Note that the exclamation mark `!` is needed to tell Lean that the list index
-is "safe".
+is "safe".  Note also that the square bracket random access on list is very
+inefficient, each access is an entire walk of the elements of the list to that
+location.  It would be better to implement this sort of thing using Lean Arrays.
 
 ## List product
 
@@ -214,11 +217,11 @@ syntax "for " term " in " term : compClause
 And another syntax parser for the `if term` we want to allow in a `compClause` :
 
 ```lean
-syntax "for " term " in " term : compClause
+syntax "if " term : compClause
 ```
 
 Then we want to allow a list syntax with a vertical bar separating the comprehension
-expression from a comma separated list of zero or more compClauses:
+term from a comma separated list of zero or more compClauses:
 
 ```lean
 syntax "[" term " | " compClause,* "]" : term
@@ -235,25 +238,25 @@ macro_rules
   | `([$t:term | $c, $cs,*]) => `(List.join [[$t | $cs,*] | $c])
 ```
 
-This macro lists a set of patterns to match with the `=>` pointing to the
-output we want the syntax transformed into.  So the first one is the
-case with no `compClause`, which just becomes a simple list containing the term.
+This macro lists a set of patterns to match, where the `=>` side is pointing to the output we want
+the syntax transformed into.  So the first one is the case with no `compClause`, which just becomes
+a simple list containing the term. You can test this works with something like `#eval [10 | ]` which
+produces the list `[10]`.
 
-The second pattern handles the for loop `compClause` which maps to the
-`List.map` functor, here we've defined a slight variation on the `List.map`
-named `List.map'` which simply reverses the order of the args. This
-helps the lean type inference work better over these clauses.
+The second pattern handles the for loop `compClause` which transforms to the `List.map` functor,
+here we've defined a slight variation on the `List.map` named `List.map'` which simply reverses the
+order of the args. This helps Lean type inference work better over all the clauses.
 
-The third pattern handles the `if` condition which maps to `if then else`
-where the else clause simply returns an empty list.
+The third pattern handles the `if` condition which transforms to a complete Lean `if then else`
+expression where the else clause simply returns an empty list.
 
 The fourth pattern handles multiple `compClauses` separated by commas.  This is recursive in nature
-because the expansion on the right includes two nested ist comprehensions, the inner one `[$t | $cs,*]`
-and the outer one `[[$t | $cs,*] | $c]` and these will trigger more macro expansions, and Lean will
-keep expanding these until they are all done.  Since this nested expansion results in nested lists
-it uses `List.join` to flatten those back into a single list.
+because the expansion on the right includes two nested list comprehensions, the inner one `[$t |
+$cs,*]` and the outer one `[[$t | $cs,*] | $c]` and these will trigger more macro expansions, and
+Lean will keep expanding these until they are all done.  Since this nested expansion results in
+nested lists it uses `List.join` to flatten those back into a single list.
 
-So let's pick this example apart and see how it works:
+So let's pick the following example apart and see how it works:
 
 ```lean
 def nested := [[1,2,3], [4,5,6], [7,8,9]]
@@ -263,21 +266,24 @@ def nested := [[1,2,3], [4,5,6], [7,8,9]]
 
 This matches the comma separated syntax, with 3 clauses, which expands to
 `List.join [[$t | $cs,*] | $c])` where `$t` is `num` and `$cs,*` is the tail `for num in elem, if num < 5`
-and `$c` is `for elem in nested`, so we have this pseudo code:
+and `$c` is `for elem in nested`, so we have this first expansion:
 
 ```lean
-List.join [[num | for num in elem, if num < 5] | for elem in nested]
+#eval List.join [[num | for num in elem, if num < 5] | for elem in nested]
+-- [1, 2, 3, 4]
 ```
 
-The tail comprehension on the first `elem` becomes:
+Now the inner comprehension with a for loop and and if-expression expands to this,
+here we are testing it on the first `elem` in `nested`:
 
 ```lean
 #eval List.map' [1,2,3] (λ num => if num < 5 then [num] else [])
 -- [[1], [2], [3]]
 ```
+
 Which the List.join flattens:
 ```lean
-#eval List.join <| List.map' [1,2,3] (λ num => if num < 5 then [num] else [])
+#eval List.join (List.map' [1,2,3] (λ num => if num < 5 then [num] else []))
 -- [1, 2, 3]
 ```
 
@@ -285,16 +291,17 @@ The outer comprehension `for elem in nested` adds an outer `List.map'` over this
 of lists:
 
 ```lean
-#eval List.map' nested  (λ elem => List.join (List.map' elem (λ num => if num < 5 then [num] else []) ))
+#eval List.map' nested  (λ elem =>
+        List.join (List.map' elem (λ num => if num < 5 then [num] else []) ))
 -- [[1, 2, 3], [4], []]
 ```
 
 Which is finished with a final `List.join` to get our expected result:
 ```lean
-#eval List.join <| List.map' nested  (λ elem => List.join (List.map' elem (λ num => if num < 5 then [num] else []) ))
+#eval List.join (List.map' nested  (λ elem =>
+        List.join (List.map' elem (λ num => if num < 5 then [num] else []) )))
 -- [1, 2, 3, 4]
 ```
 
-So as you can see with this example, the macro extension feature of Lean is very powerful.
-
+So as you can see with this example, the syntax extension feature of Lean is very powerful.
 Lean's implementation of macro expansion is called [hyghienic](https://en.wikipedia.org/wiki/Hygienic_macro) because it is guaranteed not to cause the accidental capture of identifiers.

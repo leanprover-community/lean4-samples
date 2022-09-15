@@ -53,7 +53,7 @@ def nested := [[1,2,3], [4,5,6], [7,8,9]]
 
 def pi := 3.1415926535
 -- List comprehensions can contain complex expressions and nested functions:
-#eval [let x := i.toFloat * pi; Float.round x |> toString | for i in List.range 6]
+#eval [let x := i.toFloat * pi; toString (Float.round x) | for i in List.range 6]
 -- ["0.000000", "3.000000", "6.000000", "9.000000", "13.000000", "16.000000"]
 
 def matrix := [
@@ -77,15 +77,19 @@ def matrix := [
 #eval [num | for elem in nested, for num in elem, if num < 5]
 -- [1, 2, 3, 4]
 
+#eval List.join [[num | for num in elem, if num < 5] | for elem in nested]
+-- [1, 2, 3, 4]
 
 #eval List.map' [1,2,3] (λ num => if num < 5 then [num] else [])
 -- [[1], [2], [3]]
 
-#eval List.join <| List.map' [1,2,3] (λ num => if num < 5 then [num] else [])
+#eval List.join (List.map' [1,2,3] (λ num => if num < 5 then [num] else []))
 -- [1, 2, 3]
 
-#eval List.map' nested  (λ elem => List.join (List.map' elem (λ num => if num < 5 then [num] else []) ))
+#eval List.map' nested  (λ elem =>
+         List.join (List.map' elem (λ num => if num < 5 then [num] else []) ))
 -- [[1, 2, 3], [4], []]
 
-#eval List.join <| List.map' nested  (λ elem => List.join (List.map' elem (λ num => if num < 5 then [num] else []) ))
+#eval List.join ( List.map' nested  (λ elem =>
+        List.join (List.map' elem (λ num => if num < 5 then [num] else []) )))
 -- [1, 2, 3, 4]
