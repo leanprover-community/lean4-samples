@@ -97,7 +97,6 @@ The next one cannot be done with the `map` function because the result is a diff
 sized list, it filters the list to exclude negative numbers:
 
 ```lean
---
 #eval [x | for x in vec, if x >= 0]
 -- [0, 2, 4]
 ```
@@ -106,7 +105,6 @@ You can apply a function to all the elements, here we convert the numbers
 to positive numbers:
 
 ```lean
---
 #eval [x.natAbs | for x in vec]
 -- [4, 2, 0, 2, 4]
 ```
@@ -120,7 +118,7 @@ def freshfruit := ["  banana", "  loganberry ", "passion fruit  "]
 -- ["banana", "loganberry", "passion fruit"]
 ```
 
-You can create a list of 2-tuples like (number, square):
+You can create a list of pairs like (number, square):
 
 ```lean
 #eval [(x, x^2) | for x in List.range 6]
@@ -136,7 +134,7 @@ def nested := [[1,2,3], [4,5,6], [7,8,9]]
 -- [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-Of course the term on the left of the vertical bar be any complex expression, in this
+Of course the term on the left of the vertical bar can be any complex expression, in this
 example we use a `let` expression to compute i * pi, we then round that and convert
 the result to a string.
 
