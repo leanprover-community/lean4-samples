@@ -28,11 +28,11 @@ See [Demo Video](https://youtu.be/NLdM1_2TrfE) showing how it works.
 
 ## Hello world
 
-Every language needs a [simple hello world sample](HelloWorld/readme.md).
+Every language needs a [simple hello world sample](HelloWorld/README.md).
 
 ## Guess My Number
 
-Explore more standard input processing with a [simple guess-my-number game](GuessMyNumber/Readme.md).
+Explore more standard input processing with a [simple guess-my-number game](GuessMyNumber/README.md).
 
 ## CSV Parser
 
