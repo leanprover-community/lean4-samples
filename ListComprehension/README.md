@@ -41,7 +41,7 @@ which allows the above to be written more compactly as:
 #eval (List.range 10).map (· ^ 2)
 -- [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 ```
-But the next python example does not work in Lean until we teach Lean some new tricks.
+But the next Python example does not work in Lean until we teach Lean some new tricks.
 
 ```python
 [(x, y) for x in [1,2,3] for y in [3,1,4] if x != y]
@@ -52,7 +52,7 @@ Lean allows you to extend the syntax of the language using
 [macros](https://leanprover.github.io/lean4/doc/macro_overview.html).  In Lean a macro
 is a function that takes in a syntax tree and produces a new syntax tree.
 
-The following syntax extension adds some list comprehension capabilities to lean.
+The following syntax extension adds some list comprehension capabilities to Lean.
 Many thanks to Kyle Miller who first posted this solution on [Zulip](https://leanprover.zulipchat.com/#narrow/stream/270676-lean4/topic/List.20Functor):
 
 ```lean
@@ -73,18 +73,18 @@ macro_rules
 def List.prod (xs : List α) (ys : List β) : List (α × β) := [(x, y) | for x in xs, for y in ys]
 ```
 
-So for example, you can use this to implement the above python list comprehension:
+So for example, you can use this to implement the above Python list comprehension:
 
 ```lean
 #eval [(x, y) | for x in [1,2,3], for y in [3,1,4], if x != y]
 -- [(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]
 ```
 
-The difference with python is that you need a vertical bar `|` to separate the term
+The difference with Python is that you need a vertical bar `|` to separate the term
 that computes the items in the list from the `for` loops and `if` test conditions
 and you need a comma separating each of those comprehension clauses.
 
-Continuing on with more examples from the python documentation we have this one
+Continuing on with more examples from the Python documentation we have this one
 which creates a new list with the values doubled:
 
 ```lean
