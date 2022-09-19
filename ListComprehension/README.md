@@ -4,15 +4,20 @@ For those of you who are addicted to the really cool
 [list comprehension features of Python](https://docs.python.org/3/tutorial/datastructures.html),
 you might be looking for something similar in Lean.
 
-First you need to understand that the Lean `List` is a `Functor`.
-See [reference manual documentation on Functors](https://leanprover.github.io/lean4/doc/monads/functors.lean.html) which explains the `map` function that can transform a list as follows:
+The first step to list comprehensions in Lean is to understand that `List` is a `Functor`. See
+[reference manual documentation on Functors](https://leanprover.github.io/lean4/doc/monads/functors.lean.html).
+This means that `List` has a `map` function that can transform the list as follows:
 
 ```lean
 #eval List.map (λ x => toString x) [1,2,3]
 -- ["1", "2", "3"]
 ```
 
-which can also be written using dot notation:
+This is applying the lambda function to the list `[1,2,3]`
+and since the lambda function is calling `toString` on each
+item in the list, we get back a list of strings `["1", "2", "3"]`.
+
+You can also call the map function using dot notation:
 
 ```lean
 #eval [1,2,3,4,5,6,7].map (λ x => x + 1)
@@ -302,4 +307,9 @@ Which is finished with a final `List.join` to get our expected result:
 ```
 
 So as you can see with this example, the syntax extension feature of Lean is very powerful.
+
+You might be wondering, why isn't this built into a Lean standard
+library?  The answer is that Lean is so powerful folks often like
+to do their own thing.
+
 Lean's implementation of macro expansion is called [hyghienic](https://en.wikipedia.org/wiki/Hygienic_macro) because it is guaranteed not to cause the accidental capture of identifiers.
