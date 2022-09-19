@@ -67,11 +67,9 @@ syntax "if " term : compClause
 
 syntax "[" term " | " compClause,* "]" : term
 
-def List.map' (xs : List α) (f : α → β) : List β := List.map f xs
-
 macro_rules
   | `([$t:term |]) => `([$t])
-  | `([$t:term | for $x in $xs]) => `(List.map' $xs  (λ $x => $t))
+  | `([$t:term | for $x in $xs]) => `(List.map $xs  (λ $x => $t))
   | `([$t:term | if $x]) => `(if $x then [$t] else [])
   | `([$t:term | $c, $cs,*]) => `(List.join [[$t | $cs,*] | $c])
 
@@ -236,7 +234,7 @@ syntax transformer:
 ```lean
 macro_rules
   | `([$t:term |]) => `([$t])
-  | `([$t:term | for $x in $xs]) => `(List.map' $xs  (λ $x => $t))
+  | `([$t:term | for $x in $xs]) => `(List.map $xs  (λ $x => $t))
   | `([$t:term | if $x]) => `(if $x then [$t] else [])
   | `([$t:term | $c, $cs,*]) => `(List.join [[$t | $cs,*] | $c])
 ```
@@ -246,10 +244,7 @@ the syntax transformed into.  So the first one is the case with no `compClause`,
 a simple list containing the term. You can test this works with something like `#eval [10 | ]` which
 produces the list `[10]`.
 
-The second pattern handles the for loop `compClause` which transforms to the `List.map` functor,
-here we've defined a slight variation on the `List.map` named `List.map'` which simply reverses the
-order of the args. This helps Lean type inference work better over all the clauses.
-
+The second pattern handles the for loop `compClause` which transforms to the `List.map functor.
 The third pattern handles the `if` condition which transforms to a complete Lean `if then else`
 expression where the else clause simply returns an empty list.
 
@@ -280,36 +275,32 @@ Now the inner comprehension with a for loop and and if-expression expands to thi
 here we are testing it on the first `elem` in `nested`:
 
 ```lean
-#eval List.map' [1,2,3] (λ num => if num < 5 then [num] else [])
+#eval List.map [1,2,3] (λ num => if num < 5 then [num] else [])
 -- [[1], [2], [3]]
 ```
 
 Which the List.join flattens:
 ```lean
-#eval List.join (List.map' [1,2,3] (λ num => if num < 5 then [num] else []))
+#eval List.join (List.map [1,2,3] (λ num => if num < 5 then [num] else []))
 -- [1, 2, 3]
 ```
 
-The outer comprehension `for elem in nested` adds an outer `List.map'` over this the `nested` list
+The outer comprehension `for elem in nested` adds an outer `List.map` over this the `nested` list
 of lists:
 
 ```lean
-#eval List.map' nested  (λ elem =>
-        List.join (List.map' elem (λ num => if num < 5 then [num] else []) ))
+#eval List.map nested  (λ elem =>
+        List.join (List.map elem (λ num => if num < 5 then [num] else []) ))
 -- [[1, 2, 3], [4], []]
 ```
 
 Which is finished with a final `List.join` to get our expected result:
 ```lean
-#eval List.join (List.map' nested  (λ elem =>
-        List.join (List.map' elem (λ num => if num < 5 then [num] else []) )))
+#eval List.join (List.map nested  (λ elem =>
+        List.join (List.map elem (λ num => if num < 5 then [num] else []) )))
 -- [1, 2, 3, 4]
 ```
 
 So as you can see with this example, the syntax extension feature of Lean is very powerful.
-
-You might be wondering, why isn't this built into a Lean standard
-library?  The answer is that Lean is so powerful folks often like
-to do their own thing.
 
 Lean's implementation of macro expansion is called [hyghienic](https://en.wikipedia.org/wiki/Hygienic_macro) because it is guaranteed not to cause the accidental capture of identifiers.
