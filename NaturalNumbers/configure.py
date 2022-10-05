@@ -8,12 +8,14 @@ import ninja_syntax
 
 
 def ignore(d):
-    return d.startswith("build") or d.startswith("lean_packages") or d.startswith("log") or d.startswith("__pycache__")
+    return d.startswith("build") or d.startswith("lean_packages") or \
+        d.startswith("log") or d.startswith("__pycache__") or d.startswith("docs")
 
 
 def createNinja(f):
     ninja = ninja_syntax.Writer(f)
-    ninja.rule(name="alectryon", command="alectryon --frontend lean4+markup $in --lake lakefile.lean --backend webpage -o $out")
+    ninja.rule(name="alectryon", command="alectryon --frontend lean4+markup $in" +
+        " --lake lakefile.lean --backend webpage -o $out")
     ninja.rule(name="book", command="mdbook build")
 
     os.chdir(os.path.join(script_path))
