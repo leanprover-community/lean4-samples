@@ -35,11 +35,11 @@ See [Demo Video](https://youtu.be/NLdM1_2TrfE) showing how it works.
 
 ## Hello world
 
-Every language needs a [simple hello world sample](HelloWorld/readme.md).
+Every language needs a [simple hello world sample](HelloWorld/README.md).
 
 ## Guess My Number
 
-Explore more standard input processing with a [simple guess-my-number game](GuessMyNumber/Readme.md).
+Explore more standard input processing with a [simple guess-my-number game](GuessMyNumber/README.md).
 
 ## CSV Parser
 
@@ -50,3 +50,9 @@ Explore more standard input processing with a [simple guess-my-number game](Gues
 [Rubik's cube](RubiksCube/README.md) is an example showing how to build custom [user widgets](https://leanprover.github.io/lean4/doc/examples/widgets.lean.html)
 for the InfoView using TypeScript and Lake. Given a sequence of moves, it renders a Rubik's cube
 in 3D which can be animated with the movement of a slider.
+
+
+## List Comprehension using Syntax Extension
+
+Explore how you can extend the Lean syntax to implement the popular python-style
+[List Comprehension](ListComprehension/README.md).
