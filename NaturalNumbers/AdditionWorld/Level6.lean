@@ -1,12 +1,11 @@
-import MyNat.Definition
 import MyNat.Addition
-import AdditionWorld.Level2Answer -- add_assoc
-import AdditionWorld.Level4Answer -- add_comm
-import AdditionWorld.Level5Answer -- succ_eq_add_one
+import AdditionWorld.Level2 -- add_assoc
+import AdditionWorld.Level4 -- add_comm
+import AdditionWorld.Level5 -- succ_eq_add_one
+namespace MyNat
 open MyNat
--- import tactic.ring -- hide
 
-/-
+/-!
 
 # Addition World
 
@@ -42,14 +41,16 @@ solve with the tactics you know) or try Function World (and learn some new ones)
 Other things, perhaps of interest
 to some players, are mentioned below the lemma.
 
-** Lemma**
+## Lemma
 
 For all natural numbers `a, b` and `c`, we have `a + b + c = a + c + b.`
 -/
 lemma add_right_comm (a b c : MyNat) : a + b + c = a + c + b := by
-  sorry
+  rw [add_assoc]
+  rw [add_comm b c]
+  rw [←add_assoc]
 
-/-
+/-!
 If you have got this far, then you have become very good at
 manipulating equalities in Lean. You can also now collect
 four collectibles (or `instance`s, as Lean calls them)
@@ -75,23 +76,21 @@ First you need to teach `simp` about the building blocks you have created so far
 -/
 attribute [simp] zero_add add_assoc add_comm succ_add add_succ succ_eq_add_one one_eq_succ_zero
 
-example (a b c d e : MyNat) :
-  (((a+b)+c)+d)+e=(c+((b+e)+a))+d := by
-  simp
+-- example (a b c d e : MyNat) :
+--   (((a+b)+c)+d)+e=(c+((b+e)+a))+d := by
+--   simp
 
 -- BUGBUG: simp does not solve it!
 
-/-
-Imagine having to do that one by hand! The AI closes the goal
-because it knows how to use associativity and commutativity
-sensibly in a commutative monoid.
+/-!
+Imagine having to do that one by hand! The AI closes the goal because it knows how to use
+associativity and commutativity sensibly in a commutative monoid.
 
-You are now done with addition world. You can now decide whether to press on with multiplication world and power world
-(which can be solved with `rw`, `rfl` and `induction`), or to go on
-to Function World where you can learn the tactics needed to prove
-goals of the form `P → Q`, thus enabling you to solve more
-advanced addition world levels such as `a + t = b + t → a = b`. Note that
-Function World is more challenging mathematically; but if you can do Addition
-World you can surely do Multiplication World and Power World.
+You are now done with addition world. You can now decide whether to press on with multiplication
+world and power world (which can be solved with `rw`, `rfl` and `induction`), or to go on to
+Function World where you can learn the tactics needed to prove goals of the form `P → Q`, thus
+enabling you to solve more advanced addition world levels such as `a + t = b + t → a = b`. Note that
+Function World is more challenging mathematically; but if you can do Addition World you can surely
+do Multiplication World and Power World.
 
 -/

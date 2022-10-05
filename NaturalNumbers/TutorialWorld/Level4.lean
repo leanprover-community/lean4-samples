@@ -1,4 +1,5 @@
 import MyNat.Addition
+namespace MyNat
 open MyNat
 /-!
 
@@ -16,8 +17,8 @@ explained how to add 0 to a number: this is the base case.
 We will call this theorem `add_zero`. More precisely, `add_zero` is the name of the _proof_ of the
 theorem. Note the name of this proof. Mathematicians sometimes call it "Lemma 2.1" or "Hypothesis
 P6" or something. But computer scientists call it `add_zero` because it tells you what the answer to
-"x add zero" is. It's a much better name than "Lemma 2.1". Even better, we can use the rewrite tactic
-with `add_zero`. If you ever see `x + 0` in your goal, `rw [add_zero]` should simplify it to `x`. This is
+"x add zero" is. It's a much better name than "Lemma 2.1". Even better, you can use the `rewrite` tactic
+with `add_zero`. If you ever see `x + 0` in your goal, `rewrite [add_zero]` should simplify it to `x`. This is
 because `add_zero` is a proof that `x + 0 = x` (more precisely, `add_zero x` is a proof that `x + 0 = x` but
 Lean can figure out the `x` from the context).
 
@@ -28,42 +29,45 @@ Now here's the inductive step. If you know how to add `d` to `a`, then Peano tel
 
 What's going on here is that we assume `a + d` is already defined, and we define `a + (succ d)` to
 be the number after it. Note the name of this proof too -- `add_succ` tells you how to add a successor
-to something. If you ever see `... + succ ...` in your goal, you should be able to use `rw [add_succ]`, to
-make progress. Here is a simple example where we shall see both. Let's prove that `x` plus the number
-after 0 is the number after x.
-
-Delete `sorry. Observe that the goal mentions `... + succ ...`. So type
-
-`rw [add_succ]`
-
-and hit enter; see the goal change. Do you see that the goal now mentions ... + 0 ...? So this
-matches the `add_zero` theorem so you can add the following:
-
-`rw [add_zero]`
-
-and then observe that the proof is now complete: "Goals accomplished 🎉".
-Note that because `rw` takes a list, you can also write the above two lines in one
-using `rw [add_succ, add_zero]`.
+to something. If you ever see `... + succ ...` in your goal, you should be able to use `rewrite [add_succ]`, to
+make progress.
 
 **Lemma**`
 
 For all natural numbers `a`, we have `a + (succ 0`) = succ a`.
 -/
 lemma add_succ_zero (a : MyNat) : a + (succ 0) = succ a := by
-  sorry
+  rewrite [add_succ]
+  rewrite [add_zero]
+  rfl
 
 /-!
+Do you see that the goal at the end of the first `rewrite` now mentions `... + 0 ...`? So this
+matches the `add_zero` theorem so you can now add the `rewrite [add_zero]`.
+
+After the `rfl` the proof is now complete: "Goals accomplished 🎉".
+Note that because `rewrite` takes a list, you can also write the above two lines in one
+using `rewrite [add_succ, add_zero]`.
+
+And remember `rw` also does `rfl`, you can replace the whole proof with `rw [add_succ, add_zero]`.
+
 ### Examining proofs.
 
-You might want to review this proof now; at three lines long it is our current record. Click on a
-line in the proof and use the L/R arrow keys to put your cursor as far left as it will go. Then use
-the U/D arrow keys to move your cursor up and down from line to line, and you can see what Lean is
-thinking on each line of the proof.
+You might want to review this proof now; at three lines long it is your current record.
+Don't worry there are much longer proofs, in fact, the
+[Liquid Tensor Experiment](https://xenaproject.wordpress.com/2022/09/12/beyond-the-liquid-tensor-experiment/)
+contains 90,000 lines of Lean proofs! For this reason Lean is a real programming language
+with support for abstraction and extension so that you can get as much reusability as
+possible in your Lean code.
+
+The easiest way to see how the proof goal state progresses is to place your cursor at the
+beginning of each line using the Up/Down arrow key to move down the proof and see the effect
+of the previous line on the goal shown in the InfoView.
 
 ### Next
 
-You have finished tutorial world! When you're happy, let's move onto [Addition
-World](../AdditionWorld/Level1.lean), and learn about proof by induction.
+You have finished tutorial world! When you're happy, please move onto [Addition
+World](../AdditionWorld.lean.md), and learn about proof by induction.
 
 ### Troubleshooting
 

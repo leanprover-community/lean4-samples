@@ -1,13 +1,13 @@
-import MyNat.Definition -- Imports the natural numbers.
 import MyNat.Addition -- imports addition.
+namespace MyNat
 open MyNat
 
-/-
+/-!
 # Addition World.
 
-Welcome to Addition World. If you've done all four levels in [Tutorial World](../TutorialWorld/Level1.lean)
+Welcome to Addition World. If you've done all four levels in [Tutorial World](../TutorialWorld/Level1.lean.md)
 and know about `rw` and `rfl`, then you're in the right place. Here's
-a reminder of the things you're now equipped with which we'll need in this world.
+a reminder of the things you're now equipped with which you'll need in this world.
 
 ## Data:
 
@@ -30,11 +30,11 @@ a reminder of the things you're now equipped with which we'll need in this world
   * `rw [h]` : if h is a proof of `A = B`, changes all A's in the goal to B's.
   * `induction n with ...` : we're going to learn this right now.
 
-# Important thing:
+## Important thing
 
 This is a *really* good time to check you can get "mouse hover help on anything in the Lean program.
 If you hover over 'rfl' you get information on that tactic.  You can also press F12 to jump
-right into the definition of all the helpers functions we use here.
+right into the definition of all the helpers functions you use here.
 
 ## Level 1: the `induction` tactic.
 
@@ -42,61 +42,55 @@ OK so let's see induction in action. We're going to prove
 
   `zero_add (n : MyNat) : 0 + n = n`.
 
-That is: for all natural numbers `n`, `0+n=n`. Wait - what is going on here? Didn't we already prove
-that adding zero to `n` gave us `n`? No we didn't! We proved `n + 0 = n`, and that proof was called
+That is: for all natural numbers `n`, `0+n=n`. Wait - what is going on here? Didn't you already prove
+that adding zero to `n` gave us `n`? No you didn't! You proved `n + 0 = n`, and that proof was called
 `add_zero`. We're now trying to establish `zero_add`, the proof that `0 + n = n`. But aren't these
-two theorems the same? No they're not! It is *true* that `x + y = y + x`, but we haven't *proved* it
-yet, and in fact we will need both `add_zero` and `zero_add` in order to prove this. In fact
+two theorems the same? No they're not! It is *true* that `x + y = y + x`, but you haven't *proved* it
+yet, and in fact you will need both `add_zero` and `zero_add` in order to prove this. In fact
 `x + y = y + x` is the boss level for addition world, and `induction` is the only other tactic you'll
 need to beat it.
 
-Now `add_zero` is one of Peano's axioms, so we don't need to prove it, we already have it (indeed,
+Now `add_zero` is one of Peano's axioms, so you don't need to prove it, you already have it (indeed,
 if you've used Goto Definition (F12) on this theorem you can even see it). To prove `0 + n = n` we
 need to use induction on `n`. While we're here, note that `zero_add` is about zero add something,
 and `add_zero` is about something add zero. The names of the proofs tell you what the theorems are.
-Anyway, let's prove `0 + n = n`.
 
-Delete `sorry` and replace it with  the following:
-```lean
+**Lemma**
+
+For all natural numbers `n`, we have `0 + n = n.`
+-/
+lemma zero_add (n : MyNat) : 0 + n = n := by
   induction n with
-  | zero => ...
-  | succ n ih => ...
-```
+  | zero => rfl
+  | succ n ih =>
+      rw [add_succ]
+      rw [ih]
 
-Notice that the induction tactic has create *two sub-goals*! The
-induction tactic has generated for us a base case with `n = 0` (the goal at the top)
+/-!
+
+Notice that the induction tactic has created *two sub-goals* which you can match using
+vertical bar pattern patching.
+
+The induction tactic has generated for us a base case with `n = zero` (the goal at the top)
 and an inductive step (the goal underneath). The golden rule: **Tactics operate on the first goal**
 - the goal at the top. So let's just worry about that top goal now, the base case.
 If you place the cursor right after the `=>` symbol you will see the goal listed in
 the InfoView as `⊢ 0 + zero = zero`.
 
 Remember that `add_zero` (the proof we have already) is the proof of `x + 0 = x`
-(for any `x`) so we can try
-
-`rw [add_zero]`
-
-What do you think the goal will change to? Remember to just keep focussing on the top goal, ignore
+(for any `x`) so you can try `rw [add_zero]` here but what do you think the goal will change to?
+Remember to just keep focussing on the top goal, ignore
 the other one for now, it's not changing and in fact, the InfoView tells you why:
 ```
 tactic 'rewrite' failed, did not find instance of the pattern in the target expression
 ```
 
-But you should be able to solve the top goal yourself by replacing the `rw` with a simple `rfl`. You
-should now see `Goals accomplished 🎉` when your cursor is placed on the right of the `rfl` which
-means you have solved this base case sub-goal, we are now be back down to one goal -- the inductive
-step. Take a look at the text below the lemma to see an explanation of this goal.
+But as you can see `rfl` can solve the first case. You should now see `Goals accomplished 🎉` when
+your cursor is placed on the right of the `rfl` which means you have solved this base case sub-goal,
+and you are ready to tackle the next sub-goal -- the inductive step. Take a look at the text below
+the lemma to see an explanation of this goal.
 
-**Lemma**
-
-For all natural numbers `n`, we have
-``0 + n = n.``
--/
-lemma zero_add (n : MyNat) : zero + n = n := by
-  sorry
-
-/-
-We're in the successor case, and the InfoView tactic state should look
-something like this:
+In the successor case the InfoView tactic state should look something like this:
 
 ```
 case succ
@@ -108,31 +102,24 @@ ih: 0 + n = n
 *Important:* make sure that you only have one goal at this point. You should have proved `0 + 0 = 0`
 by now. Tactics only operate on the top goal.
 
-The first line just reminds us we're doing the inductive step. We have a fixed natural number `n`,
-and the inductive hypothesis `ih : 0 + n = n` which means this hypothesis proves of `0 + n = n`. Our
+The first line just reminds you you're doing the inductive step. You have a fixed natural number `n`,
+and the inductive hypothesis `ih : 0 + n = n` which means this hypothesis proves `0 + n = n`. Your
 goal is to prove `0 + succ n = succ n`. In other words, we're showing that if the lemma is true for
 `n`, then it's also true for `n + 1`. That's the inductive step that you might be familiar with in
-proof by induction. Once we've proved this inductive step, we will have proved `zero_add` by the
+proof by induction. Once we've proved this inductive step, you will have proved `zero_add` by the
 principle of mathematical induction.
 
-To prove our goal, we need to use `add_succ`. We know that `add_succ 0 d`
+To prove your goal, you need to use `add_succ` which you proved in
+[Tutorial World Level 4](../TutorialWorld/Level4.lean.md). Note that `add_succ 0 d`
 is the result that `0 + succ d = succ (0 + d)`, so the first thing
-we need to do is to replace the left hand side `0 + succ d` of our
-goal with the right hand side. We do this with the `rw` command. You can write
+you need to do is to replace the left hand side `0 + succ d` of your
+goal with the right hand side. You do this with the `rw` command: `rw [add_succ]`
+(or even `rw [add_succ 0 n]` if you want to give Lean all the inputs instead of making it
+figure them out itself). Notice goal changes to `⊢ succ (0 + n) = succ n`.
 
-`rw [add_succ]`
-
-(or even `rw add_succ 0 n,` if you want to give Lean all the inputs instead of making it
-figure them out itself). The goal should change to
-
-`⊢ succ (0 + n) = succ n`
-
-Now remember our inductive hypothesis `ih : 0 + d = d`. We need
-to rewrite this too! Type
-
-`rw [ih]`
-
-(don't forget the comma). The goal will now change to
+Now remember the inductive hypothesis `ih : 0 + d = d`. This `0 + d` matches
+the `(0 + n)` in the goal, so you can write that using `rw [ih]`.
+The goal will now change to
 
 `⊢ succ d = succ d`
 
@@ -142,7 +129,7 @@ After you apply it, Lean will inform you that there are no goals left. You are d
 Remember that you can write `rw [add_succ, ih]` also, but notice that rewriting is
 order dependent and that `rw [ih, add_succ]` does not work.
 
-## Now venture off on your own.
+## Now venture off on your own
 
 Those three tactics --
 
@@ -150,7 +137,7 @@ Those three tactics --
 * `rw [h]`
 * `rfl`
 
-will get you quite a long way through this game. Using only these tactics
+will get you quite a long way through this tutorial. Using only these tactics
 you can beat Addition World level 4 (the boss level of Addition World),
 all of Multiplication World including the boss level `a * b = b * a`,
 and even all of Power World including the fiendish final boss. This route will
@@ -165,6 +152,6 @@ ask in `#new members` at [the Lean chat](https://leanprover.zulipchat.com).
 (login required, real name preferred, github account id is handy).
 Kevin or Mohammad or one of the other people there might be able to help.
 
-Good luck! Click on [next level](./Level2.lean) to solve some levels on your own.
+On to [level 2](./Level2.lean.md).
 
 -/

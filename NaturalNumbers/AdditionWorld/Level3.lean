@@ -1,18 +1,17 @@
-import MyNat.Definition
-import MyNat.Addition
+import MyNat.Addition -- imports addition.
+namespace MyNat
 open MyNat
-
-/-
+/-!
 # Addition World
 
 ## Level 3: `succ_add`
 
 Oh no! On the way to `add_comm`, a wild `succ_add` appears. `succ_add`
 is the proof that `(succ a) + b = succ (a + b)` for `a` and `b` in your
-natural number type. We need to prove this now, because we will need
+natural number type. You need to prove this now, because you will need
 to use this result in our proof that `a + b = b + a` in the next level.
 
-NB: think about why computer scientists called this result `succ_add` .
+Think about why computer scientists called this result `succ_add` .
 There is a logic to all the names.
 
 Note that if you want to be more precise about exactly where you want
@@ -29,9 +28,15 @@ what the variables are".
 For all natural numbers `a, b`, we have ` (succ a) + b = succ (a + b). `
 -/
 lemma succ_add (a b : MyNat) : succ a + b = succ (a + b) := by
-  sorry
+  induction b with
+  | zero => rfl
+  | succ b ih =>
+    rw [add_succ]
+    rw [ih]
+    rw [add_succ]
+
 
 /-!
-On to [Level 4](./Level4.lean).
+On to [Level 4](./Level4.lean.md).
 -/
 

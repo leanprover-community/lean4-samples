@@ -1,0 +1,22 @@
+[book]
+authors = ["Kevin Buzzard", "Mohammad Pedramfar"]
+language = "en"
+multilingual = false
+src = "."
+title = "The Lean Natural Numbers"
+
+[build]
+build-dir = "docs"
+
+[output.html]
+git-repository-url = "https://github.com/leanprover/lean4-samples/NaturalNumbers"
+additional-css = ["book/alectryon.css", "book/pygments.css", "book/custom.css"]
+additional-js = ["book/alectryonjs.js"]
+mathjax-support = true
+
+[output.html.fold]
+enable = true
+level = 0
+
+[output.html.playground.boring-prefixes]
+lean = "# "
