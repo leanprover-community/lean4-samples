@@ -1,5 +1,12 @@
 # lean4-samples
-Code samples for Lean 4.
+Code samples for Lean 4.  These samples are designed to work inside Visual Studio Code with the
+Lean4 "extension".  The extension will install the Lean4 compiler and language service for you so it
+is easy to setup - see the [Quick Start](https://leanprover.github.io/lean4/doc/quickstart.html) for
+more information.
+
+Currently each folder must be opened separately in Visual Studio Code for that sample to compile
+correctly since each folder contains a separate Lean Package that is buildable using `lake build`.
+Lake is the build system that comes with Lean.
 
 ## Get started
 
