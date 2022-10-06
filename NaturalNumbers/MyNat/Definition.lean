@@ -40,3 +40,5 @@ instance : Mul MyNat where
   mul := MyNat.mul
 
 theorem zero_is_0 : MyNat.zero = 0 := by rfl
+
+def one : MyNat := MyNat.succ 0

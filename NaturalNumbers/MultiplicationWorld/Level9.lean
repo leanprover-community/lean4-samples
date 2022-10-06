@@ -44,5 +44,6 @@ If you feel like attempting Advanced Multiplication world
 you'll have to do Function World and the Proposition Worlds first.
 These worlds assume a certain amount of mathematical maturity
 (perhaps 1st year undergraduate level).
-Your other possibility is Power World.
+
+Your other possibility is [Power World](../PowerWorld.lean.md).
 -/

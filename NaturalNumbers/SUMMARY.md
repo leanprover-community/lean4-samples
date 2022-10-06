@@ -24,3 +24,13 @@
   - [Level 7](./MultiplicationWorld/Level7.lean.md)
   - [Level 8](./MultiplicationWorld/Level8.lean.md)
   - [Level 9](./MultiplicationWorld/Level9.lean.md)
+
+- [Power World](./PowerWorld.lean.md)
+  - [Level 1](./PowerWorld/Level1.lean.md)
+  - [Level 2](./PowerWorld/Level2.lean.md)
+  - [Level 3](./PowerWorld/Level3.lean.md)
+  - [Level 4](./PowerWorld/Level4.lean.md)
+  - [Level 5](./PowerWorld/Level5.lean.md)
+  - [Level 6](./PowerWorld/Level6.lean.md)
+  - [Level 7](./PowerWorld/Level7.lean.md)
+  - [Level 8](./PowerWorld/Level8.lean.md)

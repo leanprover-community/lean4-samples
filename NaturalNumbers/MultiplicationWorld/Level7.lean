@@ -57,7 +57,7 @@ However this concept has no mathematical name at all -- this says something
 about the regard with which mathematicians hold this collectible.
 This is an artifact of the set-up of collectibles in Lean. You consider politely
 declining Lean's offer of a `distrib` collectible.
-You are dreaming of the big collectible at the end of power world.
+You are dreaming of the big collectible at the end of [Power World](../PowerWorld.lean).
 -/
 
 -- instance : distrib mynat := by structure_helper --

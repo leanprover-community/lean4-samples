@@ -82,7 +82,7 @@ instance : AddCommSemigroup MyNat where
 
 In Multiplication World you will be able to collect such
 advanced collectibles as `MyNat.comm_semiring` and
-`MyNat.distrib`, and then move on to power world and
+`MyNat.distrib`, and then move on to [Power World](../PowerWorld.lean.md) and
 the famous collectible at the end of it.
 
 One last thing -- didn't you think that solving this level
@@ -109,11 +109,11 @@ Imagine having to do that one by hand! The AI closes the goal because it knows h
 associativity and commutativity sensibly in a commutative monoid.
 
 You are now done with addition world. You can now decide whether to press on with
-[Multiplication World](../MultiplicationWorld.lean.md) and power world
+[Multiplication World](../MultiplicationWorld.lean.md) and [Power World](../PowerWorld.lean.md)
 (which can be solved with `rw`, `rfl` and `induction`), or to go on to
 Function World where you can learn the tactics needed to prove goals of the form `P → Q`, thus
 enabling you to solve more advanced addition world levels such as `a + t = b + t → a = b`. Note that
 Function World is more challenging mathematically; but if you can do Addition World you can surely
-do Multiplication World and Power World.
+do [Multiplication World](../MultiplicationWorld.lean.md) and [Power World](../PowerWorld.lean.md).
 
 -/
