@@ -52,7 +52,7 @@ There is also an "online" version under development that works with Lean 4,
 see [https://github.com/PatrickMassot/NNG4](https://github.com/PatrickMassot/NNG4).
 
 If you want to see the original "Lean 3" game version of this content, go to
-https://github.com/ImperialCollegeLondon/natural_number_game
+[https://github.com/ImperialCollegeLondon/natural_number_game](https://github.com/ImperialCollegeLondon/natural_number_game)
 which is also hosted in this [online version](https://www.ma.imperial.ac.uk/~buzzard/xena/natural_number_game/).
 
 -/
