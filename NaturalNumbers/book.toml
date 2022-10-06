@@ -10,8 +10,8 @@ build-dir = "docs"
 
 [output.html]
 git-repository-url = "https://github.com/leanprover/lean4-samples/NaturalNumbers"
-additional-css = ["book/alectryon.css", "book/pygments.css", "book/custom.css"]
-additional-js = ["book/alectryonjs.js"]
+additional-css = ["assets/alectryon.css", "assets/pygments.css", "assets/custom.css"]
+additional-js = ["assets/alectryon.js"]
 mathjax-support = true
 
 [output.html.fold]

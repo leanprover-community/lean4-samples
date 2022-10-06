@@ -24,7 +24,7 @@ for it to function correctly.
 When reading this content in a web browser the code samples are annotated with type information
 and you can see the proof tactic state by hovering your mouse over these little bubbles:
 
-![screen](../assets/screen.png)
+![screen](./assets/screen.png)
 
 When viewing this content in Visual Studio Code you will find this tactic state information
 in the Lean extension "Info View" panel.

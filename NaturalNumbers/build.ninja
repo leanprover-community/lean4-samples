@@ -4,6 +4,7 @@ rule alectryon
 rule book
   command = mdbook build
 build ./AdditionWorld.lean.md: alectryon ./AdditionWorld.lean
+build ./MultiplicationWorld.lean.md: alectryon ./MultiplicationWorld.lean
 build ./TutorialWorld.lean.md: alectryon ./TutorialWorld.lean
 build AdditionWorld/Level1.lean.md: alectryon AdditionWorld/Level1.lean
 build AdditionWorld/Level2.lean.md: alectryon AdditionWorld/Level2.lean
@@ -11,20 +12,42 @@ build AdditionWorld/Level3.lean.md: alectryon AdditionWorld/Level3.lean
 build AdditionWorld/Level4.lean.md: alectryon AdditionWorld/Level4.lean
 build AdditionWorld/Level5.lean.md: alectryon AdditionWorld/Level5.lean
 build AdditionWorld/Level6.lean.md: alectryon AdditionWorld/Level6.lean
-build docs/AdditionWorld.lean.md: alectryon docs/AdditionWorld.lean
-build docs/TutorialWorld.lean.md: alectryon docs/TutorialWorld.lean
+build MultiplicationWorld/Level1.lean.md: alectryon $
+    MultiplicationWorld/Level1.lean
+build MultiplicationWorld/Level2.lean.md: alectryon $
+    MultiplicationWorld/Level2.lean
+build MultiplicationWorld/Level3.lean.md: alectryon $
+    MultiplicationWorld/Level3.lean
+build MultiplicationWorld/Level4.lean.md: alectryon $
+    MultiplicationWorld/Level4.lean
+build MultiplicationWorld/Level5.lean.md: alectryon $
+    MultiplicationWorld/Level5.lean
+build MultiplicationWorld/Level6.lean.md: alectryon $
+    MultiplicationWorld/Level6.lean
+build MultiplicationWorld/Level7.lean.md: alectryon $
+    MultiplicationWorld/Level7.lean
+build MultiplicationWorld/Level8.lean.md: alectryon $
+    MultiplicationWorld/Level8.lean
+build MultiplicationWorld/Level9.lean.md: alectryon $
+    MultiplicationWorld/Level9.lean
 build MyNat/Addition.lean.md: alectryon MyNat/Addition.lean
 build MyNat/Definition.lean.md: alectryon MyNat/Definition.lean
+build MyNat/Multiplication.lean.md: alectryon MyNat/Multiplication.lean
 build TutorialWorld/Level1.lean.md: alectryon TutorialWorld/Level1.lean
 build TutorialWorld/Level2.lean.md: alectryon TutorialWorld/Level2.lean
 build TutorialWorld/Level3.lean.md: alectryon TutorialWorld/Level3.lean
 build TutorialWorld/Level4.lean.md: alectryon TutorialWorld/Level4.lean
-build docs/index.html: book ./AdditionWorld.lean.md ./TutorialWorld.lean.md $
+build docs/index.html: book ./AdditionWorld.lean.md $
+    ./MultiplicationWorld.lean.md ./TutorialWorld.lean.md $
     AdditionWorld/Level1.lean.md AdditionWorld/Level2.lean.md $
     AdditionWorld/Level3.lean.md AdditionWorld/Level4.lean.md $
     AdditionWorld/Level5.lean.md AdditionWorld/Level6.lean.md $
-    docs/AdditionWorld.lean.md docs/TutorialWorld.lean.md $
-    MyNat/Addition.lean.md MyNat/Definition.lean.md $
+    MultiplicationWorld/Level1.lean.md MultiplicationWorld/Level2.lean.md $
+    MultiplicationWorld/Level3.lean.md MultiplicationWorld/Level4.lean.md $
+    MultiplicationWorld/Level5.lean.md MultiplicationWorld/Level6.lean.md $
+    MultiplicationWorld/Level7.lean.md MultiplicationWorld/Level8.lean.md $
+    MultiplicationWorld/Level9.lean.md MyNat/Addition.lean.md $
+    MyNat/Definition.lean.md MyNat/Multiplication.lean.md $
     TutorialWorld/Level1.lean.md TutorialWorld/Level2.lean.md $
     TutorialWorld/Level3.lean.md TutorialWorld/Level4.lean.md SUMMARY.md $
     typos.md book.toml
