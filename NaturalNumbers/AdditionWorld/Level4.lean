@@ -9,10 +9,7 @@ open MyNat
 
 ## Level 4: `add_comm`
 
-[boss battle music]
-
-Look in Theorem statements -> Addition world to see the proofs you have.
-These should be enough.
+In this level, you'll prove that addition is commutative.
 
 ## Lemma
 

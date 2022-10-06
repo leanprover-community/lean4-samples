@@ -2,6 +2,7 @@ import MyNat.Addition
 import AdditionWorld.Level2 -- add_assoc
 import AdditionWorld.Level4 -- add_comm
 import AdditionWorld.Level5 -- succ_eq_add_one
+import Mathlib.Tactic.Ring
 namespace MyNat
 open MyNat
 
@@ -51,16 +52,33 @@ lemma add_right_comm (a b c : MyNat) : a + b + c = a + c + b := by
   rw [←add_assoc]
 
 /-!
-If you have got this far, then you have become very good at
-manipulating equalities in Lean. You can also now collect
-four collectibles (or `instance`s, as Lean calls them)
+If you have got this far, then you have become very good at manipulating equalities in Lean. You can
+also now connect four handy type class `instances` to your `MyNat` type as follows:
 
-```
-MyNat.add_semigroup -- (after level 2)
-MyNat.add_monoid -- (after level 2)
-MyNat.add_comm_semigroup MyNat (after level 4)
-MyNat.add_comm_monoid -- (after level 4)
-```
+-/
+instance : AddSemigroup MyNat where
+  add_assoc := add_assoc
+
+instance : AddCommSemigroup MyNat where
+  add_comm := add_comm
+
+-- instance : AddMonoid MyNat where
+--   nsmul :=  λ x y => (myNatFromNat x) * y
+--   nsmul_zero' := MyNat.zero_mul
+--   nsmul_succ' n x := by
+--     show ofNat (MyNat.succ n) * x = x + MyNat n * x
+--     rw [MyNat.ofNat_succ, MyNat.add_mul, MyNat.add_comm, MyNat.one_mul]
+
+-- instance : AddCommMonoid MyNat where
+--   zero_add := zero_add
+--   add_zero := add_zero
+--   add_comm := add_comm
+--   nsmul_zero' := ...
+--   nsmul_succ' := ...
+
+-- BUGBUG: really? These last two require theorems about multiplication?
+-- like add_mul and zero_mul, which is dependent on mul_comm...?
+/-!
 
 In Multiplication World you will be able to collect such
 advanced collectibles as `MyNat.comm_semiring` and

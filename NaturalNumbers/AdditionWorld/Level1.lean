@@ -5,37 +5,6 @@ open MyNat
 /-!
 # Addition World.
 
-Welcome to Addition World. If you've done all four levels in [Tutorial World](../TutorialWorld/Level1.lean.md)
-and know about `rw` and `rfl`, then you're in the right place. Here's
-a reminder of the things you're now equipped with which you'll need in this world.
-
-## Data:
-
-  * a type called `MyNat`
-  * a term `(0 : MyNat)`, interpreted as the number zero.
-  * a function `succ : MyNat → MyNat`, with `succ n` interpreted as "the number after `n`".
-  * Usual numerical notation 0,1,2 etc (although 2 onwards will be of no use to us until much later ;-) ).
-  * Addition (with notation `a + b`).
-
-## Theorems:
-
-  * `add_zero (a : MyNat) : a + 0 = a`. Use with `rw [add_zero]`.
-  * `add_succ (a b : MyNat) : a + succ(b) = succ(a + b)`. Use with `rw [add_succ]`.
-  * The principle of mathematical induction. Use with `induction` (see below)
-
-
-## Tactics:
-
-  * `rfl` :  proves goals of the form `X = X`
-  * `rw [h]` : if h is a proof of `A = B`, changes all A's in the goal to B's.
-  * `induction n with ...` : we're going to learn this right now.
-
-## Important thing
-
-This is a *really* good time to check you can get "mouse hover help on anything in the Lean program.
-If you hover over 'rfl' you get information on that tactic.  You can also press F12 to jump
-right into the definition of all the helpers functions you use here.
-
 ## Level 1: the `induction` tactic.
 
 OK so let's see induction in action. We're going to prove

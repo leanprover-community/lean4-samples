@@ -39,4 +39,11 @@ def MyNat.mul : MyNat → MyNat → MyNat
 instance : Mul MyNat where
   mul := MyNat.mul
 
-axiom zero_is_0 : MyNat.zero = 0
+theorem zero_is_0 : MyNat.zero = 0 := by rfl
+
+-- theorem one_mul (n : MyNat) : 1 * n = n :=
+--   MyNat.mul_comm n 1 ▸ MyNat.mul_one n
+
+theorem mul_zero (a : MyNat) : a * 0 = 0 := by cases a <;> rfl
+
+--theorem zero_mul (a : MyNat) : 0 * a = 0 := MyNat.mul_comm .. ▸ a.mul_zero
