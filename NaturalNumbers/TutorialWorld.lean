@@ -25,7 +25,8 @@ for it to function correctly.
 ## How to use this sample
 
 When reading this content in a web browser the code samples are annotated with type information
-and you can see the proof tactic state by hovering your mouse over these little bubbles:
+and you can see the proof tactic state by hovering your mouse over these little bubbles that
+look like this: <span class="alectryon-bubble"></span>
 
 ![screen](./assets/screen.png)
 
