@@ -10,12 +10,10 @@ open MyNat
 
 ## Level 8: `mul_comm`
 
-Finally, the boss level of multiplication world. But (assuming you
-didn't cheat) you are well-prepared for it -- you have `zero_mul`
-and `mul_zero`, as well as `succ_mul` and `mul_succ`. After this
-level you can of course throw away one of each pair if you like,
-but I would recommend you hold on to them, sometimes it's convenient
-to have exactly the right tools to do a job.
+Finally, the boss level of multiplication world. But you are well-prepared for it -- you have
+`zero_mul` and `mul_zero`, as well as `succ_mul` and `mul_succ`. After this level you can of course
+throw away one of each pair if you like, but I would recommend you hold on to them, sometimes it's
+convenient to have exactly the right tools to do a job.
 
 ## Lemma
 Multiplication is commutative.

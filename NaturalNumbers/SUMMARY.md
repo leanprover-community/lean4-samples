@@ -1,6 +1,6 @@
 # Summary
 
-- [Tutorial World](./TutorialWorld.lean.md)
+- [Natural Numbers](./TutorialWorld.lean.md)
   - [Level 1](./TutorialWorld/Level1.lean.md)
   - [Level 2](./TutorialWorld/Level2.lean.md)
   - [Level 3](./TutorialWorld/Level3.lean.md)

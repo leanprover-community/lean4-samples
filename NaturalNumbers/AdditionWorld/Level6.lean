@@ -108,8 +108,9 @@ example (a b c d e : MyNat) :
 Imagine having to do that one by hand! The AI closes the goal because it knows how to use
 associativity and commutativity sensibly in a commutative monoid.
 
-You are now done with addition world. You can now decide whether to press on with multiplication
-world and power world (which can be solved with `rw`, `rfl` and `induction`), or to go on to
+You are now done with addition world. You can now decide whether to press on with
+[Multiplication World](../MultiplicationWorld.lean.md) and power world
+(which can be solved with `rw`, `rfl` and `induction`), or to go on to
 Function World where you can learn the tactics needed to prove goals of the form `P → Q`, thus
 enabling you to solve more advanced addition world levels such as `a + t = b + t → a = b`. Note that
 Function World is more challenging mathematically; but if you can do Addition World you can surely

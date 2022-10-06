@@ -28,12 +28,12 @@ lemma mul_left_comm (a b c : MyNat) : a * (b * c) = b * (a * c) := by
 
 
 /-!
-And now I whisper a magic incantation
+And now you can teach the `simp` tactic these new tricks:
 -/
 attribute [simp] mul_assoc mul_comm mul_left_comm
 /-!
 and all of a sudden Lean can automatically do levels which are
-very boring for a human, for example
+very boring for a human, for example:
 -/
 example (a b c d e : MyNat) :
   (((a*b)*c)*d)*e=(c*((b*e)*a))*d := by

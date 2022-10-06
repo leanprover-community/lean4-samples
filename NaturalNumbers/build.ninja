@@ -5,6 +5,7 @@ rule book
   command = mdbook build
 build ./AdditionWorld.lean.md: alectryon ./AdditionWorld.lean
 build ./MultiplicationWorld.lean.md: alectryon ./MultiplicationWorld.lean
+build ./MyNat.lean.md: alectryon ./MyNat.lean
 build ./TutorialWorld.lean.md: alectryon ./TutorialWorld.lean
 build AdditionWorld/Level1.lean.md: alectryon AdditionWorld/Level1.lean
 build AdditionWorld/Level2.lean.md: alectryon AdditionWorld/Level2.lean
@@ -38,7 +39,7 @@ build TutorialWorld/Level2.lean.md: alectryon TutorialWorld/Level2.lean
 build TutorialWorld/Level3.lean.md: alectryon TutorialWorld/Level3.lean
 build TutorialWorld/Level4.lean.md: alectryon TutorialWorld/Level4.lean
 build docs/index.html: book ./AdditionWorld.lean.md $
-    ./MultiplicationWorld.lean.md ./TutorialWorld.lean.md $
+    ./MultiplicationWorld.lean.md ./MyNat.lean.md ./TutorialWorld.lean.md $
     AdditionWorld/Level1.lean.md AdditionWorld/Level2.lean.md $
     AdditionWorld/Level3.lean.md AdditionWorld/Level4.lean.md $
     AdditionWorld/Level5.lean.md AdditionWorld/Level6.lean.md $

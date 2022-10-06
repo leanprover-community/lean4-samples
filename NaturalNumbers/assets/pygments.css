@@ -81,3 +81,15 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .il, .code .il { color: #2e3436 } /* Literal.Number.Integer.Long */
 .hljs-doctag { color: green  }
 .hljs-comment { color: green  }
+
+/* overrides for dark themes */
+.coal, .navy, .ayu, .highlight .l, .code .l { color: #5e6466 } /* Literal */
+.coal, .navy, .ayu, .highlight .x, .code .x { color: #5e6466 } /* Other */
+.coal, .navy, .ayu, .highlight .m, .code .m { color: #5e6466 } /* Literal.Number */
+.coal, .navy, .ayu, .highlight .ld, .code .ld { color: #5e6466 } /* Literal.Date */
+.coal, .navy, .ayu, .highlight .il, .code .il { color: #5e6466 } /* Literal.Number.Integer.Long */
+.coal, .navy, .ayu, .highlight .mb, .code .mb { color: #5e6466 } /* Literal.Number.Bin */
+.coal, .navy, .ayu, .highlight .mf, .code .mf { color: #5e6466 } /* Literal.Number.Float */
+.coal, .navy, .ayu, .highlight .mh, .code .mh { color: #5e6466 } /* Literal.Number.Hex */
+.coal, .navy, .ayu, .highlight .mi, .code .mi { color: #5e6466 } /* Literal.Number.Integer */
+.coal, .navy, .ayu, .highlight .mo, .code .mo { color: #5e6466 } /* Literal.Number.Oct */

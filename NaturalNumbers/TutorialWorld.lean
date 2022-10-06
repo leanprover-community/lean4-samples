@@ -6,17 +6,17 @@ import TutorialWorld.Level4
 /-!
 # The Natural Numbers
 
-This sample is based on the [Natural Number
+This tutorial is based on the [Natural Number
 Game](https://www.ma.imperial.ac.uk/~buzzard/xena/natural_number_game/)
 by Kevin Buzzard and Mohammad Pedramfar.
 
-This sample provides the same content in a book format that is designed to
+This tutorial provides the same content in a book format that is designed to
 be read online or run in your local Visual Studio Code with the Lean4 "extension".
 The extension will install the Lean4 compiler and language
 service for you so it is easy to setup - see the [Quick
 Start](https://leanprover.github.io/lean4/doc/quickstart.html) for more information.
 
-You must open the `NaturalNumbers` folder in Visual Studio Code using `File/Open folder" in order
+You must open the `NaturalNumbers` folder in Visual Studio Code using `File/Open folder` in order
 for it to function correctly.
 
 ## How to use this sample
