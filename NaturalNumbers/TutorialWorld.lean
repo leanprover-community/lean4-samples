@@ -11,12 +11,15 @@ Game](https://www.ma.imperial.ac.uk/~buzzard/xena/natural_number_game/)
 by Kevin Buzzard and Mohammad Pedramfar.
 
 This tutorial provides the same content in a book format that is designed to
-be read online or run in your local Visual Studio Code with the Lean4 "extension".
+be [read online](https://lovettsoftware.com/NaturalNumbers) or run in your
+local Visual Studio Code with the Lean4 "extension".
 The extension will install the Lean4 compiler and language
 service for you so it is easy to setup - see the [Quick
 Start](https://leanprover.github.io/lean4/doc/quickstart.html) for more information.
 
-You must open the `NaturalNumbers` folder in Visual Studio Code using `File/Open folder` in order
+To run this tutorial in Visual Studio Code, first
+clone the [https://github.com/leanprover/lean4-samples](https://github.com/leanprover/lean4-samples)
+repo.  Then you must open the `NaturalNumbers` folder in Visual Studio Code using `File/Open folder` in order
 for it to function correctly.
 
 ## How to use this sample
