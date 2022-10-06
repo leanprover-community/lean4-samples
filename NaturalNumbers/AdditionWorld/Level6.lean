@@ -92,13 +92,17 @@ The `simp` AI (it's just an advanced tactic really), and can nail some really
 tedious-for-a-human-to-solve goals. For example, check out this one-line proof.
 First you need to teach `simp` about the building blocks you have created so far:
 -/
-attribute [simp] zero_add add_assoc add_comm succ_add add_succ succ_eq_add_one one_eq_succ_zero
 
--- example (a b c d e : MyNat) :
---   (((a+b)+c)+d)+e=(c+((b+e)+a))+d := by
---   simp
+lemma add_left_comm (a b c : MyNat) : a + (b + c) = b + (a + c) := by
+  rw [←add_assoc]
+  rw [add_comm a]
+  rw [add_assoc]
 
--- BUGBUG: simp does not solve it!
+attribute [simp] add_assoc add_comm add_left_comm
+
+example (a b c d e : MyNat) :
+  (((a+b)+c)+d)+e=(c+((b+e)+a))+d := by
+  simp
 
 /-!
 Imagine having to do that one by hand! The AI closes the goal because it knows how to use

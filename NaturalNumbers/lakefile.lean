@@ -21,3 +21,7 @@ lean_lib TutorialWorld {
 lean_lib AdditionWorld {
   -- add library configuration options here
 }
+
+lean_lib MultiplicationWorld {
+  -- add library configuration options here
+}
