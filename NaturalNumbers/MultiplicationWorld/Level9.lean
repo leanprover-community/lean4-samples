@@ -41,7 +41,7 @@ example (a b c d e : MyNat) :
 
 /-!
 If you feel like attempting Advanced Multiplication world
-you'll have to do Function World and the Proposition Worlds first.
+you'll have to do [Function World](../FunctionWorld.lean.md) and the Proposition Worlds first.
 These worlds assume a certain amount of mathematical maturity
 (perhaps 1st year undergraduate level).
 
