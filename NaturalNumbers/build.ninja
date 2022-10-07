@@ -3,6 +3,8 @@ rule alectryon
       --backend webpage -o $out
 rule book
   command = mdbook build
+rule lake
+  command = lake build $in
 build ./AdditionWorld.lean.md: alectryon ./AdditionWorld.lean
 build ./FunctionWorld.lean.md: alectryon ./FunctionWorld.lean
 build ./MultiplicationWorld.lean.md: alectryon ./MultiplicationWorld.lean

@@ -1,6 +1,12 @@
-import MyNat.Definition
-namespace MyNat
-open MyNat
+import FunctionWorld.Level1
+import FunctionWorld.Level2
+import FunctionWorld.Level3
+import FunctionWorld.Level4
+import FunctionWorld.Level5
+import FunctionWorld.Level6
+import FunctionWorld.Level7
+import FunctionWorld.Level8
+import FunctionWorld.Level9
 /-!
 
 # Function world.

@@ -1,7 +1,12 @@
-import MyNat.Addition
-import MyNat.Multiplication
-namespace MyNat
-open MyNat
+import MultiplicationWorld.Level1
+import MultiplicationWorld.Level2
+import MultiplicationWorld.Level3
+import MultiplicationWorld.Level4
+import MultiplicationWorld.Level5
+import MultiplicationWorld.Level6
+import MultiplicationWorld.Level7
+import MultiplicationWorld.Level8
+import MultiplicationWorld.Level9
 /-!
 # Multiplication World
 

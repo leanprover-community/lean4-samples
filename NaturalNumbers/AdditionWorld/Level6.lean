@@ -2,7 +2,6 @@ import MyNat.Addition
 import AdditionWorld.Level2 -- add_assoc
 import AdditionWorld.Level4 -- add_comm
 import AdditionWorld.Level5 -- succ_eq_add_one
-import Mathlib.Tactic.Ring
 namespace MyNat
 open MyNat
 
@@ -58,11 +57,11 @@ If you have got this far, then you have become very good at manipulating equalit
 also now connect four handy type class `instances` to your `MyNat` type as follows:
 
 -/
-instance : AddSemigroup MyNat where
-  add_assoc := add_assoc
+-- instance : AddSemigroup MyNat where
+--   add_assoc := add_assoc
 
-instance : AddCommSemigroup MyNat where
-  add_comm := add_comm
+-- instance : AddCommSemigroup MyNat where
+--   add_comm := add_comm
 
 -- instance : AddMonoid MyNat where
 --   nsmul :=  λ x y => (myNatFromNat x) * y
