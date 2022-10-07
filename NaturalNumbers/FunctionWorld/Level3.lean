@@ -63,7 +63,8 @@ example (P Q R S T U: Type)
 
 /-!
 Remember you can move your cursor around with the arrow keys and explore the various tactic states
-in this proof) and note that the tactic state at the beginning of `exact u` is this mess:
+in this proof in Visual Studio Code, and note that the tactic state at the beginning of `exact u` is
+this mess:
 
 ```
 P Q R S T U : Type,
