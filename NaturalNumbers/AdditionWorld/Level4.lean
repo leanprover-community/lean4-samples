@@ -30,7 +30,8 @@ lemma add_comm (a b : MyNat) : a + b = b + a := by
 /-!
 
 If you are keeping up so far then nice! You're nearly ready to make a choice:
-Multiplication World or Function World. But there are just a couple
+[Multiplication World](../MultiplicationWorld.lean.md) or
+[Function World](../FunctionWorld.lean.md). But there are just a couple
 more useful lemmas in Addition World which you should prove first.
 
 Press on to [level 5](./Level5.lean.md).

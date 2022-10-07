@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="TopToBottom" Layout="Sugiyama" Offset="-1472.75,-995.04" ZoomLevel="1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="P" Bounds="-1119,-698.813140359058,50,25.96" Label="p ∈ P" UseManualLocation="True" />
+    <Node Id="Q" Bounds="-1021.71833333333,-697.833140359058,50,25.96" UseManualLocation="True" />
+    <Node Id="R" Bounds="-932.718333333333,-697.833140359058,50,25.96" UseManualLocation="True" />
+    <Node Id="S" Bounds="-1118.35917663574,-629.853140359058,50,25.96" UseManualLocation="True" />
+    <Node Id="T" Bounds="-1020.79584330241,-629.833149414063,50,25.96" UseManualLocation="True" />
+    <Node Id="U" Bounds="-930.320398763021,-630.833133900232,50,25.96" UseManualLocation="True" />
+  </Nodes>
+  <Links>
+    <Link Source="P" Target="Q" Bounds="-1069,-685.581294344906,38.2821233020982,0.38564800667541" Label="h" LabelBounds="-1053.23379169006,-705.348470346717,6.78999999999996,15.96" />
+    <Link Source="Q" Target="R" Bounds="-971.718333333334,-684.853140359058,30.0000000000003,1.13686837721616E-13" Label="i" LabelBounds="-958.171666666667,-704.813140359058,2.90666666666664,15.96" />
+    <Link Source="Q" Target="T" Bounds="-996.542250941267,-671.873140359058,0.448220834919084,33.0408189539834" Label="j" LabelBounds="-992.318140506878,-663.359859725257,2.90666666666664,15.96" />
+    <Link Source="S" Target="T" Bounds="-1068.35913085938,-616.868016363068,38.5632631283493,0.00790094109891015" Label="k" LabelBounds="-1052.0587561967,-636.824065892519,5.96333333333337,15.96" />
+    <Link Source="T" Target="U" Bounds="-970.795867919922,-617.477353335724,31.4760188212421,0.347890215999314" Label="l" LabelBounds="-956.533295589044,-637.263408235184,2.90666666666664,15.96" />
+  </Links>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Diagrams.Layout.LayoutOrientation" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="LabelBounds" DataType="System.Windows.Rect" />
+    <Property Id="Layout" DataType="System.String" />
+    <Property Id="Offset" DataType="System.String" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+    <Property Id="ZoomLevel" DataType="System.String" />
+  </Properties>
+</DirectedGraph>

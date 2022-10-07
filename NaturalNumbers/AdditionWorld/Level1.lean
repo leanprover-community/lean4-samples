@@ -107,9 +107,9 @@ Those three tactics --
 * `rfl`
 
 will get you quite a long way through this tutorial. Using only these tactics
-you can beat Addition World level 4 (the boss level of Addition World),
-all of Multiplication World including the boss level `a * b = b * a`,
-and even all of Power World including the fiendish final boss. This route will
+do all of Addition World,
+all of [Multiplication World](../MultiplicationWorld.lean.md) including the boss level `a * b = b * a`,
+and even all of [Power World](../PowerWorld.lean.md) including the fiendish final boss. This route will
 give you a good grounding in these three basic tactics; after that, if you
 are still interested, there are other worlds to master, where you can learn
 more tactics.

@@ -6,23 +6,27 @@ import TutorialWorld.Level4
 /-!
 # The Natural Numbers
 
-This sample is based on the [Natural Number
+This tutorial is based on the [Natural Number
 Game](https://www.ma.imperial.ac.uk/~buzzard/xena/natural_number_game/)
 by Kevin Buzzard and Mohammad Pedramfar.
 
-This sample provides the same content in a book format that is designed to
-be read online or run in your local Visual Studio Code with the Lean4 "extension".
+This tutorial provides the same content in a book format that is designed to
+be [read online](https://lovettsoftware.com/NaturalNumbers) or run in your
+local Visual Studio Code with the Lean4 "extension".
 The extension will install the Lean4 compiler and language
 service for you so it is easy to setup - see the [Quick
 Start](https://leanprover.github.io/lean4/doc/quickstart.html) for more information.
 
-You must open the `NaturalNumbers` folder in Visual Studio Code using `File/Open folder" in order
+To run this tutorial in Visual Studio Code, first
+clone the [https://github.com/leanprover/lean4-samples](https://github.com/leanprover/lean4-samples)
+repo.  Then you must open the `NaturalNumbers` folder in Visual Studio Code using `File/Open folder` in order
 for it to function correctly.
 
 ## How to use this sample
 
 When reading this content in a web browser the code samples are annotated with type information
-and you can see the proof tactic state by hovering your mouse over these little bubbles:
+and you can see the proof tactic state by hovering your mouse over these little bubbles that
+look like this: <span class="alectryon-bubble"></span>
 
 ![screen](./assets/screen.png)
 
@@ -52,7 +56,7 @@ There is also an "online" version under development that works with Lean 4,
 see [https://github.com/PatrickMassot/NNG4](https://github.com/PatrickMassot/NNG4).
 
 If you want to see the original "Lean 3" game version of this content, go to
-https://github.com/ImperialCollegeLondon/natural_number_game
+[https://github.com/ImperialCollegeLondon/natural_number_game](https://github.com/ImperialCollegeLondon/natural_number_game)
 which is also hosted in this [online version](https://www.ma.imperial.ac.uk/~buzzard/xena/natural_number_game/).
 
 -/

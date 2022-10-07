@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="TopToBottom" Layout="Sugiyama" Offset="-1614.66019938151,-1134.84314488656" ZoomLevel="1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="P" Bounds="-1119,-698.813140359058,50,25.96" Label="P" UseManualLocation="True" />
+    <Node Id="Q" Bounds="-1021.71833333333,-697.833140359058,50,25.96" UseManualLocation="True" />
+    <Node Id="R" Bounds="-932.718333333333,-697.833140359058,50,25.96" UseManualLocation="True" />
+    <Node Id="S" Bounds="-1118.35917663574,-629.853140359058,50,25.96" UseManualLocation="True" />
+    <Node Id="T" Bounds="-1020.79584330241,-629.833149414063,50,25.96" UseManualLocation="True" />
+    <Node Id="U" Bounds="-930.320398763021,-630.833133900232,50,25.96" UseManualLocation="True" />
+  </Nodes>
+  <Links>
+    <Link Source="P" Target="Q" Category="Implies" Bounds="-1069,-685.581294344907,38.2821233021023,0.385648006675297" Label="h" LabelBounds="-1053.23379169006,-705.348470346718,6.78999999999996,15.96" />
+    <Link Source="Q" Target="R" Category="Implies" Bounds="-971.71833333333,-684.853140359058,29.9999999999969,0" Label="i" LabelBounds="-958.171666666665,-704.813140359058,2.90666666666675,15.96" />
+    <Link Source="Q" Target="T" Category="Implies" Bounds="-996.542246242215,-671.873140359058,0.448232797029391,33.0408189981714" Label="j" LabelBounds="-992.318129826769,-663.359860427008,2.90666666666675,15.96" />
+    <Link Source="S" Target="T" Category="Implies" Bounds="-1068.35917663574,-616.868017803198,38.5633335222619,0.00790171320443278" Label="k" LabelBounds="-1052.05876673682,-636.824066946596,5.96333333333359,15.96" />
+    <Link Source="T" Target="U" Category="Implies" Bounds="-970.79584330241,-617.477353233481,31.4759942040292,0.34789003857361" Label="l" LabelBounds="-956.533283286153,-637.263408221655,2.90666666666675,15.96" />
+  </Links>
+  <Categories>
+    <Category Id="Implies" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Diagrams.Layout.LayoutOrientation" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="LabelBounds" DataType="System.Windows.Rect" />
+    <Property Id="Layout" DataType="System.String" />
+    <Property Id="Offset" DataType="System.String" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+    <Property Id="ZoomLevel" DataType="System.String" />
+  </Properties>
+  <Styles>
+  </Styles>
+</DirectedGraph>

@@ -28,12 +28,12 @@ lemma mul_left_comm (a b c : MyNat) : a * (b * c) = b * (a * c) := by
 
 
 /-!
-And now I whisper a magic incantation
+And now you can teach the `simp` tactic these new tricks:
 -/
 attribute [simp] mul_assoc mul_comm mul_left_comm
 /-!
 and all of a sudden Lean can automatically do levels which are
-very boring for a human, for example
+very boring for a human, for example:
 -/
 example (a b c d e : MyNat) :
   (((a*b)*c)*d)*e=(c*((b*e)*a))*d := by
@@ -41,8 +41,9 @@ example (a b c d e : MyNat) :
 
 /-!
 If you feel like attempting Advanced Multiplication world
-you'll have to do Function World and the Proposition Worlds first.
+you'll have to do [Function World](../FunctionWorld.lean.md) and the Proposition Worlds first.
 These worlds assume a certain amount of mathematical maturity
 (perhaps 1st year undergraduate level).
-Your other possibility is Power World.
+
+Your other possibility is [Power World](../PowerWorld.lean.md).
 -/

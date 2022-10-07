@@ -34,7 +34,8 @@ The square brackets here is a `List` object
 because `rewrite` can rewrite using multiple hypotheses in sequence.
 
 If you are reading this book online you can move the mouse over each bubble that is
-added to the end of each line to see what the tactic state is at that point in the proof.
+added to the end of each line (that look like this: <span class="alectryon-bubble"></span>)
+to see what the tactic state is at that point in the proof.
 
 The other way you know the goal is complete is to look a the Visual Studio Code
 Problems list window, if there are no error saying "unsolved goals" then you are done.
