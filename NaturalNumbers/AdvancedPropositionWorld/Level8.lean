@@ -18,21 +18,33 @@ If `P`. `Q` and `R` are true/false statements, then
 `P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R).`
 -/
 -- lemma and_or_distrib_left (P Q R : Prop) : P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R) := by
---   split
+--   constructor
 --   intro h
---   cases hqr with q r
---   left, split, assumption, assumption
---   right, split, assumption, assumption
---   intro h
---   cases h with hpq hpr
---   cases hpq with p q
---   split, assumption
---   left, assumption
---   cases hpr with hp hr
---   split, assumption
---   right, assumptio,
+--   ???
 
 /-!
+
+Here's the lean 3 version:
+```lean
+lemma and_or_distrib_left (P Q R : Prop) : P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R) :=
+begin
+  split,
+  intro h,
+  cases h with hp hqr,
+  cases hqr with q r,
+  left, split, assumption, assumption,
+  right, split, assumption, assumption,
+  intro h,
+  cases h with hpq hpr,
+  cases hpq with p q,
+  split, assumption,
+  left, assumption,
+  cases hpr with hp hr,
+  split, assumption,
+  right, assumption,
+end
+```
+
 ## Pro tip
 
 Did you spot the `import Mathlib.Tactic.Cases`? What do you think it does?

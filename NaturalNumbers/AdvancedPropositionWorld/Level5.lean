@@ -36,18 +36,30 @@ you cannot rewrite one-way implications, but you can rewrite two-way implication
 ## Lemma
 If `P`, `Q` and `R` are true/false statements, then `P ↔ Q` and `Q ↔ R` together imply `P ↔ R`.
 -/
--- lemma iff_trans (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) := by
-  -- intros hpq hqr
-  -- split
-  -- intro p
-  -- apply hqr.1
-  -- apply hpq.1
-  -- assumption
-  -- intro r
-  -- apply hpq.2
-  -- apply hqr.2
-  -- assumption
+lemma iff_trans (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) := by
+  intros hpq hqr
+  exact Iff.intro
+    (fun ha => Iff.mp hqr (Iff.mp hpq ha))
+    (fun hc => Iff.mpr hpq (Iff.mpr hqr hc))
 
 /-!
+
+Here's the lean 3 version:
+```lean
+lemma iff_trans (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) :=
+begin
+  intros hpq hqr,
+  split,
+  intro p,
+  apply hqr.1,
+  apply hpq.1,
+  assumption,
+  intro r,
+  apply hpq.2,
+  apply hqr.2,
+  assumption,
+end
+```
+
 Next up [Level 6](./Level6.lean.md)
 -/

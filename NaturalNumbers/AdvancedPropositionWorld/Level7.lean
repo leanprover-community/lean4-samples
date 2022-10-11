@@ -27,5 +27,19 @@ lemma or_symm (P Q : Prop) : P ∨ Q → Q ∨ P := by
     exact hq
 
 /-!
+
+Here's the lean 3 version:
+```lean
+lemma or_symm (P Q : Prop) : P ∨ Q → Q ∨ P :=
+begin
+  intro h,
+  cases h with p q,
+    right,
+    exact p,
+  left,
+  exact q,
+end
+```
+
 Next up [Level 8](./Level8.lean.md)
 -/

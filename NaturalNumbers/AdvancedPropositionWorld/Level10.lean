@@ -25,35 +25,43 @@ p : P
 ⊢ Q
 ```
 
-The tools you have are not sufficient to continue. But you can just
-prove this, and any other basic lemmas of this form like `¬ ¬ P → P`,
-using the `by_cases` tactic. Instead of starting with all the `intro`s,
-try this instead:
+The tools you have are not sufficient to continue. But you can just prove this, and any other basic
+lemmas of this form like `¬ ¬ P → P`, using the `by_cases` tactic. Here we start with the usual
+`intros` to turn the implication into hypotheses `h : ¬ Q → ¬ P` and `p : P` which leaves with the
+goal of `⊢ Q`.  But how can you prove `Q` using these hypotheses?  You can use this tactic:
 
-`by_cases p : P; by_cases q : Q`
+`by_cases q : Q`
 
-**Note the semicolon**! It means "do the next tactic to all the goals, not just the top one".
-After it, there are four goals, one for each of the four possibilities PQ=TT, TF, FT, FF.
-You can see that `p` is a proof of `P` in some of the goals, and a proof of `¬ P` in others.
-Similar comments apply to `q`.
+This creates two sub-goals `pos` and `neg` with the first one assuming Q is true - which can easily
+satisfy the goal! and the second one assuming Q is false. But how can `h: ¬Q → ¬P`, `p: P`, `q: ¬Q`
+prove the goal `⊢ Q` ? Well if you apply `q` to the hypothesis `h` you end up with the conclusion `¬
+P`, but then you have a contradiction in your hypotheses saying `P` and `¬ P` which the
+`contradiction` tactic can take care of that.
 
-`repeat cc` then finishes the job.
-
-This approach assumed that `P ∨ ¬ P` was true; the `by_cases` tactic just does `cases` on
-this result. This is called the law of the excluded middle, and it cannot be proved just
-using tactics such as `intro` and `apply`.
+The `contradiction` tactic closes the main goal if its hypotheses
+are "trivially contradictory".
 
 ## Lemma
 If `P` and `Q` are true/false statements, then
 `(¬ Q ⟹ ¬ P) ⟹ (P ⟹ Q).`
 -/
--- lemma contrapositive2 (P Q : Prop) : (¬ Q → ¬ P) → (P → Q) := by
---   by_cases p : P
---   by_cases q : Q
---   repeat cc
-
-
+lemma contrapositive2 (P Q : Prop) : (¬ Q → ¬ P) → (P → Q) := by
+  intro h
+  intro p
+  by_cases q : Q
+  exact q
+  have np := h q
+  contradiction
 /-!
+
+Here's the Lean3 version:
+```lean
+lemma contrapositive2 (P Q : Prop) : (¬ Q → ¬ P) → (P → Q) :=
+begin
+  by_cases p : P; by_cases q : Q,
+  repeat {cc},
+end
+```
 OK that's enough logic -- now perhaps it's time to go on to Advanced Addition World!
 -/
 

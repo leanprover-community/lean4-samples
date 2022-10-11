@@ -14,10 +14,19 @@ If `P` and `Q` are true/false statements, then `Q ⟹(P ∨ Q).`
 -/
 example (P Q : Prop) : Q → (P ∨ Q) := by
   intro q
-  right 
+  right
   assumption
 
 /-!
+Here's the lean 3 version:
+```lean
+example (P Q : Prop) : Q → (P ∨ Q) :=
+begin
+  intro q,
+  right,
+  assumption,
+end
+```
 
 ## Details
 
