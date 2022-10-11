@@ -36,7 +36,7 @@ This creates two sub-goals `pos` and `neg` with the first one assuming Q is true
 satisfy the goal! and the second one assuming Q is false. But how can `h: ¬Q → ¬P`, `p: P`, `q: ¬Q`
 prove the goal `⊢ Q` ? Well if you apply `q` to the hypothesis `h` you end up with the conclusion `¬
 P`, but then you have a contradiction in your hypotheses saying `P` and `¬ P` which the
-`contradiction` tactic can take care of that.
+`contradiction` tactic can take care of.
 
 The `contradiction` tactic closes the main goal if its hypotheses
 are "trivially contradictory".
