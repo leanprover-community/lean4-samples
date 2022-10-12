@@ -5,13 +5,13 @@ open MyNat
 /-!
 # Advanced Proposition world
 
-## Level 1: the `split` tactic.
+## Level 1: the `constructor` tactic.
 
-The logical symbol `∧` means "and". If `P` and `Q` are propositions, then
-`P ∧ Q` is the proposition "`P` and `Q`". If your *goal* is `P ∧ Q` then
-you can make progress with the `constructor` tactic, which turns one goal `⊢ P ∧ Q`
-into two goals, namely `⊢ P` and `⊢ Q`. In the level below, after a `constructor`,
-you can finish off the two new sub-goals with the `exact` tactic.
+The logical symbol `∧` means "and". If `P` and `Q` are propositions, then `P ∧ Q` is the proposition
+"`P` and `Q`". If your *goal* is `P ∧ Q` then you can make progress with the `constructor` tactic,
+which turns one goal `⊢ P ∧ Q` into two goals, namely `⊢ P` and `⊢ Q`. In the level below, after a
+`constructor`, you can finish off the two new sub-goals with the `exact` tactic since both `p` and
+`q` provide exactly what we need.  You could also use the `assumption` tactic.
 
 ## Lemma
 If `P` and `Q` are true, then `P ∧ Q` is true.

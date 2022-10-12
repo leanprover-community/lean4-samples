@@ -1,8 +1,5 @@
 import Mathlib.Tactic.LeftRight
 import Mathlib.Tactic.Basic
-import Mathlib.Tactic.CasesM
-import Lean.Meta.Tactic.Apply
-import Lean.Meta.Tactic.Cases
 /-!
 # Advanced proposition world.
 
@@ -17,11 +14,38 @@ over `∨` and `∨` distributes over `∧`. Let's prove one of these.
 If `P`. `Q` and `R` are true/false statements, then
 `P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R).`
 -/
--- lemma and_or_distrib_left (P Q R : Prop) : P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R) := by
---   constructor
---   intro h
---   ???
-
+lemma and_or_distrib_left (P Q R : Prop) : P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R) := by
+  constructor
+  intro h
+  cases h with
+  | intro hP hQR =>
+    cases hQR with
+    | inl hQ =>
+      left
+      constructor
+      assumption
+      assumption
+    | inr hR =>
+      right
+      constructor
+      assumption
+      assumption
+  intro h
+  cases h with
+  | inl hPQ =>
+    cases hPQ with
+    | intro hP hQ =>
+      constructor
+      assumption
+      left
+      assumption
+  | inr hPR =>
+    cases hPR with
+    | intro hP hR =>
+      constructor
+      assumption
+      right
+      assumption
 /-!
 
 Here's the lean 3 version:

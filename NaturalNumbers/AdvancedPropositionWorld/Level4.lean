@@ -19,12 +19,25 @@ After an initial `intro h` you can type `cases h with hpq hqp` to break `h : P �
 If `P`, `Q` and `R` are true/false statements, then `P ↔ Q` and `Q ↔ R` together imply `P ↔ R`.
 -/
 lemma iff_trans (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) := by
-    intro hpq
-    intro hqr
-    exact Iff.intro
-        (fun ha => Iff.mp hqr (Iff.mp hpq ha))
-        (fun hc => Iff.mpr hpq (Iff.mpr hqr hc))
-
+  intro hpq
+  intro hqr
+  constructor
+  cases hpq with
+  | intro pq qp =>
+    cases hqr with
+    | intro qr rq =>
+      intro p
+      apply qr
+      apply pq
+      exact p
+  cases hpq with
+  | intro pq qp =>
+    cases hqr with
+    | intro qr rq =>
+      intro r
+      apply qp
+      apply rq
+      exact r
 /-!
 
 
