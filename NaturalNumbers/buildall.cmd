@@ -6,3 +6,4 @@ lake build PowerWorld
 lake build FunctionWorld
 lake build PropositionWorld
 lake build AdvancedPropositionWorld
+lake build AdvancedAdditionWorld

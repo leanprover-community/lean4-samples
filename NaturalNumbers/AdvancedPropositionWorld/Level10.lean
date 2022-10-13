@@ -54,23 +54,11 @@ lemma contrapositive2 (P Q : Prop) : (¬ Q → ¬ P) → (P → Q) := by
   contradiction
 /-!
 
-Here's the Lean3 version:
-```lean
-lemma contrapositive2 (P Q : Prop) : (¬ Q → ¬ P) → (P → Q) :=
-begin
-  by_cases p : P; by_cases q : Q,
-  repeat {cc},
-end
-```
 OK that's enough logic -- now perhaps it's time to go on to Advanced Addition World!
--/
 
-
-/-!
 ## Pro tip
 
 In fact the tactic `tauto!` just kills this goal (and many other logic goals) immediately.
-
 
 ## Tactic : by_cases
 

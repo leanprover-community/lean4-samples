@@ -48,7 +48,7 @@ numbers are a semiring. This sounds like a respectable result.
 
 def right_distrib := add_mul -- alternative name
 
--- instance : semiring mynat := by structure_helper
+-- instance : semiring MyNat := by structure_helper
 -- BUGBUG
 
 /-!
@@ -60,7 +60,7 @@ declining Lean's offer of a `distrib` collectible.
 You are dreaming of the big collectible at the end of [Power World](../PowerWorld.lean).
 -/
 
--- instance : distrib mynat := by structure_helper --
+-- instance : distrib MyNat := by structure_helper --
 -- BUGBUG
 
 /-!

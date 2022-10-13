@@ -30,31 +30,11 @@ lemma and_or_distrib_left (P Q R : Prop) : P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P 
   · rintro ⟨HP, HQ | HR⟩
     left; constructor <;> assumption
     right; constructor <;> assumption
-  · rintro (⟨HP, HQ⟩ | ⟨HP, HR⟩)
+  . rintro (⟨HP, HQ⟩ | ⟨HP, HR⟩)
     constructor; assumption; left; assumption
     constructor; assumption; right; assumption
 /-!
 
-Here's the lean 3 version:
-```lean
-lemma and_or_distrib_left (P Q R : Prop) : P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R) :=
-begin
-  split,
-  intro h,
-  cases h with hp hqr,
-  cases hqr with q r,
-  left, split, assumption, assumption,
-  right, split, assumption, assumption,
-  intro h,
-  cases h with hpq hpr,
-  cases hpq with p q,
-  split, assumption,
-  left, assumption,
-  cases hpr with hp hr,
-  split, assumption,
-  right, assumption,
-end
-```
 
 ## Pro tip
 

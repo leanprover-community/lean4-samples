@@ -22,16 +22,6 @@ example (P Q : Prop) (p : P) (q : Q) : P ∧ Q := by
   exact q
 /-!
 
-Here's the lean 3 version:
-
-```lean
-example (P Q : Prop) (p : P) (q : Q) : P ∧ Q :=
-begin
-  split,
-  exact p,
-  exact q,
-end
-```
 
 Next up [Level 2](./Level2.lean.md)
 -/

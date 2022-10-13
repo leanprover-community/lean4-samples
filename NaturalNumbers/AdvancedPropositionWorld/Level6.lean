@@ -18,16 +18,6 @@ example (P Q : Prop) : Q → (P ∨ Q) := by
   assumption
 
 /-!
-Here's the lean 3 version:
-```lean
-example (P Q : Prop) : Q → (P ∨ Q) :=
-begin
-  intro q,
-  right,
-  assumption,
-end
-```
-
 ## Details
 
 The tactics `left` and `right` work on a goal which is a type with

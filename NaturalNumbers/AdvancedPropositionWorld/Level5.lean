@@ -17,7 +17,7 @@ directly with `h.mp` and `h.mpr`.
 ## Lemma
 If `P`, `Q` and `R` are true/false statements, then `P ↔ Q` and `Q ↔ R` together imply `P ↔ R`.
 -/
-lemma iff_trans (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) := by
+lemma iff_trans₂ (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) := by
   intros hpq hqr
   constructor
   intro p
@@ -31,22 +31,6 @@ lemma iff_trans (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) := by
 
 /-!
 
-Here's the lean 3 version:
-```lean
-lemma iff_trans (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) :=
-begin
-  intros hpq hqr,
-  split,
-  intro p,
-  apply hqr.1,
-  apply hpq.1,
-  assumption,
-  intro r,
-  apply hpq.2,
-  apply hqr.2,
-  assumption,
-end
-```
 
 ### Another trick
 
@@ -56,7 +40,7 @@ this is an argument for *not* running the `cases` tactic on an iff statement;
 you cannot rewrite one-way implications, but you can rewrite two-way implications.
 
 -/
-lemma iff_trans₂ (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) := by
+lemma iff_trans₃ (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) := by
   intros hpq hqr
   rw [hpq]
   rw [hqr]

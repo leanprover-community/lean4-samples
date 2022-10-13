@@ -17,3 +17,4 @@ lean_lib PowerWorld
 lean_lib FunctionWorld
 lean_lib PropositionWorld
 lean_lib AdvancedPropositionWorld
+lean_lib AdvancedAdditionWorld

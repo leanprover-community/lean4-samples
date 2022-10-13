@@ -30,7 +30,7 @@ example (A B C D E F G H I J K L : Prop)
 -- BUGBUG: NNG uses cc which is missing in lean4...
 
 /-!
-Now move onto advanced proposition world, where you will see
+Now move onto [advanced proposition world](../AdvancedPropositionWorld.lean.md), where you will see
 how to prove goals such as `P ∧ Q` (`P` and `Q`), `P ∨ Q` (`P` or `Q`),
 `P ↔ Q` (`P ⟺ Q`).
 You will need to learn five more tactics: `split`, `cases`,
@@ -42,5 +42,5 @@ including all the 17 levels of Inequality World.
 -/
 
 /-!
-Next up ...
+Next up [advanced proposition world](../AdvancedPropositionWorld.lean.md).
 -/

@@ -41,17 +41,5 @@ lemma iff_trans (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) := by
 /-!
 
 
-Here's the lean 3 version:
-```lean
-lemma iff_trans (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) :=
-begin
-  intro hpq,
-  intro hqr,
-  cases hpq with hpq hqp,
-  cases hqr with hqr hrq,
-  split,
-  cc,cc,
-end
-```
 Next up [Level 5](./Level5.lean.md)
 -/

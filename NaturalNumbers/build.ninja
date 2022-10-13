@@ -6,6 +6,7 @@ rule book
 rule lake
   command = lake build $in
 build ./AdditionWorld.lean.md: alectryon ./AdditionWorld.lean
+build ./AdvancedAdditionWorld.lean.md: alectryon ./AdvancedAdditionWorld.lean
 build ./AdvancedPropositionWorld.lean.md: alectryon $
     ./AdvancedPropositionWorld.lean
 build ./FunctionWorld.lean.md: alectryon ./FunctionWorld.lean
@@ -20,6 +21,32 @@ build AdditionWorld/Level3.lean.md: alectryon AdditionWorld/Level3.lean
 build AdditionWorld/Level4.lean.md: alectryon AdditionWorld/Level4.lean
 build AdditionWorld/Level5.lean.md: alectryon AdditionWorld/Level5.lean
 build AdditionWorld/Level6.lean.md: alectryon AdditionWorld/Level6.lean
+build AdvancedAdditionWorld/Level1.lean.md: alectryon $
+    AdvancedAdditionWorld/Level1.lean
+build AdvancedAdditionWorld/Level10.lean.md: alectryon $
+    AdvancedAdditionWorld/Level10.lean
+build AdvancedAdditionWorld/Level11.lean.md: alectryon $
+    AdvancedAdditionWorld/Level11.lean
+build AdvancedAdditionWorld/Level12.lean.md: alectryon $
+    AdvancedAdditionWorld/Level12.lean
+build AdvancedAdditionWorld/Level13.lean.md: alectryon $
+    AdvancedAdditionWorld/Level13.lean
+build AdvancedAdditionWorld/Level2.lean.md: alectryon $
+    AdvancedAdditionWorld/Level2.lean
+build AdvancedAdditionWorld/Level3.lean.md: alectryon $
+    AdvancedAdditionWorld/Level3.lean
+build AdvancedAdditionWorld/Level4.lean.md: alectryon $
+    AdvancedAdditionWorld/Level4.lean
+build AdvancedAdditionWorld/Level5.lean.md: alectryon $
+    AdvancedAdditionWorld/Level5.lean
+build AdvancedAdditionWorld/Level6.lean.md: alectryon $
+    AdvancedAdditionWorld/Level6.lean
+build AdvancedAdditionWorld/Level7.lean.md: alectryon $
+    AdvancedAdditionWorld/Level7.lean
+build AdvancedAdditionWorld/Level8.lean.md: alectryon $
+    AdvancedAdditionWorld/Level8.lean
+build AdvancedAdditionWorld/Level9.lean.md: alectryon $
+    AdvancedAdditionWorld/Level9.lean
 build AdvancedPropositionWorld/Level1.lean.md: alectryon $
     AdvancedPropositionWorld/Level1.lean
 build AdvancedPropositionWorld/Level10.lean.md: alectryon $
@@ -71,6 +98,7 @@ build MyNat/Addition.lean.md: alectryon MyNat/Addition.lean
 build MyNat/Definition.lean.md: alectryon MyNat/Definition.lean
 build MyNat/Multiplication.lean.md: alectryon MyNat/Multiplication.lean
 build MyNat/Power.lean.md: alectryon MyNat/Power.lean
+build MyNat/Tactic.lean.md: alectryon MyNat/Tactic.lean
 build PowerWorld/Level1.lean.md: alectryon PowerWorld/Level1.lean
 build PowerWorld/Level2.lean.md: alectryon PowerWorld/Level2.lean
 build PowerWorld/Level3.lean.md: alectryon PowerWorld/Level3.lean
@@ -93,12 +121,25 @@ build TutorialWorld/Level2.lean.md: alectryon TutorialWorld/Level2.lean
 build TutorialWorld/Level3.lean.md: alectryon TutorialWorld/Level3.lean
 build TutorialWorld/Level4.lean.md: alectryon TutorialWorld/Level4.lean
 build docs/index.html: book ./AdditionWorld.lean.md $
-    ./AdvancedPropositionWorld.lean.md ./FunctionWorld.lean.md $
-    ./MultiplicationWorld.lean.md ./MyNat.lean.md ./PowerWorld.lean.md $
-    ./PropositionWorld.lean.md ./TutorialWorld.lean.md $
+    ./AdvancedAdditionWorld.lean.md ./AdvancedPropositionWorld.lean.md $
+    ./FunctionWorld.lean.md ./MultiplicationWorld.lean.md ./MyNat.lean.md $
+    ./PowerWorld.lean.md ./PropositionWorld.lean.md ./TutorialWorld.lean.md $
     AdditionWorld/Level1.lean.md AdditionWorld/Level2.lean.md $
     AdditionWorld/Level3.lean.md AdditionWorld/Level4.lean.md $
     AdditionWorld/Level5.lean.md AdditionWorld/Level6.lean.md $
+    AdvancedAdditionWorld/Level1.lean.md $
+    AdvancedAdditionWorld/Level10.lean.md $
+    AdvancedAdditionWorld/Level11.lean.md $
+    AdvancedAdditionWorld/Level12.lean.md $
+    AdvancedAdditionWorld/Level13.lean.md $
+    AdvancedAdditionWorld/Level2.lean.md $
+    AdvancedAdditionWorld/Level3.lean.md $
+    AdvancedAdditionWorld/Level4.lean.md $
+    AdvancedAdditionWorld/Level5.lean.md $
+    AdvancedAdditionWorld/Level6.lean.md $
+    AdvancedAdditionWorld/Level7.lean.md $
+    AdvancedAdditionWorld/Level8.lean.md $
+    AdvancedAdditionWorld/Level9.lean.md $
     AdvancedPropositionWorld/Level1.lean.md $
     AdvancedPropositionWorld/Level10.lean.md $
     AdvancedPropositionWorld/Level2.lean.md $
@@ -119,14 +160,15 @@ build docs/index.html: book ./AdditionWorld.lean.md $
     MultiplicationWorld/Level7.lean.md MultiplicationWorld/Level8.lean.md $
     MultiplicationWorld/Level9.lean.md MyNat/Addition.lean.md $
     MyNat/Definition.lean.md MyNat/Multiplication.lean.md $
-    MyNat/Power.lean.md PowerWorld/Level1.lean.md PowerWorld/Level2.lean.md $
-    PowerWorld/Level3.lean.md PowerWorld/Level4.lean.md $
-    PowerWorld/Level5.lean.md PowerWorld/Level6.lean.md $
-    PowerWorld/Level7.lean.md PowerWorld/Level8.lean.md $
-    PropositionWorld/Level1.lean.md PropositionWorld/Level2.lean.md $
-    PropositionWorld/Level3.lean.md PropositionWorld/Level4.lean.md $
-    PropositionWorld/Level5.lean.md PropositionWorld/Level6.lean.md $
-    PropositionWorld/Level7.lean.md PropositionWorld/Level8.lean.md $
-    PropositionWorld/Level9.lean.md TutorialWorld/Level1.lean.md $
-    TutorialWorld/Level2.lean.md TutorialWorld/Level3.lean.md $
-    TutorialWorld/Level4.lean.md SUMMARY.md typos.md book.toml
+    MyNat/Power.lean.md MyNat/Tactic.lean.md PowerWorld/Level1.lean.md $
+    PowerWorld/Level2.lean.md PowerWorld/Level3.lean.md $
+    PowerWorld/Level4.lean.md PowerWorld/Level5.lean.md $
+    PowerWorld/Level6.lean.md PowerWorld/Level7.lean.md $
+    PowerWorld/Level8.lean.md PropositionWorld/Level1.lean.md $
+    PropositionWorld/Level2.lean.md PropositionWorld/Level3.lean.md $
+    PropositionWorld/Level4.lean.md PropositionWorld/Level5.lean.md $
+    PropositionWorld/Level6.lean.md PropositionWorld/Level7.lean.md $
+    PropositionWorld/Level8.lean.md PropositionWorld/Level9.lean.md $
+    TutorialWorld/Level1.lean.md TutorialWorld/Level2.lean.md $
+    TutorialWorld/Level3.lean.md TutorialWorld/Level4.lean.md SUMMARY.md $
+    typos.md book.toml

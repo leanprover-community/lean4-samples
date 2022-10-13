@@ -38,18 +38,6 @@ lemma and_symm (P Q : Prop) : P ∧ Q → Q ∧ P := by
 
 /-!
 
-Here's the lean 3 version:
-```lean
-lemma and_symm (P Q : Prop) : P ∧ Q → Q ∧ P :=
-begin
-  intro h,
-  cases h with p q,
-  split,
-  exact q,
-  exact p,
-end
-```
-
 
 Next up [Level 3](./Level3.lean.md)
 -/

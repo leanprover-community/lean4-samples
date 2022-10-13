@@ -21,7 +21,7 @@ What happens if you just try `apply f`? Can you figure out what just happened? T
 
 ## Lemma : no-side-bar
 If `P` and `Q` and `R` are true/false statements, then
-\\((P\implies(Q\implies R))\implies((P\implies Q)\implies(P\implies R))\\).
+\\((P⟹(Q⟹ R))⟹((P⟹ Q)⟹(P⟹ R))\\).
 -/
 example (P Q R : Prop) : (P → (Q → R)) → ((P → Q) → (P → R)) := by
   intro f
