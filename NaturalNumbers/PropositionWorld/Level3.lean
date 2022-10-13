@@ -44,6 +44,7 @@ and then finish the level with
 `exact u`
 
 ## Lemma : no-side-bar
+
 In the maze of logical implications above, if `P` is true then so is `U`.
 -/
 lemma maze (P Q R S T U: Prop)

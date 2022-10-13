@@ -33,7 +33,7 @@ lemma mul_comm (a b : MyNat) : a * b = b * a := by
 You've now proved that the natural numbers are a commutative semiring!
 That's the last collectible in Multiplication World.
 -/
--- instance mynat.comm_semiring : comm_semiring mynat := by structure_helper
+-- instance MyNat.comm_semiring : comm_semiring MyNat := by structure_helper
 -- BUGBUG
 /-!
 But don't leave multiplication just yet -- prove `mul_left_comm`, the last

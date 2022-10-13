@@ -1,5 +1,5 @@
 import MyNat.Definition
-namespace MyNat\in
+namespace MyNat
 open MyNat
 
 /-!
@@ -45,6 +45,7 @@ and then let's output `p`.
 `exact p`
 
 ## Definition
+
 We define an element of `Hom(P,Hom(Q,P))`.
 -/
 example (P Q : Type) : P → (Q → P) := by

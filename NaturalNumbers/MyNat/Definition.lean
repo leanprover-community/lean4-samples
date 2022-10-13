@@ -5,6 +5,7 @@ namespace MyNat
 inductive MyNat where
 | zero : MyNat
 | succ : MyNat → MyNat
+deriving BEq, DecidableEq, Inhabited
 
 instance : Inhabited MyNat where
   default := MyNat.zero

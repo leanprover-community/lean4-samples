@@ -17,6 +17,7 @@ def createNinja(f):
     ninja.rule(name="alectryon", command="alectryon --frontend lean4+markup $in" +
         " --lake lakefile.lean --backend webpage -o $out")
     ninja.rule(name="book", command="mdbook build")
+    ninja.rule(name="lake", command="lake build $in")
 
     os.chdir(os.path.join(script_path))
     print("collecting .lean source files in Examples and Monads folders...")

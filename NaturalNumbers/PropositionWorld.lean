@@ -1,6 +1,12 @@
-import MyNat.Definition
-namespace MyNat
-open MyNat
+import PropositionWorld.Level1
+import PropositionWorld.Level2
+import PropositionWorld.Level3
+import PropositionWorld.Level4
+import PropositionWorld.Level5
+import PropositionWorld.Level6
+import PropositionWorld.Level7
+import PropositionWorld.Level8
+import PropositionWorld.Level9
 /-!
 
 # Proposition world.

@@ -14,3 +14,7 @@ lean_lib TutorialWorld
 lean_lib AdditionWorld
 lean_lib MultiplicationWorld
 lean_lib PowerWorld
+lean_lib FunctionWorld
+lean_lib PropositionWorld
+lean_lib AdvancedPropositionWorld
+lean_lib AdvancedAdditionWorld

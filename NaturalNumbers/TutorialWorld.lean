@@ -4,7 +4,7 @@ import TutorialWorld.Level3
 import TutorialWorld.Level4
 
 /-!
-# The Natural Numbers
+# Natural Numbers Tutorial
 
 This tutorial is based on the [Natural Number
 Game](https://www.ma.imperial.ac.uk/~buzzard/xena/natural_number_game/)

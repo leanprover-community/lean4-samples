@@ -35,7 +35,7 @@ not a proof of `P`).
 ## Lemma : no-side-bar
 We can solve a maze.
 -/
-lemma maze (P Q R S T U: Prop)
+lemma maze₂ (P Q R S T U: Prop)
 (p : P)
 (h : P → Q)
 (i : Q → R)
