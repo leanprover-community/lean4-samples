@@ -58,8 +58,8 @@ In particular, you can prove `succ_ne_zero` below by first using
 Zero is not the successor of any natural number.
 -/
 
-set_option trace.Meta.synthInstance true
-set_option pp.all true
+-- set_option trace.Meta.synthInstance true
+-- set_option pp.all true
 -- theorem succ_ne_zero (a : Nat) : Nat.succ a ≠ 0 := by
 --   symmetry
 --   exact zero_ne_succ a

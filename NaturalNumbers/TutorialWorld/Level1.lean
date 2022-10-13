@@ -17,8 +17,7 @@ goal of the theorem will be a mathematical statement with a `⊢` just before it
 to manipulate and ultimately close (i.e. prove) these goals.
 
 > Note that while lean4 does not define the keyword `lemma` it has been added to the `mathlib4`
-library so it is coming from the `import Mathlib.Tactic.Basic` that you see at the top of
-each level.
+library so it is coming from the `import Mathlib.Tactic.Basic` that is included in `MyNat.Definition`.
 
 Let's see `rfl` in action! At the bottom of the text in this box, there's a lemma, which says that
 if `x`, `y` and `z` are natural numbers then `xy + z = xy + z`. Locate this lemma (if you can't see
