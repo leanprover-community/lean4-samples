@@ -16,36 +16,22 @@ If `P`. `Q` and `R` are true/false statements, then
 -/
 lemma and_or_distrib_left (P Q R : Prop) : P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R) := by
   constructor
+  . intro ⟨hP, hQR⟩
+    cases hQR
+    next hQ =>
+      left; constructor; assumption; assumption
+    next hR =>
+      right; constructor; assumption; assumption
   intro h
-  cases h with
-  | intro hP hQR =>
-    cases hQR with
-    | inl hQ =>
-      left
-      constructor
-      assumption
-      assumption
-    | inr hR =>
-      right
-      constructor
-      assumption
-      assumption
-  intro h
-  cases h with
-  | inl hPQ =>
-    cases hPQ with
-    | intro hP hQ =>
-      constructor
-      assumption
-      left
-      assumption
-  | inr hPR =>
-    cases hPR with
-    | intro hP hR =>
-      constructor
-      assumption
-      right
-      assumption
+  cases h
+  next hPQ =>
+    cases hPQ
+    next hP hQ =>
+      constructor; assumption; left; assumption
+  next hPR =>
+    cases hPR
+    next hP hR =>
+      constructor; assumption; right; assumption
 /-!
 
 Here's the lean 3 version:
