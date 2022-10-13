@@ -1,4 +1,3 @@
-import Mathlib.Tactic.Cases
 import MyNat.Definition
 namespace MyNat
 open MyNat

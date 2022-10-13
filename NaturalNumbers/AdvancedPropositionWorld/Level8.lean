@@ -27,29 +27,38 @@ If `P`. `Q` and `R` are true/false statements, then
 -/
 lemma and_or_distrib_left (P Q R : Prop) : P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R) := by
   constructor
-  · rintro ⟨HP, HQ | HR⟩
+  { rintro ⟨HP, HQ | HR⟩
+    left; constructor <;> assumption;
+    right; constructor <;> assumption
+  }
+  { rintro (⟨HP, HQ⟩ | ⟨HP, HR⟩)
+    constructor; assumption; left; assumption
+    constructor; assumption; right; assumption
+  }
+/-!
+
+
+## Pro tip
+
+Notice here we have used curly braces to group the answers to each of the two sub-goals produced by
+the `constructor` tactic.  But you if you don't like curly braces you can also use dots like this:
+
+-/
+lemma and_or_distrib_left₂ (P Q R : Prop) : P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R) := by
+  constructor
+  . rintro ⟨HP, HQ | HR⟩
     left; constructor <;> assumption
     right; constructor <;> assumption
   . rintro (⟨HP, HQ⟩ | ⟨HP, HR⟩)
     constructor; assumption; left; assumption
     constructor; assumption; right; assumption
 /-!
+Where the definition of the dot is:
+
+> Given a goal state [g1, g2, ... gn], . tacs is a tactic which first changes the goal state to [g1],
+then runs tacs. If the resulting goal state is not [], throw an error.
+Then restore the remaining goals [g2, ..., gn].
 
 
-## Pro tip
-
-Did you spot the `import Mathlib.Tactic.LeftRight`? What do you think it does?
-
-You can make Mathlib available to your Lean package by adding the following
-to your `lakefile.lean`:
-```lean
-require mathlib from git
-  "https://github.com/leanprover-community/mathlib4.git" @ "56b19bdec560037016e326795d0feaa23b402c20"
-```
-This specifies a precise version of mathlib4 by commit Id.
-
--/
-
-/-!
 Next up [Level 9](./Level9.lean.md)
 -/

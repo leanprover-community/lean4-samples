@@ -83,3 +83,9 @@
   - [Level 11](./AdvancedAdditionWorld/Level11.lean.md)
   - [Level 12](./AdvancedAdditionWorld/Level12.lean.md)
   - [Level 13](./AdvancedAdditionWorld/Level13.lean.md)
+
+- [Advanced Multiplication World](./AdvancedMultiplicationWorld.lean.md)
+  - [Level 1](./AdvancedMultiplicationWorld/Level1.lean.md)
+  - [Level 2](./AdvancedMultiplicationWorld/Level2.lean.md)
+  - [Level 3](./AdvancedMultiplicationWorld/Level3.lean.md)
+  - [Level 4](./AdvancedMultiplicationWorld/Level4.lean.md)

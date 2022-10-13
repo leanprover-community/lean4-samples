@@ -27,5 +27,19 @@ and once you know which one you are going for you can change
 the goal with `left` or `right` to the appropriate choice.
 
 
+## Pro Tip!
+
+
+Did you spot the `import Mathlib.Tactic.LeftRight`? What do you think it does?
+
+You can make Mathlib available to your Lean package by adding the following
+to your `lakefile.lean`:
+```lean
+require mathlib from git
+  "https://github.com/leanprover-community/mathlib4.git" @ "56b19bdec560037016e326795d0feaa23b402c20"
+```
+This specifies a precise version of mathlib4 by commit Id.
+
+
 Next up [Level 7](./Level7.lean.md)
 -/
