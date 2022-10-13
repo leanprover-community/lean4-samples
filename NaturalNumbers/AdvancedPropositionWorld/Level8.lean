@@ -28,7 +28,7 @@ If `P`. `Q` and `R` are true/false statements, then
 lemma and_or_distrib_left (P Q R : Prop) : P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R) := by
   constructor
   { rintro ⟨HP, HQ | HR⟩
-    left; constructor <;> assumption
+    left; constructor <;> assumption;
     right; constructor <;> assumption
   }
   { rintro (⟨HP, HQ⟩ | ⟨HP, HR⟩)

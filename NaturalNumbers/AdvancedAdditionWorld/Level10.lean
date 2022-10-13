@@ -3,7 +3,6 @@ import MyNat.Addition
 import AdvancedAdditionWorld.Level9 -- succ_ne_zero
 namespace MyNat
 open MyNat
-axiom succ_ne_zero (a : MyNat) : succ a ≠ 0
 /-!
 # Advanced Addition World
 
