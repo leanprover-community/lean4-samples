@@ -7,3 +7,5 @@ lake build FunctionWorld
 lake build PropositionWorld
 lake build AdvancedPropositionWorld
 lake build AdvancedAdditionWorld
+lake build AdvancedMultiplicationWorld
+lake build InequalityWorld
