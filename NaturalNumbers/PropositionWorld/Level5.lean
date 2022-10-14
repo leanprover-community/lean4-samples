@@ -42,7 +42,7 @@ and now we have to prove `P`, but have a proof handy:
 
 `exact p`
 
-## Lemma : no-side-bar
+## Lemma
 For any propositions `P` and `Q`, we always have
 `P ⟹(Q ⟹ P)`.
 -/

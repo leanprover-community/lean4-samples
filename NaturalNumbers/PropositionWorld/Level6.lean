@@ -19,7 +19,7 @@ now then you can `apply j`. Alternatively you can `apply (f p)` directly.
 What happens if you just try `apply f`? Can you figure out what just happened? This is a little
 `apply` easter egg. Why is it mathematically valid?
 
-## Lemma : no-side-bar
+## Lemma
 If `P` and `Q` and `R` are true/false statements, then
 \\((P⟹(Q⟹ R))⟹((P⟹ Q)⟹(P⟹ R))\\).
 -/

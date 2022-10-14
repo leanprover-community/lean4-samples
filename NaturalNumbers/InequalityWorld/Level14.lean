@@ -17,7 +17,7 @@ actually using ` ≤` in real life, everything will be there. Note also,
 of course, that all of these lemmas are already formalized in Lean's
 maths library already, for Lean's inbuilt natural numbers.
 
-## Lemma
+## Lemma : add_le_add_left
 If `a ≤ b` then for all `t`, `t+a ≤ t+b`.
 -/
 theorem add_le_add_left {a b : MyNat} (h : a ≤ b) (t : MyNat) :

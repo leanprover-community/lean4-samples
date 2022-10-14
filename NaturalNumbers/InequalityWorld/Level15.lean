@@ -25,7 +25,7 @@ But a much more usable definition would be this:
 
 Let's prove that these two definitions are the same
 
-## Lemma :
+## Lemma : lt_aux₁
 For all naturals `a` and `b`, `a ≤ b ∧ ¬(b ≤ a) ⟹ succ a ≤ b.`
 -/
 lemma lt_aux₁ (a b : MyNat) : a ≤ b ∧ ¬ (b ≤ a) → succ a ≤ b := by

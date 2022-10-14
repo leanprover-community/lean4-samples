@@ -25,7 +25,7 @@ to get rid of the two occurrences of `¬`, and I'm sure you can take it from the
 your goal might be to prove `false`. At that point I guess you must be proving something by
 contradiction. Or are you?
 
-## Lemma : no-side-bar
+## Lemma : contrapositive
 If `P` and `Q` are propositions, and `P⟹ Q`, then
 `¬ Q⟹ ¬ P`.
 -/

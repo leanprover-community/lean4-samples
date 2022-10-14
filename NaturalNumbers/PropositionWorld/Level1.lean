@@ -39,7 +39,7 @@ construct the *proof*. `P` is not a proof of `P`, it's `p` that is a proof of `P
 
 The analogy would be like trying to call a function "sin X" with "Float" instead of a number 3.1415.
 
-## Lemma : no-side-bar
+## Lemma
 
 If `P` is true, and `P → Q` is also true, then `Q` is true.
 -/

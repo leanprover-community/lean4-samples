@@ -17,7 +17,7 @@ OK so we are going to *define* `a < b` by `a ≤ b ∧ ¬ (b ≤ a)`,
 and given `lt_aux_one a b` and `lt_aux_two a b` it should now just
 be a few lines to prove `a < b ↔ succ a ≤ b`.
 
-## Lemma :
+## Lemma : lt_iff_succ_le
 For all naturals `a` and `b`, `a<b ↔ succ a ≤ b.`
 -/
 lemma lt_iff_succ_le (a b : MyNat) : a < b ↔ succ a ≤ b := by

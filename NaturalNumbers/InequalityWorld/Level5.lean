@@ -14,7 +14,7 @@ open MyNat
 
 Another straightforward one.
 
-## Lemma
+## Lemma : le_trans
 ≤ is transitive. In other words, if `a ≤ b` and `b ≤ c` then `a ≤ c`.
 -/
 theorem le_trans (a b c : MyNat) (hab : a ≤ b) (hbc : b ≤ c) : a ≤ c := by

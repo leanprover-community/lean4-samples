@@ -43,7 +43,7 @@ and then finish the level with
 
 `exact u`
 
-## Lemma : no-side-bar
+## Lemma : maze
 
 In the maze of logical implications above, if `P` is true then so is `U`.
 -/

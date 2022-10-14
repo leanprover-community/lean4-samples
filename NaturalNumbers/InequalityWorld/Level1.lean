@@ -42,9 +42,8 @@ use the difference `b - a` (note that we have not defined subtraction so
 this does not formally make sense, but you can do the calculation in your head).
 If you have written `rw [le_iff_exists_add]` below, then just put two minus signs `--`
 before it and comment it out. See that the proof still compiles.
--/
 
-/- Lemma : no-side-bar
+## Lemma : one_add_le_self
 If `x` is a natural number, then `x ≤ 1+x`.
 -/
 lemma one_add_le_self (x : MyNat) : x ≤ 1 + x := by
