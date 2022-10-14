@@ -15,7 +15,7 @@ This is trivial -- we can just rewrite our proof of `a=b`.
 But how do we get to that proof? Use the `intro` tactic.
 
 ## Theorem
-For all naturals `a` and `b`, `a=b ⟹ succ(a)=succ(b)`.
+For all naturals `a` and `b`, `a = b ⟹ succ a = succ b`.
 -/
 theorem succ_eq_succ_of_eq {a b : MyNat} : a = b → succ a = succ b := by
   intro h

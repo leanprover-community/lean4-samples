@@ -23,7 +23,7 @@ because `add_zero` is a proof that `x + 0 = x` (more precisely, `add_zero x` is 
 Lean can figure out the `x` from the context).
 
 Now here's the inductive step. If you know how to add `d` to `a`, then Peano tells you how to add
-`succ(d)` to `a`. It looks like this:
+`succ d` to `a`. It looks like this:
 
 - `add_succ (a d : MyNat) : a + (succ d) = succ (a + d)`
 

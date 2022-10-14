@@ -30,6 +30,7 @@ lemma contra (P Q : Prop) : (P ∧ ¬ P) → Q := by
     apply q
     assumption
 
+
 /-!
 ## Pro tip.
 

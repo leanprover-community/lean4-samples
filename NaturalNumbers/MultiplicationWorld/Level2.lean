@@ -12,7 +12,7 @@ open MyNat
 
 In this level we'll need to use
 
-* `one_eq_succ_zero : 1 = succ(0)`
+* `one_eq_succ_zero : 1 = succ 0`
 
 which was mentioned back in [Addition World Level 5](../AdditionWorld/Level5.lean.md) and which will
 be a useful thing to rewrite right now, as we begin to prove a couple of lemmas about how `1`

@@ -16,7 +16,7 @@ This import gives you the definition of multiplication on your natural numbers. 
 recursion, just like addition. Here are the two new axioms:
 
   * `mul_zero (a : MyNat) : a * 0 = 0`
-  * `mul_succ (a b : MyNat) : a * succ(b) = a * b + a`
+  * `mul_succ (a b : MyNat) : a * succ b = a * b + a`
 
 In words, we define multiplication by "induction on the second variable", with `a * 0` defined to be
 `0` and, if we know `a * b`, then `a` times the number after `b` is defined to be `a * b + a`.
