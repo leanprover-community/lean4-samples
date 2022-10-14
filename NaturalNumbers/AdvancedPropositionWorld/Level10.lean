@@ -54,7 +54,7 @@ lemma contrapositive2 (P Q : Prop) : (¬ Q → ¬ P) → (P → Q) := by
   contradiction
 /-!
 
-OK that's enough logic -- now perhaps it's time to go on to Advanced Addition World!
+OK that's enough logic -- now perhaps it's time to go on to [Advanced Addition World](../AdvancedAdditionWorld.lean.md)!
 
 ## Pro tip
 

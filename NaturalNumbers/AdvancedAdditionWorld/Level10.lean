@@ -15,7 +15,7 @@ This means that if you see `a ≠ b` you can *literally treat
 it as saying* `(a = b) → false`. Computer scientists would
 say that these two terms are *definitionally equal*.
 
-The following lemma, `a+b=0 ⟹ b=0`, will be useful in inequality world.
+The following lemma, `a+b=0 ⟹ b=0`, will be useful in [Inequality World](../InequalityWorld.lean.md).
 Let me go through the proof, because it introduces several new
 concepts:
 
