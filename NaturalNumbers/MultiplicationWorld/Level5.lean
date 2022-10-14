@@ -14,7 +14,7 @@ We now have enough to prove that multiplication is associative.
 
 ## Random tactic hints
 
-Did you know you can `repeat` a tactic as many times as necessary
+Did you know you can [repeat](../Tactics/repeat.lean.md) a tactic as many times as necessary
 to complete the goal?
 
 ## Lemma
@@ -35,7 +35,7 @@ lemma mul_assoc (a b c : MyNat) : (a * b) * c = a * (b * c) := by
     rw [ih]
     rw [mul_add]
 
-/-
+/-!
 A mathematician could now remark that you have proved that the natural
 numbers form a monoid under multiplication.
 -/

@@ -37,6 +37,8 @@ theorem le_total (a b : MyNat) : a ≤ b ∨ b ≤ a := by
         exact succ_le_succ d a h
 
 /-!
+See the [revert tactic](../Tactics/revert.lean.md)
+
 Another collectible: the naturals are a linear order.
 
 -- BUGBUG: collectibles

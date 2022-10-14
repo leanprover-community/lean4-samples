@@ -11,7 +11,8 @@ Level 8 is the same as level 7, except we have replaced the
 set  `F` with the empty set `∅`. The same proof will work (after all, our
 previous proof worked for all sets, and the empty set is a set).
 But note that if you start with `intro f; intro h; intro p,`
-(which can incidentally be shortened to `intros f h p`),
+(which can incidentally be shortened to `intros f h p`,
+see [intros tactic](../Tactics/intros.lean.md)),
 then the local context looks like this:
 
 ```

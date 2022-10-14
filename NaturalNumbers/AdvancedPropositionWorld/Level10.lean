@@ -26,7 +26,7 @@ p : P
 ```
 
 The tools you have are not sufficient to continue. But you can just prove this, and any other basic
-lemmas of this form like `¬ ¬ P → P`, using the `by_cases` tactic. Here we start with the usual
+lemmas of this form like `¬ ¬ P → P`, using the [`by_cases` tactic](../Tactics/by_cases.lean.md). Here we start with the usual
 `intros` to turn the implication into hypotheses `h : ¬ Q → ¬ P` and `p : P` which leaves with the
 goal of `⊢ Q`.  But how can you prove `Q` using these hypotheses?  You can use this tactic:
 
@@ -34,9 +34,9 @@ goal of `⊢ Q`.  But how can you prove `Q` using these hypotheses?  You can use
 
 This creates two sub-goals `pos` and `neg` with the first one assuming Q is true - which can easily
 satisfy the goal! and the second one assuming Q is false. But how can `h: ¬Q → ¬P`, `p: P`, `q: ¬Q`
-prove the goal `⊢ Q` ? Well if you apply `q` to the hypothesis `h` you end up with the conclusion `¬
-P`, but then you have a contradiction in your hypotheses saying `P` and `¬ P` which the
-`contradiction` tactic can take care of.
+prove the goal `⊢ Q` ? Well if you apply `q` to the hypothesis `h` you end up with the conclusion
+`¬ P`, but then you have a contradiction in your hypotheses saying `P` and `¬ P` which the
+[`contradiction` tactic](../Tactics/contradiction.lean.md) can take care of.
 
 The `contradiction` tactic closes the main goal if its hypotheses
 are "trivially contradictory".
@@ -58,57 +58,11 @@ OK that's enough logic -- now perhaps it's time to go on to [Advanced Addition W
 
 ## Pro tip
 
-In fact the tactic `tauto!` just kills this goal (and many other logic goals) immediately.
-
-## Tactic : by_cases
-
-## Summary
-
-`by_cases h : P` does a cases split on whether `P` is true or false.
-
-## Details
-
-Some logic goals cannot be proved with `intro` and `apply` and `exact`.
-The simplest example is the law of the excluded middle `¬ ¬ P → P`.
-You can prove this using truth tables but not with `intro`, `apply` etc.
-To do a truth table proof, the tactic `by_cases h : P` will turn a goal of
-`⊢ ¬ ¬ P → P` into two goals
-
-```
-P : Prop,
-h : P
-⊢ ¬¬P → P
-
-P : Prop,
-h : ¬P
-⊢ ¬¬P → P
-```
+In fact the [tactic `tauto!`](../Tactics/tauto.lean.md) just kills this goal (and many other logic goals) immediately.
 
 Each of these can now be proved using `intro`, `apply`, `exact` and `exfalso`.
 Remember though that in these simple logic cases, high-powered logic
-tactics like `cc` and `tauto!` will just prove everything.
+tactics like `tauto!` will just prove everything.
 
 
-
-## Tactic : tauto
-
-## Summary
-
-The `tauto` tactic (and its variant `tauto!`) will close various logic
-goals.
-
-## Details
-
-`tauto` is an all-purpose logic tactic which will try to solve goals using pure
-logical reasoning -- for example it will close the following goal:
-
-```
-P Q : Prop,
-hP : P,
-hQ : Q
-⊢ P ∧ Q
-```
-
-`tauto` is supposed to only use constructive logic, but its big brother `tauto!` uses classical logic
-and hence closes more goals.
 -/

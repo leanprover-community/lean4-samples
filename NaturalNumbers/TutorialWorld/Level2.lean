@@ -40,7 +40,8 @@ to see what the tactic state is at that point in the proof.
 The other way you know the goal is complete is to look a the Visual Studio Code
 Problems list window, if there are no error saying "unsolved goals" then you are done.
 
-The documentation for `rewrite` will appear when you hover the mouse over it.
+The documentation for `rewrite` will appear when you hover the mouse over it. We have also included
+a [Tactics Section](../Tactics.lean.md) that lists all the tactics we use in this tutorial.
 
 Now, Lean has another similar tactic named `rw` which does both the `rewrite`
 and the `rfl`.  Try changing to `rw` above and you will see the `rfl` is

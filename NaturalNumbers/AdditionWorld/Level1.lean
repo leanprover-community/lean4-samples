@@ -37,8 +37,8 @@ lemma zero_add (n : MyNat) : 0 + n = n := by
 
 /-!
 
-Notice that the induction tactic has created *two sub-goals* which you can match using
-vertical bar pattern patching.
+Notice that the [induction tactic](../Tactics/induction.lean.md) has created *two sub-goals*
+which you can match using vertical bar pattern patching.
 
 The induction tactic has generated for us a base case with `n = zero` (the goal at the top)
 and an inductive step (the goal underneath). The golden rule: **Tactics operate on the first goal**
@@ -114,7 +114,7 @@ give you a good grounding in these three basic tactics; after that, if you
 are still interested, there are other worlds to master, where you can learn
 more tactics.
 
-But we're getting ahead of ourselves, you still have to beat the rest of Addition World.
+But we're getting ahead of ourselves, you still have to read the rest of Addition World.
 We're going to stop explaining stuff carefully now. If you get stuck or want
 to know more about Lean (e.g. how to do much harder maths in Lean),
 ask in `#new members` at [the Lean chat](https://leanprover.zulipchat.com).

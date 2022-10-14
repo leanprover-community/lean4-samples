@@ -17,6 +17,7 @@ build ./MultiplicationWorld.lean.md: alectryon ./MultiplicationWorld.lean
 build ./MyNat.lean.md: alectryon ./MyNat.lean
 build ./PowerWorld.lean.md: alectryon ./PowerWorld.lean
 build ./PropositionWorld.lean.md: alectryon ./PropositionWorld.lean
+build ./Tactics.lean.md: alectryon ./Tactics.lean
 build ./TutorialWorld.lean.md: alectryon ./TutorialWorld.lean
 build AdditionWorld/Level1.lean.md: alectryon AdditionWorld/Level1.lean
 build AdditionWorld/Level2.lean.md: alectryon AdditionWorld/Level2.lean
@@ -146,6 +147,28 @@ build PropositionWorld/Level6.lean.md: alectryon PropositionWorld/Level6.lean
 build PropositionWorld/Level7.lean.md: alectryon PropositionWorld/Level7.lean
 build PropositionWorld/Level8.lean.md: alectryon PropositionWorld/Level8.lean
 build PropositionWorld/Level9.lean.md: alectryon PropositionWorld/Level9.lean
+build Tactics/apply.lean.md: alectryon Tactics/apply.lean
+build Tactics/assumption.lean.md: alectryon Tactics/assumption.lean
+build Tactics/by_cases.lean.md: alectryon Tactics/by_cases.lean
+build Tactics/cases.lean.md: alectryon Tactics/cases.lean
+build Tactics/concatenate.lean.md: alectryon Tactics/concatenate.lean
+build Tactics/constructor.lean.md: alectryon Tactics/constructor.lean
+build Tactics/contradiction.lean.md: alectryon Tactics/contradiction.lean
+build Tactics/exact.lean.md: alectryon Tactics/exact.lean
+build Tactics/exfalso.lean.md: alectryon Tactics/exfalso.lean
+build Tactics/have.lean.md: alectryon Tactics/have.lean
+build Tactics/induction.lean.md: alectryon Tactics/induction.lean
+build Tactics/intro.lean.md: alectryon Tactics/intro.lean
+build Tactics/intros.lean.md: alectryon Tactics/intros.lean
+build Tactics/leftright.lean.md: alectryon Tactics/leftright.lean
+build Tactics/repeat.lean.md: alectryon Tactics/repeat.lean
+build Tactics/revert.lean.md: alectryon Tactics/revert.lean
+build Tactics/rewrite.lean.md: alectryon Tactics/rewrite.lean
+build Tactics/rfl.lean.md: alectryon Tactics/rfl.lean
+build Tactics/rw.lean.md: alectryon Tactics/rw.lean
+build Tactics/simp.lean.md: alectryon Tactics/simp.lean
+build Tactics/tauto.lean.md: alectryon Tactics/tauto.lean
+build Tactics/use.lean.md: alectryon Tactics/use.lean
 build TutorialWorld/Level1.lean.md: alectryon TutorialWorld/Level1.lean
 build TutorialWorld/Level2.lean.md: alectryon TutorialWorld/Level2.lean
 build TutorialWorld/Level3.lean.md: alectryon TutorialWorld/Level3.lean
@@ -154,11 +177,11 @@ build docs/index.html: book ./AdditionWorld.lean.md $
     ./AdvancedAdditionWorld.lean.md ./AdvancedMultiplicationWorld.Lean.md $
     ./AdvancedPropositionWorld.lean.md ./FunctionWorld.lean.md $
     ./InequalityWorld.lean.md ./MultiplicationWorld.lean.md ./MyNat.lean.md $
-    ./PowerWorld.lean.md ./PropositionWorld.lean.md ./TutorialWorld.lean.md $
-    AdditionWorld/Level1.lean.md AdditionWorld/Level2.lean.md $
-    AdditionWorld/Level3.lean.md AdditionWorld/Level4.lean.md $
-    AdditionWorld/Level5.lean.md AdditionWorld/Level6.lean.md $
-    AdvancedAdditionWorld/Level1.lean.md $
+    ./PowerWorld.lean.md ./PropositionWorld.lean.md ./Tactics.lean.md $
+    ./TutorialWorld.lean.md AdditionWorld/Level1.lean.md $
+    AdditionWorld/Level2.lean.md AdditionWorld/Level3.lean.md $
+    AdditionWorld/Level4.lean.md AdditionWorld/Level5.lean.md $
+    AdditionWorld/Level6.lean.md AdvancedAdditionWorld/Level1.lean.md $
     AdvancedAdditionWorld/Level10.lean.md $
     AdvancedAdditionWorld/Level11.lean.md $
     AdvancedAdditionWorld/Level12.lean.md $
@@ -213,6 +236,16 @@ build docs/index.html: book ./AdditionWorld.lean.md $
     PropositionWorld/Level3.lean.md PropositionWorld/Level4.lean.md $
     PropositionWorld/Level5.lean.md PropositionWorld/Level6.lean.md $
     PropositionWorld/Level7.lean.md PropositionWorld/Level8.lean.md $
-    PropositionWorld/Level9.lean.md TutorialWorld/Level1.lean.md $
-    TutorialWorld/Level2.lean.md TutorialWorld/Level3.lean.md $
-    TutorialWorld/Level4.lean.md SUMMARY.md typos.md book.toml
+    PropositionWorld/Level9.lean.md Tactics/apply.lean.md $
+    Tactics/assumption.lean.md Tactics/by_cases.lean.md $
+    Tactics/cases.lean.md Tactics/concatenate.lean.md $
+    Tactics/constructor.lean.md Tactics/contradiction.lean.md $
+    Tactics/exact.lean.md Tactics/exfalso.lean.md Tactics/have.lean.md $
+    Tactics/induction.lean.md Tactics/intro.lean.md Tactics/intros.lean.md $
+    Tactics/leftright.lean.md Tactics/repeat.lean.md Tactics/revert.lean.md $
+    Tactics/rewrite.lean.md Tactics/rfl.lean.md Tactics/rw.lean.md $
+    Tactics/simp.lean.md Tactics/tauto.lean.md Tactics/use.lean.md $
+    TutorialWorld/Level1.lean.md TutorialWorld/Level2.lean.md $
+    TutorialWorld/Level3.lean.md TutorialWorld/Level4.lean.md $
+    AdvancedMultiplicationWorld.Lean.md SUMMARY.md typos.md $
+    Tactics/induction.simp.md Tactics/intro.have.md book.toml

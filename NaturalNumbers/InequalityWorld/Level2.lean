@@ -22,9 +22,9 @@ lemma le_refl_mynat (x : MyNat) : x ≤ x := by
   use 0
 
 /-!
-## Upgrading the `refl` tactic
+## Upgrading the `rfl` tactic
 
-Now with the following incantation you can teach the MathLib refl tactic
+Now with the following incantation you can teach the MathLib rfl tactic
 about our new lemma.
 -/
 attribute [refl] MyNat.le_refl_mynat
@@ -43,7 +43,7 @@ below -- so I need to move this info to another place where it makes sense.
 
 Did you skip `rw [le_iff_exists_add]` in your proof of `le_refl_mynat` above?
 Instead of `rw [add_zero]` or `ring` or `exact add_zero x` at the end there,
-what happens if you just try `refl`? The *definition* of `x + 0` is `x`,
+what happens if you just try `rfl`? The *definition* of `x + 0` is `x`,
 so you don't need to `rw add_zero` either! The proof
 
 ```
@@ -65,8 +65,8 @@ in a maths talk, as long as they're all logically equivalent. In Lean, a definit
 is *one thing*, and definitional equality is a subtle concept which depends on
 exactly which definition you chose. `add_comm` is certainly not true by definition,
 which means that if we had decided to define `a ≤ b` by `∃ c, b = c + a` (rather
-than `a + c`) all the same theorems would be true, but `refl` would work in
-different places. `refl` closes a goal of the form `X = Y` if `X` and `Y` are
+than `a + c`) all the same theorems would be true, but `rfl` would work in
+different places. `rfl` closes a goal of the form `X = Y` if `X` and `Y` are
 definitionally equal.
 
 

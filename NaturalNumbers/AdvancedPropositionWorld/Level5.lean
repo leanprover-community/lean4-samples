@@ -34,7 +34,7 @@ lemma iff_trans₂ (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) := by
 
 ### Another trick
 
-Instead of using `cases` on `h : P ↔ Q`, you can just `rw h`, and this will change all `P`s to `Q`s
+Instead of using `cases` on `h : P ↔ Q`, you can just `rw [h]`, and this will change all `P`s to `Q`s
 in the goal. You can use this to create a much shorter proof. Note that
 this is an argument for *not* running the `cases` tactic on an iff statement;
 you cannot rewrite one-way implications, but you can rewrite two-way implications.

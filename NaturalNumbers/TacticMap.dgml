@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="TopToBottom" Layout="Sugiyama" Offset="-1561.88656616211,-257.552846720134" ZoomLevel="1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="&lt;;&gt;" Bounds="-703.151428222656,286.095063679937,50,25.96" UseManualLocation="True" />
+    <Node Id="AdditionWorld" Bounds="-903.436666666667,-300.758652252315,97.49,25.96" UseManualLocation="True" />
+    <Node Id="AdvancedPropositionWorld" Bounds="-1082.05480264999,210.174861450195,165.053333333333,25.96" UseManualLocation="True" />
+    <Node Id="AdvancedPropositionWorld1" Bounds="-1018.43313028971,97.254663678037,165.053333333333,25.96" Label="AdvancedPropositionWorld" UseManualLocation="True" />
+    <Node Id="Apply" Bounds="-881.714782409668,-42.9363200264124,50,25.96" Label="apply" UseManualLocation="True" />
+    <Node Id="Assumption" Bounds="-756.714784749349,-49.665536320063,81.2666666666667,25.96" Label="assumption" UseManualLocation="True" />
+    <Node Id="By_cases" Bounds="-724.714802652995,118.214763679937,65.9533333333333,25.96" Label="by_cases" UseManualLocation="True" />
+    <Node Id="Cases" Bounds="-1047.00146931666,154.214763183594,50,25.96" Label="cases" UseManualLocation="True" />
+    <Node Id="Constructor" Bounds="-774.714788818359,6.294563679937,80.3000000000002,25.96" Label="constructor" UseManualLocation="True" />
+    <Node Id="Contradiction" Bounds="-673.714802652995,174.174863679937,90.02,25.96" Label="contradiction" UseManualLocation="True" />
+    <Node Id="Exact" Bounds="-757.714782714844,-217.545836320063,50,25.96" Label="exact" UseManualLocation="True" />
+    <Node Id="Exfalso" Bounds="-718.714798177083,230.134963679937,56.6766666666667,25.96" Label="exfalso" UseManualLocation="True" />
+    <Node Id="FunctionWorld" Bounds="-927.433115743001,-98.8964200264124,97.6933333333334,25.96" UseManualLocation="True" />
+    <Node Id="Have" Bounds="-782.714782714844,-105.625636320063,50,25.96" Label="have" UseManualLocation="True" />
+    <Node Id="Induction" Bounds="-689.859154052734,-385.426136320063,69.8899999999999,25.96" Label="induction" UseManualLocation="True" />
+    <Node Id="InequalityWorld" Bounds="-1070.79085195166,376.427253279466,103.826666666667,25.96" UseManualLocation="True" />
+    <Node Id="Intro" Bounds="-749.714782714844,-161.585736320063,50,25.96" Label="intro" UseManualLocation="True" />
+    <Node Id="Intros" Bounds="-702.714782409668,-105.625636320063,50.0599999999999,25.96" Label="intros" UseManualLocation="True" />
+    <Node Id="Left" Bounds="-967.001469316662,153.214763183594,50,25.96" Label="left" UseManualLocation="True" />
+    <Node Id="MultiplicationWorld" Bounds="-920.577494710286,-163.728748123228,124.673333333333,25.96" UseManualLocation="True" />
+    <Node Id="PropositionWorld" Bounds="-934.433115743001,35.1947636779371,112.716666666667,25.96" UseManualLocation="True" />
+    <Node Id="Rcases" Bounds="-807.001469316662,153.214763183594,52.2866666666666,25.96" Label="rcases" UseManualLocation="True" />
+    <Node Id="Repeat" Bounds="-738.42957804362,-273.505936320063,53.9533333333334,25.96" Label="repeat" UseManualLocation="True" />
+    <Node Id="Revert" Bounds="-910.168232828776,376.427253279466,50.7133333333334,25.96" Label="revert" UseManualLocation="True" />
+    <Node Id="Rewrite" Bounds="-645.718340657552,-497.346336320063,56.5466666666666,25.96" Label="rewrite" UseManualLocation="True" />
+    <Node Id="Rfl" Bounds="-632.718322753906,-553.306436320063,50,25.96" Label="rfl" UseManualLocation="True" />
+    <Node Id="Right" Bounds="-887.001469316662,159.214763183594,50,25.96" Label="right" UseManualLocation="True" />
+    <Node Id="Rw" Bounds="-698.718322753906,-441.386236320063,50,25.96" Label="rw" UseManualLocation="True" />
+    <Node Id="Simp" Bounds="-689.859130859375,-329.466036320063,50,25.96" Label="simp" UseManualLocation="True" />
+    <Node Id="TutorialWorld" Bounds="-889,-485.718652252315,92.1833333333334,25.96" UseManualLocation="True" />
+    <Node Id="Use" Bounds="-703.714782714844,62.254663679937,50,25.96" Label="use" UseManualLocation="True" />
+    <Node Id="Use1" Bounds="-957.168232828776,320.467153279466,50,25.96" Label="use" UseManualLocation="True" />
+  </Nodes>
+  <Links>
+    <Link Source="AdditionWorld" Target="Induction" Bounds="-824.064653920499,-355.954232532156,130.236959997133,55.1955802798409" />
+    <Link Source="AdditionWorld" Target="Simp" Bounds="-805.946666666667,-311.359694328376,107.18871390834,16.2095900200081" />
+    <Link Source="AdvancedPropositionWorld" Target="&lt;;&gt;" Bounds="-944.58268610017,236.134861450195,232.672342836296,54.9651884994543" />
+    <Link Source="AdvancedPropositionWorld1" Target="By_cases" Bounds="-853.37979695638,117.318987034657,119.69797260919,10.2752119895979" />
+    <Link Source="AdvancedPropositionWorld1" Target="Cases" Bounds="-994.876267878096,123.214664916992,39.3505759195815,26.0341776293415" />
+    <Link Source="AdvancedPropositionWorld1" Target="Constructor" Bounds="-903.164916992188,36.2110824584961,133.99658203125,61.0435791015625" />
+    <Link Source="AdvancedPropositionWorld1" Target="Contradiction" Bounds="-880.376770019531,123.214668273926,209.246887207031,48.9112167358398" />
+    <Link Source="AdvancedPropositionWorld1" Target="Exfalso" Bounds="-899.472045898438,123.214668273926,173.069396972656,104.608116149902" />
+    <Link Source="AdvancedPropositionWorld1" Target="Left" Bounds="-939.613236888045,123.214664916992,2.29303068137688,21.0530110566767" />
+    <Link Source="AdvancedPropositionWorld1" Target="Rcases" Bounds="-899.942855312966,123.214664916992,84.4758669665845,30.4890639385287" />
+    <Link Source="AdvancedPropositionWorld1" Target="Right" Bounds="-920.424130460377,123.214664916992,36.0434719790479,30.2179433404837" />
+    <Link Source="AdvancedPropositionWorld1" Target="Use" Bounds="-853.637132580603,79.8503773777647,141.004546363556,19.1886428041827" />
+    <Link Source="FunctionWorld" Target="Apply" Bounds="-873.513300461912,-72.9364237976074,8.44911439433577,21.6176100959543" />
+    <Link Source="FunctionWorld" Target="Exact" Bounds="-849.125610351563,-184.133682250977,102.574890136719,85.2372589111328" />
+    <Link Source="FunctionWorld" Target="Have" Bounds="-829.739789632162,-90.7535504255048,38.0389219368348,2.11771693274524" />
+    <Link Source="FunctionWorld" Target="Intro" Bounds="-846.726889767377,-135.027489512201,88.6841365166675,36.1310657145939" />
+    <Link Source="FunctionWorld" Target="Intros" Bounds="-829.739807128906,-81.0873947143555,124.264038085938,7.03795623779297" />
+    <Link Source="InequalityWorld" Target="Revert" Bounds="-966.964199625651,389.407262988621,47.7959790039063,5.43992416623951E-06" />
+    <Link Source="InequalityWorld" Target="Use1" Bounds="-998.765227240248,351.307441642215,38.9227586813959,25.1198154378628" />
+    <Link Source="MultiplicationWorld" Target="Repeat" Bounds="-840.884697962049,-242.155800779354,104.868268706772,78.4270526561258" />
+    <Link Source="PropositionWorld" Target="Assumption" Bounds="-853.296724397297,-19.5292165429009,104.464865684109,54.723980220838" />
+    <Link Source="TutorialWorld" Target="Rewrite" Bounds="-796.816658528646,-482.444678876469,142.110262732715,7.32896049750684" />
+    <Link Source="TutorialWorld" Target="Rfl" Bounds="-798.614975340418,-530.656286660124,157.246742240617,45.1888137404867" />
+    <Link Source="TutorialWorld" Target="Rw" Bounds="-797.508260697943,-460.842599188628,90.0838498016896,23.6044422454265" />
+  </Links>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Diagrams.Layout.LayoutOrientation" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="Layout" DataType="System.String" />
+    <Property Id="Offset" DataType="System.String" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+    <Property Id="ZoomLevel" DataType="System.String" />
+  </Properties>
+</DirectedGraph>

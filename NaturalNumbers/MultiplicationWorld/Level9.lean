@@ -16,7 +16,7 @@ You are equipped with
 * `mul_comm (a b : MyNat) : a * b = b * a`
 
 Re-read the docs for `rw` so you know all the tricks.
-You can see them in the "tactics" drop-down menu on the left.
+You can see them in the [Tactics section](../Tactics.lean.md) on the left.
 
 ## Lemma
 For all natural numbers `a` `b` and `c`, we have `a(bc) = b(ac)`
