@@ -1,6 +1,8 @@
 import MyNat.Definition
 import MyNat.Power
+import MyNat.Inequality -- LE
 import InequalityWorld.Level4 -- zero_le
+import InequalityWorld.Level5 -- le_trans
 import InequalityWorld.Level17 -- lt, lt_iff_succ_le
 import MultiplicationWorld.Level4 -- mul_add
 import MultiplicationWorld.Level8 -- mul_comm
@@ -218,8 +220,8 @@ theorem mul_lt_mul_of_pos_left (a b c : MyNat) : a < b → 0 < c → c * a < c *
     | succ e he =>
       rw [succ_mul]
       rw [succ_mul (succ e)]
-      have h := succ e * a + a < succ e * b + a
-      exact add_lt_add_right _ _ he _
+      have h : succ e * a + a < succ e * b + a := by
+        exact add_lt_add_right _ _ he _
       apply lt_trans _ _ _ h
       rw [add_comm]
       rw [add_comm _ b]
@@ -234,6 +236,7 @@ theorem mul_lt_mul_of_pos_right (a b c : MyNat) : a < b → 0 < c → a * c < b 
   assumption
   assumption
 
+-- BUGBUG todo
 -- And now another achievement! The naturals are an ordered semiring.
 -- instance : ordered_semiring MyNat :=
 -- { mul_le_mul_of_nonneg_left := mul_le_mul_of_nonneg_left,
@@ -244,6 +247,12 @@ theorem mul_lt_mul_of_pos_right (a b c : MyNat) : a < b → 0 < c → a * c < b 
 --   ..MyNat.ordered_cancel_comm_monoid
 -- }
 
+-- The Orderd semiring would give us this theorem, but we can do it manually instead.
+lemma mul_le_mul {a b c d : MyNat} (hac : a ≤ c) (hbd : b ≤ d) (nn_b : 0 ≤ b) (nn_c : 0 ≤ c) : a * b ≤ c * d := by
+  calc
+    a * b ≤ c * b := mul_le_mul_of_nonneg_right _ _ _ hac nn_b
+    _ ≤ c * d := mul_le_mul_of_nonneg_left _ _ _ hbd nn_c
+
 lemma le_mul (a b c d : MyNat) : a ≤ b → c ≤ d → a * c ≤ b * d := by
   intros hab hcd
   induction a with
@@ -251,10 +260,10 @@ lemma le_mul (a b c d : MyNat) : a ≤ b → c ≤ d → a * c ≤ b * d := by
     rw [zero_is_0, zero_mul]
     apply zero_le
   | succ t Ht =>
-    have cz := 0 ≤ c
-    apply zero_le
-    have bz := 0 ≤ b
-    apply zero_le
+    have cz : 0 ≤ c := by
+      apply zero_le
+    have bz : 0 ≤ b := by
+      apply zero_le
     apply mul_le_mul hab hcd cz bz
 
 lemma pow_le (m n a : MyNat) : m ≤ n → m ^ a ≤ n ^ a := by

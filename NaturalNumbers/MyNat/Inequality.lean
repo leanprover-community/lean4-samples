@@ -18,4 +18,11 @@ theorem le_def' : MyNat.le = (.≤.) := rfl
 
 theorem le_iff_exists_add (a b : MyNat) : a ≤ b ↔ ∃ (c : MyNat), b = a + c := Iff.rfl
 
+def lt_mynat (a b : MyNat) := a ≤ b ∧ ¬ (b ≤ a)
+
+instance : LT MyNat := ⟨lt_mynat⟩
+
+theorem lt :  ∀ (a b : MyNat), a < b ↔ a ≤ b ∧ ¬b ≤ a := fun _ _ => Iff.rfl
+
+
 end MyNat
