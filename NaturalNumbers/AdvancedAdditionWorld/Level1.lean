@@ -17,7 +17,7 @@ directly using an `exact`, and one which uses an `apply` first. But either way y
 `succ_inj`.
 
 ## Theorem
-For all naturals `a` and `b`, if we assume `succ(a) = succ(b)`, then we can
+For all naturals `a` and `b`, if we assume `succ a = succ b`, then we can
 deduce `a = b`.
 -/
 theorem succ_inj' {a b : MyNat} (hs : succ a = succ b) :  a = b := by

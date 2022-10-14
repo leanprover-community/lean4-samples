@@ -34,7 +34,7 @@ example (A B C D E F G H I J K L : Type)
 
 /-!
 Here we finish this proof with a new tactic `assumption` instead of `exact a`.
-The `assumption` tactic tries to solve the goal using a
+The [`assumption` tactic](../Tactics/assumption.lean.md) tries to solve the goal using a
 hypothesis of compatible type.  Since we have the hypothesis named `a` it finds
 it and completes the proof.
 
@@ -42,4 +42,3 @@ That's the end of Function World! Next it's [Proposition World](../PropositionWo
 the tactics you've learnt in Function World are enough to solve all nine levels! In fact, the levels
 in [Proposition World](../PropositionWorld.lean.md) might look strangely familiar...
 -/
-

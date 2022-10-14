@@ -12,7 +12,7 @@ open MyNat
 ## Level 13: `ne_succ_self`
 
 The last level in Advanced Addition World is the statement
-that `n ≠ succ n`. W
+that `n ≠ succ n`.
 
 ## Lemma
 For any natural number `n`, we have ` n ≠ succ n`.

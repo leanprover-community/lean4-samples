@@ -11,7 +11,7 @@ open MyNat
 
 Recall that if `b : MyNat` is a hypothesis and you do `cases b with`,
 your one goal will split into two goals,
-namely the cases `b = 0` and `b = succ(n)`. So `cases` here is like
+namely the cases `b = 0` and `b = succ n`. So `cases` here is like
 a weaker version of induction (you don't get the inductive hypothesis).
 
 ## Tricks

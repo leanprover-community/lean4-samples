@@ -109,6 +109,8 @@ example (a b c d e : MyNat) :
 Imagine having to do that one by hand! The AI closes the goal because it knows how to use
 associativity and commutativity sensibly in a commutative monoid.
 
+For more info see the [simp tactic](../Tactics/simp.lean.md).
+
 You are now done with addition world. You can now decide whether to press on with
 [Multiplication World](../MultiplicationWorld.lean.md) and [Power World](../PowerWorld.lean.md)
 (which can be solved with `rw`, `rfl` and `induction`), or to go on to

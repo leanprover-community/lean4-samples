@@ -24,7 +24,7 @@ you're now equipped with which we'll need in this world.
 ## Theorems:
 
   * `add_zero (a : MyNat) : a + 0 = a`. Use with `rw [add_zero]`.
-  * `add_succ (a b : MyNat) : a + succ(b) = succ(a + b)`. Use with `rw [add_succ]`.
+  * `add_succ (a b : MyNat) : a + succ b = succ (a + b)`. Use with `rw [add_succ]`.
   * The principle of mathematical induction. Use with `induction` (see below)
 
 

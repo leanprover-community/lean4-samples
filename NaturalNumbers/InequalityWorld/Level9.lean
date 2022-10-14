@@ -11,7 +11,7 @@ open MyNat
 
 ## Level 9: `le_total`
 
-## Lemma
+## Lemma : le_total
 For all naturals `a` and `b`, either `a ≤ b` or `b ≤ a`.
 -/
 theorem le_total (a b : MyNat) : a ≤ b ∨ b ≤ a := by
@@ -28,7 +28,8 @@ theorem le_total (a b : MyNat) : a ≤ b ∨ b ≤ a := by
       left
       exact zero_le _
     | succ a =>
-      cases (hd a) with
+      have h2 := hd a
+      cases h2 with
       | inl h =>
         left
         exact succ_le_succ a d h
@@ -37,6 +38,15 @@ theorem le_total (a b : MyNat) : a ≤ b ∨ b ≤ a := by
         exact succ_le_succ d a h
 
 /-!
+See the [revert tactic](../Tactics/revert.lean.md)
+
+Note in the above proof that `exact succ_le_succ a d h`
+is just shorthand for:
+`
+apply succ_le_succ a d
+exact h
+`
+
 Another collectible: the naturals are a linear order.
 
 -- BUGBUG: collectibles

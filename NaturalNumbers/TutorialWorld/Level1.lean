@@ -47,6 +47,7 @@ when the cursor is placed at the end of the line that completes the proof.
 If you want to be reminded about the `rfl` tactic, you can hover the mouse over the `rfl` keyword and
 a tooltip will appear with information about this tactic.  You can also press F12 to jump to the
 definition of that tactic were there will be lots more handy information.
+We have also included a [Tactics Section](../Tactics.lean.md) that lists all the tactics we use in this tutorial.
 
 Now click on "next level" in the top right of your browser to go onto the second level of tutorial
 world, where we'll learn about the rw tactic.

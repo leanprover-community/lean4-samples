@@ -16,7 +16,7 @@ your natural numbers. It is defined by recursion, just like addition and multipl
 the two new axioms:
 
   * `pow_zero (a : MyNat) : a ^ 0 = 1`
-  * `pow_succ (a b : MyNat) : a ^ succ(b) = a ^ b * a`
+  * `pow_succ (a b : MyNat) : a ^ succ b = a ^ b * a`
 
 The power function has various relations to addition and multiplication.
 If you have gone through levels 1--6 of [Addition World](./AdditionWorld.lean) and

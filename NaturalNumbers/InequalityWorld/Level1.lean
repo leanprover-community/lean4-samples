@@ -9,7 +9,7 @@ open MyNat
 
 # Inequality world.
 
-## Level 1: the `use` tactic.
+## Level 1: the [`use` tactic](../Tactics/use.lean.md)
 
 The goal below is to prove `x ≤ 1+x` for any natural number `x`.
 First let's turn the goal explicitly into an existence problem with
@@ -42,9 +42,8 @@ use the difference `b - a` (note that we have not defined subtraction so
 this does not formally make sense, but you can do the calculation in your head).
 If you have written `rw [le_iff_exists_add]` below, then just put two minus signs `--`
 before it and comment it out. See that the proof still compiles.
--/
 
-/- Lemma : no-side-bar
+## Lemma : one_add_le_self
 If `x` is a natural number, then `x ≤ 1+x`.
 -/
 lemma one_add_le_self (x : MyNat) : x ≤ 1 + x := by
@@ -53,22 +52,6 @@ lemma one_add_le_self (x : MyNat) : x ≤ 1 + x := by
   rw [add_comm]
 
 /-!
-
-## Tactic : use
-## Summary
-
-`use` works on the goal. If your goal is `⊢ ∃ c : MyNat, 1 + x = x + c`
-then `use 1` will turn the goal into `⊢ 1 + x = x + 1`, and the rather
-more unwise `use 0` will turn it into the impossible-to-prove
-`⊢ 1 + x = x + 0`.
-
-## Details
-
-`use` is a tactic which works on goals of the form `⊢ ∃ c, P(c)` where
-`P(c)` is some proposition which depends on `c`. With a goal of this
-form, `use 0` will turn the goal into `⊢ P(0)`, `use x + y` (assuming
-`x` and `y` are natural numbers in your local context) will turn
-the goal into `P(x + y)` and so on.
 
 
 Next up [Level 2](./Level2.lean.md)

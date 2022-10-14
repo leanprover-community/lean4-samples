@@ -11,7 +11,7 @@ open MyNat
 ## Level 7: `add_right_cancel_iff`
 
 It's sometimes convenient to have the "if and only if" version
-of theorems like `add_right_cancel`. Remember that you can use `split`
+of theorems like `add_right_cancel`. Remember that you can use `constructor`
 to split an `↔` goal into the `→` goal and the `←` goal.
 
 ## Pro tip:

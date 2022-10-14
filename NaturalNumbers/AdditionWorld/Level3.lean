@@ -20,7 +20,7 @@ you can do things like `rw [add_succ (succ a)]` or
 `[rw add_succ (succ a) d]`, telling Lean explicitly what to use for
 the input variables for the function `add_succ`. Indeed, `add_succ`
 is a function -- it takes as input two variables `a` and `b` and outputs a proof
-that `a + succ(b) = succ(a + b)`. The tactic `rw [add_succ]` just says to Lean "guess
+that `a + succ b = succ (a + b)`. The tactic `rw [add_succ]` just says to Lean "guess
 what the variables are".
 
 **Lemma**
@@ -39,4 +39,3 @@ lemma succ_add (a b : MyNat) : succ a + b = succ (a + b) := by
 /-!
 On to [Level 4](./Level4.lean.md).
 -/
-

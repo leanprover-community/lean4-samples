@@ -17,7 +17,7 @@ Some new tactics are handy here, the `rintro` tactic is a combination of the `in
 hypothesis `HQ : Q` and `HR : R`.
 
 Notice here that you can use a semi-colon to separate multiple tactics on the same line. Another
-trick shown below is the `<;>`. We could have written `left; constructor; assumption; assumption`
+trick shown below is the [<;> tactic](../Tactics/concatenate.lean.md). We could have written `left; constructor; assumption; assumption`
 since the `constructor` produces two sub-goals we need 2 `assumption` tactics to close those, or you
 can just write `<;> assumption` which runs `assumption` on both sub-goals.
 

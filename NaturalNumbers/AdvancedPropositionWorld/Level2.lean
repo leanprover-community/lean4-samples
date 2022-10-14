@@ -17,7 +17,7 @@ obvious first move is
 `intro h`
 
 because the goal is an implication and this tactic is guaranteed to make progress. Now `h : P ∧ Q`
-is a hypothesis, and we can extract the parts of this `And.intro` using
+is a hypothesis, and we can extract the parts of this `And.intro` using the [`cases` tactic](../Tactics/cases.lean.md)
 
 `cases h with`
 

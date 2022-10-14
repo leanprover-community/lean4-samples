@@ -57,6 +57,7 @@ example : MyNat → MyNat := by
 You can hover your mouse over the tactics `intro` and `exact`
 to the documentation on these tactics in case you need a
 reminder later on.
+See also [intro tactic](../Tactics/intro.lean.md)
 
 
 Next up [Level 3](./Level3.lean.md)

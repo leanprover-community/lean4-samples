@@ -21,7 +21,7 @@ Level 5 involves the number `1`. When you see a `1` in your goal,
 you can write `rw [one_eq_succ_zero]` to get back
 to something which only mentions `0`. This is a good move because `0` is easier for us to
 manipulate than `1` right now, because we have
-some theorems about `0` (`zero_add`, `add_zero`), but, other than `1 = succ(0)`,
+some theorems about `0` (`zero_add`, `add_zero`), but, other than `1 = succ 0`,
 no theorems at all which mention `1`. Let's prove one now.
 
 ## Theorem

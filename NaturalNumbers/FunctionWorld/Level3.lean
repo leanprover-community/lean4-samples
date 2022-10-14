@@ -10,7 +10,7 @@ open MyNat
 Say you have a whole bunch of sets and functions between them,
 and your goal is to build a certain element of a certain set.
 If it helps, you can build intermediate elements of other sets
-along the way, using the `have` command. `have` is the Lean analogue
+along the way, using the [have tactic](../Tactics/have.lean.md). `have` is the Lean analogue
 of saying "let's define an element `q ∈ Q` by..." in the middle of a calculation.
 It is often not logically necessary, but on the other hand
 it is very convenient, for example it can save on notation, or

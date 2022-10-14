@@ -14,7 +14,8 @@ Let's do the same level again a different way:
 We are given  `p  ∈ P ` and our goal is to find an element of  `U `, or
 in other words to find a path through the maze that links  `P ` to  `U `.
 In level 3 we solved this by using `have`s to move forward, from  `P `
-to  `Q ` to  `T ` to  `U `. Using the `apply` tactic we can instead construct
+to  `Q ` to  `T ` to  `U `.
+Using the [apply tactic](../Tactics/apply.lean.md) we can instead construct
 the path backwards, moving from  `U ` to  `T ` to  `Q ` to  `P `.
 
 Our goal is to construct an element of the set  `U `. But  `l:T → U ` is

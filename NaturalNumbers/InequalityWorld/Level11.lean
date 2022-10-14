@@ -13,7 +13,7 @@ open MyNat
 If you're faced with a goal of the form `forall t, ...`, then the next
 line is "so let `t` be arbitrary". The way to do this in Lean is `intro t`.
 
-## Lemma
+## Lemma : add_le_add_right
 For all naturals `a` and `b`, `a ≤ b` implies that for all naturals `t`,
 `a+t ≤ b+t`.
 -/

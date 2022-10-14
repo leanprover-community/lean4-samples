@@ -2,7 +2,7 @@ import Mathlib.Tactic.LeftRight
 /-!
 # Advanced proposition world.
 
-## Level 6: Or, and the `left` and `right` tactics.
+## Level 6: Or, and the [`left` and `right` tactics](../Tactics/leftright.lean.md).
 
 `P ∨ Q` means "`P` or `Q`". So to prove it, you need to choose one of `P` or `Q`, and prove that
 one. If `⊢ P ∨ Q` is your goal, then `left` changes this goal to `⊢ P`, and `right` changes it to `⊢ Q`.

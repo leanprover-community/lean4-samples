@@ -32,7 +32,6 @@ theorem eq_zero_or_eq_zero_of_mul_eq_zero (a b : MyNat) (h : a * b = 0) :
       rw [mul_succ] at h
       rw [add_succ] at h
       exact succ_ne_zero _ h
-
 /-!
 
 Next up [Level 3](./Level3.lean.md)
