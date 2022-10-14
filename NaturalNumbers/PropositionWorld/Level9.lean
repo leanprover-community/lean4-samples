@@ -38,7 +38,7 @@ You will need to learn five more tactics: `split`, `cases`,
 but they are all straightforward, and furthermore they are
 essentially the last tactics you
 need to learn in order to complete all the levels of this tutorial,
-including all the 17 levels of Inequality World.
+including all the 17 levels of [Inequality World](../InequalityWorld.lean.md).
 -/
 
 /-!

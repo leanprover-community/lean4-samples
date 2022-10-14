@@ -4,7 +4,7 @@ import Mathlib.Tactic.Use -- use tactic
 import AdditionWorld.Level1 -- zero_add
 namespace MyNat
 open MyNat
-/-
+/-!
 
 # Inequality world.
 

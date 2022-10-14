@@ -7,7 +7,7 @@ import AdditionWorld.Level3 -- succ_add
 import InequalityWorld.Level2 -- le_refl
 namespace MyNat
 open MyNat
-/-
+/-!
 
 # Inequality world.
 
@@ -24,11 +24,9 @@ But a much more usable definition would be this:
 `a < b := succ a ≤ b`
 
 Let's prove that these two definitions are the same
--/
 
-/- Lemma :
-For all naturals `a` and `b`,
-``a ≤ b ∧ ¬(b ≤ a) ⟹ succ a ≤ b.``
+## Lemma :
+For all naturals `a` and `b`, `a ≤ b ∧ ¬(b ≤ a) ⟹ succ a ≤ b.`
 -/
 lemma lt_aux₁ (a b : MyNat) : a ≤ b ∧ ¬ (b ≤ a) → succ a ≤ b := by
   intro h

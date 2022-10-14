@@ -35,7 +35,7 @@ of the form `a ≤ a` as well as all goals of the form `a = a`.
 example : (0 : MyNat) ≤ 0 := by
   rfl
 
-/-
+/-!
 ## Pro tip
 
 -- BUGBUG in lean4 `use 0` closes the proof, so no need for all this stuff
@@ -47,8 +47,7 @@ what happens if you just try `refl`? The *definition* of `x + 0` is `x`,
 so you don't need to `rw add_zero` either! The proof
 
 ```
-use 0,
-refl,
+use 0
 ```
 
 works.

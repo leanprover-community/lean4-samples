@@ -37,7 +37,7 @@ lemma lt_aux₂ (a b : MyNat) : succ a ≤ b → a ≤ b ∧ ¬ (b ≤ a) := by
     exact le_trans (succ a) b a h nh
   }
 
-/-
+/-!
 Now for the payoff.
 
 Next up [Level 17](./Level17.lean.md)

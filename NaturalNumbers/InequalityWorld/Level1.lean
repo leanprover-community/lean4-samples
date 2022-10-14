@@ -54,8 +54,6 @@ lemma one_add_le_self (x : MyNat) : x ≤ 1 + x := by
 
 /-!
 
-Next up [Level 2](./Level2.lean.md)
-
 ## Tactic : use
 ## Summary
 
@@ -71,4 +69,8 @@ more unwise `use 0` will turn it into the impossible-to-prove
 form, `use 0` will turn the goal into `⊢ P(0)`, `use x + y` (assuming
 `x` and `y` are natural numbers in your local context) will turn
 the goal into `P(x + y)` and so on.
+
+
+Next up [Level 2](./Level2.lean.md)
+
 -/

@@ -7,7 +7,7 @@ import InequalityWorld.Level16 -- lt_aux₂
 import AdvancedAdditionWorld.Level13 -- ne_succ_self
 namespace MyNat
 open MyNat
-/-
+/-!
 
 # Inequality world.
 
@@ -33,7 +33,7 @@ lemma lt_iff_succ_le (a b : MyNat) : a < b ↔ succ a ≤ b := by
   exact lt_aux₁ a b
   exact lt_aux₂ a b
 
-/-
+/-!
 Sadly that is the end of all our nicely documented levels in this tutorial!
 
 Interested in playing levels involving other kinds of mathematics?

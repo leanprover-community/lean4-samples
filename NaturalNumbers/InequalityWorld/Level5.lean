@@ -25,7 +25,7 @@ theorem le_trans (a b c : MyNat) (hab : a ≤ b) (hbc : b ≤ c) : a ≤ c := by
       rw [←hd]
       assumption
 
-/-
+/-!
 This proved that the natural numbers are a preorder.
 -/
 -- BUGBUG collectibles

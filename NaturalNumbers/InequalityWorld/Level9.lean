@@ -6,13 +6,12 @@ import InequalityWorld.Level4 -- zero_le
 import InequalityWorld.Level8 -- succ_le_succ
 namespace MyNat
 open MyNat
-/-
+/-!
 # Inequality world.
 
 ## Level 9: `le_total`
--/
 
-/- Lemma
+## Lemma
 For all naturals `a` and `b`, either `a ≤ b` or `b ≤ a`.
 -/
 theorem le_total (a b : MyNat) : a ≤ b ∨ b ≤ a := by

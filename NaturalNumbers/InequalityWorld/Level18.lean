@@ -212,7 +212,8 @@ theorem mul_lt_mul_of_pos_left (a b c : MyNat) : a < b → 0 < c → c * a < c *
     clear hc
     induction d with
     | zero =>
-      rw [succ_mul, zero_is_0, zero_mul, zero_add, succ_mul, zero_mul, zero_add]
+      rw [succ_mul, zero_is_0, zero_mul]
+      rw [zero_add, succ_mul, zero_mul, zero_add]
       exact hab
     | succ e he =>
       rw [succ_mul]
