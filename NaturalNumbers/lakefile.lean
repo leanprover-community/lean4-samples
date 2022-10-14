@@ -19,3 +19,4 @@ lean_lib PropositionWorld
 lean_lib AdvancedPropositionWorld
 lean_lib AdvancedAdditionWorld
 lean_lib AdvancedMultiplicationWorld
+lean_lib InequalityWorld

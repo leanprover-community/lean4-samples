@@ -12,6 +12,7 @@ build ./AdvancedMultiplicationWorld.Lean.md: alectryon $
 build ./AdvancedPropositionWorld.lean.md: alectryon $
     ./AdvancedPropositionWorld.lean
 build ./FunctionWorld.lean.md: alectryon ./FunctionWorld.lean
+build ./InequalityWorld.lean.md: alectryon ./InequalityWorld.lean
 build ./MultiplicationWorld.lean.md: alectryon ./MultiplicationWorld.lean
 build ./MyNat.lean.md: alectryon ./MyNat.lean
 build ./PowerWorld.lean.md: alectryon ./PowerWorld.lean
@@ -86,6 +87,24 @@ build FunctionWorld/Level6.lean.md: alectryon FunctionWorld/Level6.lean
 build FunctionWorld/Level7.lean.md: alectryon FunctionWorld/Level7.lean
 build FunctionWorld/Level8.lean.md: alectryon FunctionWorld/Level8.lean
 build FunctionWorld/Level9.lean.md: alectryon FunctionWorld/Level9.lean
+build InequalityWorld/Level1.lean.md: alectryon InequalityWorld/Level1.lean
+build InequalityWorld/Level10.lean.md: alectryon InequalityWorld/Level10.lean
+build InequalityWorld/Level11.lean.md: alectryon InequalityWorld/Level11.lean
+build InequalityWorld/Level12.lean.md: alectryon InequalityWorld/Level12.lean
+build InequalityWorld/Level13.lean.md: alectryon InequalityWorld/Level13.lean
+build InequalityWorld/Level14.lean.md: alectryon InequalityWorld/Level14.lean
+build InequalityWorld/Level15.lean.md: alectryon InequalityWorld/Level15.lean
+build InequalityWorld/Level16.lean.md: alectryon InequalityWorld/Level16.lean
+build InequalityWorld/Level17.lean.md: alectryon InequalityWorld/Level17.lean
+build InequalityWorld/Level18.lean.md: alectryon InequalityWorld/Level18.lean
+build InequalityWorld/Level2.lean.md: alectryon InequalityWorld/Level2.lean
+build InequalityWorld/Level3.lean.md: alectryon InequalityWorld/Level3.lean
+build InequalityWorld/Level4.lean.md: alectryon InequalityWorld/Level4.lean
+build InequalityWorld/Level5.lean.md: alectryon InequalityWorld/Level5.lean
+build InequalityWorld/Level6.lean.md: alectryon InequalityWorld/Level6.lean
+build InequalityWorld/Level7.lean.md: alectryon InequalityWorld/Level7.lean
+build InequalityWorld/Level8.lean.md: alectryon InequalityWorld/Level8.lean
+build InequalityWorld/Level9.lean.md: alectryon InequalityWorld/Level9.lean
 build MultiplicationWorld/Level1.lean.md: alectryon $
     MultiplicationWorld/Level1.lean
 build MultiplicationWorld/Level2.lean.md: alectryon $
@@ -106,6 +125,7 @@ build MultiplicationWorld/Level9.lean.md: alectryon $
     MultiplicationWorld/Level9.lean
 build MyNat/Addition.lean.md: alectryon MyNat/Addition.lean
 build MyNat/Definition.lean.md: alectryon MyNat/Definition.lean
+build MyNat/Inequality.lean.md: alectryon MyNat/Inequality.lean
 build MyNat/Multiplication.lean.md: alectryon MyNat/Multiplication.lean
 build MyNat/Power.lean.md: alectryon MyNat/Power.lean
 build MyNat/Symm.lean.md: alectryon MyNat/Symm.lean
@@ -133,8 +153,8 @@ build TutorialWorld/Level4.lean.md: alectryon TutorialWorld/Level4.lean
 build docs/index.html: book ./AdditionWorld.lean.md $
     ./AdvancedAdditionWorld.lean.md ./AdvancedMultiplicationWorld.Lean.md $
     ./AdvancedPropositionWorld.lean.md ./FunctionWorld.lean.md $
-    ./MultiplicationWorld.lean.md ./MyNat.lean.md ./PowerWorld.lean.md $
-    ./PropositionWorld.lean.md ./TutorialWorld.lean.md $
+    ./InequalityWorld.lean.md ./MultiplicationWorld.lean.md ./MyNat.lean.md $
+    ./PowerWorld.lean.md ./PropositionWorld.lean.md ./TutorialWorld.lean.md $
     AdditionWorld/Level1.lean.md AdditionWorld/Level2.lean.md $
     AdditionWorld/Level3.lean.md AdditionWorld/Level4.lean.md $
     AdditionWorld/Level5.lean.md AdditionWorld/Level6.lean.md $
@@ -169,21 +189,30 @@ build docs/index.html: book ./AdditionWorld.lean.md $
     FunctionWorld/Level4.lean.md FunctionWorld/Level5.lean.md $
     FunctionWorld/Level6.lean.md FunctionWorld/Level7.lean.md $
     FunctionWorld/Level8.lean.md FunctionWorld/Level9.lean.md $
+    InequalityWorld/Level1.lean.md InequalityWorld/Level10.lean.md $
+    InequalityWorld/Level11.lean.md InequalityWorld/Level12.lean.md $
+    InequalityWorld/Level13.lean.md InequalityWorld/Level14.lean.md $
+    InequalityWorld/Level15.lean.md InequalityWorld/Level16.lean.md $
+    InequalityWorld/Level17.lean.md InequalityWorld/Level18.lean.md $
+    InequalityWorld/Level2.lean.md InequalityWorld/Level3.lean.md $
+    InequalityWorld/Level4.lean.md InequalityWorld/Level5.lean.md $
+    InequalityWorld/Level6.lean.md InequalityWorld/Level7.lean.md $
+    InequalityWorld/Level8.lean.md InequalityWorld/Level9.lean.md $
     MultiplicationWorld/Level1.lean.md MultiplicationWorld/Level2.lean.md $
     MultiplicationWorld/Level3.lean.md MultiplicationWorld/Level4.lean.md $
     MultiplicationWorld/Level5.lean.md MultiplicationWorld/Level6.lean.md $
     MultiplicationWorld/Level7.lean.md MultiplicationWorld/Level8.lean.md $
     MultiplicationWorld/Level9.lean.md MyNat/Addition.lean.md $
-    MyNat/Definition.lean.md MyNat/Multiplication.lean.md $
-    MyNat/Power.lean.md MyNat/Symm.lean.md PowerWorld/Level1.lean.md $
-    PowerWorld/Level2.lean.md PowerWorld/Level3.lean.md $
-    PowerWorld/Level4.lean.md PowerWorld/Level5.lean.md $
-    PowerWorld/Level6.lean.md PowerWorld/Level7.lean.md $
-    PowerWorld/Level8.lean.md PropositionWorld/Level1.lean.md $
-    PropositionWorld/Level2.lean.md PropositionWorld/Level3.lean.md $
-    PropositionWorld/Level4.lean.md PropositionWorld/Level5.lean.md $
-    PropositionWorld/Level6.lean.md PropositionWorld/Level7.lean.md $
-    PropositionWorld/Level8.lean.md PropositionWorld/Level9.lean.md $
-    TutorialWorld/Level1.lean.md TutorialWorld/Level2.lean.md $
-    TutorialWorld/Level3.lean.md TutorialWorld/Level4.lean.md SUMMARY.md $
-    typos.md book.toml
+    MyNat/Definition.lean.md MyNat/Inequality.lean.md $
+    MyNat/Multiplication.lean.md MyNat/Power.lean.md MyNat/Symm.lean.md $
+    PowerWorld/Level1.lean.md PowerWorld/Level2.lean.md $
+    PowerWorld/Level3.lean.md PowerWorld/Level4.lean.md $
+    PowerWorld/Level5.lean.md PowerWorld/Level6.lean.md $
+    PowerWorld/Level7.lean.md PowerWorld/Level8.lean.md $
+    PropositionWorld/Level1.lean.md PropositionWorld/Level2.lean.md $
+    PropositionWorld/Level3.lean.md PropositionWorld/Level4.lean.md $
+    PropositionWorld/Level5.lean.md PropositionWorld/Level6.lean.md $
+    PropositionWorld/Level7.lean.md PropositionWorld/Level8.lean.md $
+    PropositionWorld/Level9.lean.md TutorialWorld/Level1.lean.md $
+    TutorialWorld/Level2.lean.md TutorialWorld/Level3.lean.md $
+    TutorialWorld/Level4.lean.md SUMMARY.md typos.md book.toml

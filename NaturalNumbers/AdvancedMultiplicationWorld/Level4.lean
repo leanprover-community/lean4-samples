@@ -86,7 +86,7 @@ theorem mul_left_cancel (a b c : MyNat) (ha : a ≠ 0) : a * b = a * c → b = c
       rw [h]
 
 /-!
-You should now be ready for inequality world.
+You should now be ready for [Inequality World](../InequalityWorld.lean.md).
 
 ## Tactic : revert
 
@@ -115,14 +115,14 @@ P Q : Prop
 the tactic state looks like this
 
 ```
-m : mynat
+m : MyNat
 ⊢ m + 1 = succ m
 ```
 
 then `revert m` will turn it into
 
 ```
-⊢ ∀ (m : mynat), m + 1 = mynat.succ m
+⊢ ∀ (m : MyNat), m + 1 = MyNat.succ m
 ```
 
 -/

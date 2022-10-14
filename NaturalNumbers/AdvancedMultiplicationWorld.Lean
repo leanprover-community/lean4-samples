@@ -1,4 +1,7 @@
-import MyNat.Definition
+import AdvancedMultiplicationWorld.Level1
+import AdvancedMultiplicationWorld.Level2
+import AdvancedMultiplicationWorld.Level3
+-- import AdvancedMultiplicationWorld.Level4 -- bugbug
 /-!
 # Advanced Multiplication World
 
