@@ -3,9 +3,9 @@ namespace MyNat
 open MyNat
 /-!
 
-# Advanced proposition world.
+# Advanced Proposition World
 
-## Level 5: `iff_trans` easter eggs.
+## Level 5: `iff_trans` easter eggs
 
 Let's try `iff_trans` again. Try proving it in other ways.
 
@@ -48,5 +48,5 @@ lemma iff_trans₃ (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) := by
 /-!
 
 
-Next up [Level 6](./Level6.lean.md)
+Next up [Level 6](./Level6.lean.md).
 -/

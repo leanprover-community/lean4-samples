@@ -11,5 +11,5 @@ world you should have completed seven other worlds, including
 [Advanced Addition World](./AdvancedAdditionWorld.lean.md).
 There are four levels in this world.
 
-Let's dive in [Level 1](./AdvancedMultiplicationWorld/Level1.lean.md)
+Let's dive in [Level 1](./AdvancedMultiplicationWorld/Level1.lean.md).
 -/

@@ -27,7 +27,7 @@ of rewrites of `add_assoc` and `add_comm`. Use if
 you're getting lazy!
 
 ## Lemma
-For all natural numbers `a` and `b`, we have `succ a * b = ab + b.`
+For all natural numbers `a` and `b`, we have `succ a * b = ab + b`.
 -/
 lemma succ_mul (a b : MyNat) : succ a * b = a * b + b := by
   induction b with

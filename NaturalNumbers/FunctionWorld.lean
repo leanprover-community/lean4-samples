@@ -37,12 +37,11 @@ been writing `n : MyNat` to mean that `n` is a natural number.
 All through addition world, our goals have been theorems,
 and it was our job to find the proofs.
 **The levels in function world aren't theorems**. This is the only world where
-the levels aren't theorems in fact. In function world the object of a level
+the levels aren't theorems. In function world the object of a level
 is to create an element of the set in the goal. The goal will look like `⊢ X`
 with `X` a set and you get rid of the goal by constructing an element of `X`.
 I don't know if you noticed this, but you finished
-essentially every goal of Addition World (and Multiplication World and Power World,
-) with `rfl` or the implied `rfl` performed by `rw`.
+essentially every goal of Addition World (and Multiplication World and Power World) with `rfl` or the implied `rfl` performed by `rw`.
 This tactic is no use to us here.
 We are going to have to learn a new way of solving goals &ndash; the `exact` tactic.
 

@@ -2,9 +2,9 @@ import MyNat.Definition
 namespace MyNat
 open MyNat
 /-!
-# Proposition world.
+# Proposition ∑orld
 
-## Level 5 : `P → (Q → P)`.
+## Level 5 : `P → (Q → P)`
 
 In this level, our goal is to construct an implication, like in level 2.
 
@@ -27,7 +27,7 @@ goal is to construct an implication then we almost always want to use the
 and we then find ourselves in this tactic state:
 
 ```
-P Q : Prop,
+P Q : Prop
 p : P
 ⊢ Q → P
 ```
@@ -72,5 +72,5 @@ is `P → Q → R` then you need to know whether `intro h` will create `h : P` o
 Make sure you understand which one.
 -/
 /-!
-Next up [Level 6](./Level6.lean.md)
+Next up [Level 6](./Level6.lean.md).
 -/

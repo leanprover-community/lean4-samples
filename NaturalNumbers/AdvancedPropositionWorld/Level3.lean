@@ -2,11 +2,11 @@ import MyNat.Definition
 namespace MyNat
 open MyNat
 /-!
-# Advanced proposition world.
+# Advanced Proposition World
 
-## Level 3: and_trans.
+## Level 3: and_trans
 
-With this proof we can use the first `cases` tactic to extract hypotheses `p : P` `q : Q` from
+With this proof we can use the first `cases` tactic to extract hypotheses `p : P` and `q : Q` from
 `hpq : P ∧ Q` and then we can use another `cases` tactic to extract hypotheses `q' : Q` and `r : R` from
 `hpr : Q ∧ R` then we can split the resulting goal `⊢ P ∧ R` using `constructor` and easily pick off the
 resulting sub-goals `⊢ P` and `⊢ R` using our given hypotheses.
@@ -28,5 +28,5 @@ lemma and_trans (P Q R : Prop) : P ∧ Q → Q ∧ R → P ∧ R := by
 
 /-!
 
-Next up [Level 4](./Level4.lean.md)
+Next up [Level 4](./Level4.lean.md).
 -/

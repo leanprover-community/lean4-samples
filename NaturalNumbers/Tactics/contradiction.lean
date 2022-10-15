@@ -11,7 +11,7 @@ Inductive type/family with no applicable constructors
 
 Injectivity of constructors
 
-- `example (h : none = some true) : p := by contradiction  --`
+- `example (h : none = some true) : p := by contradiction`
 
 Decidable false proposition
 

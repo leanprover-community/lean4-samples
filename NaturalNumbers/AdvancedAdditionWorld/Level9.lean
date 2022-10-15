@@ -47,5 +47,5 @@ theorem succ_ne_zero (a : MyNat) : succ a ≠ 0 := by
   apply (zero_ne_succ a)
 
 /-!
-Next up [Level 10](./Level10.lean.md)
+Next up [Level 10](./Level10.lean.md).
 -/

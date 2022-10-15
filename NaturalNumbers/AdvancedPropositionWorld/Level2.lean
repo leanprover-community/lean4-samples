@@ -4,9 +4,9 @@ open MyNat
 /-!
 
 
-# Advanced proposition world.
+# Advanced Proposition World
 
-## Level 2: the `cases` tactic.
+## Level 2: the `cases` tactic
 
 If `P ∧ Q` is in the goal, then we can make progress with `constructor`. But what if `P ∧ Q` is a
 hypothesis?
@@ -39,5 +39,5 @@ lemma and_symm (P Q : Prop) : P ∧ Q → Q ∧ P := by
 /-!
 
 
-Next up [Level 3](./Level3.lean.md)
+Next up [Level 3](./Level3.lean.md).
 -/

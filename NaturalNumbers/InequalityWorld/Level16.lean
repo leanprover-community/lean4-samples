@@ -12,13 +12,13 @@ namespace MyNat
 open MyNat
 /-!
 
-# Inequality world.
+# Inequality World
 
 ## Level 16: equivalence of two definitions of `<`
 
 Now let's go the other way.
 
-## Lemma : lt_aux₂
+## Lemma : `lt_aux₂`
 For all naturals `a` and `b`, `succ a ≤ b  ⟹ a ≤ b ∧ ¬ (b ≤ a)`.
 -/
 lemma lt_aux₂ (a b : MyNat) : succ a ≤ b → a ≤ b ∧ ¬ (b ≤ a) := by
@@ -40,5 +40,5 @@ lemma lt_aux₂ (a b : MyNat) : succ a ≤ b → a ≤ b ∧ ¬ (b ≤ a) := by
 /-!
 Now for the payoff.
 
-Next up [Level 17](./Level17.lean.md)
+Next up [Level 17](./Level17.lean.md).
 -/

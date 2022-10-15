@@ -6,7 +6,7 @@ namespace MyNat
 open MyNat
 /-!
 
-# Inequality world.
+# Inequality World
 
 ## Level 8: `succ_le_succ`
 
@@ -24,5 +24,5 @@ lemma succ_le_succ (a b : MyNat) (h : a ≤ b) : succ a ≤ succ b := by
 
 
 /-!
-Next up [Level 9](./Level9.lean.md)
+Next up [Level 9](./Level9.lean.md).
 -/

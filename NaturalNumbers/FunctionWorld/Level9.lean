@@ -3,7 +3,7 @@ namespace MyNat
 open MyNat
 
 /-!
-# Function world.
+# Function World
 
 ## Level 9: a big maze.
 

@@ -8,7 +8,7 @@ namespace MyNat
 open MyNat
 /-!
 
-# Inequality world.
+# Inequality World
 
 Here's a nice easy one.
 
@@ -70,5 +70,5 @@ different places. `rfl` closes a goal of the form `X = Y` if `X` and `Y` are
 definitionally equal.
 
 
-Next up [Level 3](./Level3.lean.md)
+Next up [Level 3](./Level3.lean.md).
 -/

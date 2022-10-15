@@ -2,9 +2,9 @@ import MyNat.Definition
 namespace MyNat
 open MyNat
 /-!
-# Advanced proposition world.
+# Advanced Proposition World
 
-## Level 10: the law of the excluded middle.
+## Level 10: the law of the excluded middle
 
 We proved earlier that `(P → Q) → (¬ Q → ¬ P)`. The converse,
 that `(¬ Q → ¬ P) → (P → Q)` is certainly true, but trying to prove
@@ -19,8 +19,8 @@ repeat rw [not_iff_imp_false] at h
 
 in the below, you are left with
 ```
-P Q : Prop,
-h : (Q → false) → P → false
+P Q : Prop
+h : (Q → False) → P → False
 p : P
 ⊢ Q
 ```
@@ -33,8 +33,8 @@ goal of `⊢ Q`.  But how can you prove `Q` using these hypotheses?  You can use
 `by_cases q : Q`
 
 This creates two sub-goals `pos` and `neg` with the first one assuming Q is true - which can easily
-satisfy the goal! and the second one assuming Q is false. But how can `h: ¬Q → ¬P`, `p: P`, `q: ¬Q`
-prove the goal `⊢ Q` ? Well if you apply `q` to the hypothesis `h` you end up with the conclusion
+satisfy the goal! - and the second one assuming Q is false. But how can `h: ¬Q → ¬P`, `p: P`, `q: ¬Q`
+prove the goal `⊢ Q`? Well if you apply `q` to the hypothesis `h` you end up with the conclusion
 `¬ P`, but then you have a contradiction in your hypotheses saying `P` and `¬ P` which the
 [`contradiction` tactic](../Tactics/contradiction.lean.md) can take care of.
 

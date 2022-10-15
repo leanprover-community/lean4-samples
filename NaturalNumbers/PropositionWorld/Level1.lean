@@ -3,17 +3,17 @@ namespace MyNat
 open MyNat
 /-!
 
-# Proposition world.
+# Proposition World
 
-## Level 1: the `exact` tactic.
+## Level 1: the `exact` tactic
 
 
 The local context (or tactic state) at the beginning of
 the example below looks like this:
 
 ```
-P Q : Prop,
-p : P,
+P Q : Prop
+p : P
 h : P → Q
 ⊢ Q
 ```
@@ -50,5 +50,5 @@ example (P Q : Prop) (p : P) (h : P → Q) : Q := by
 Look familiar? The reason this works so elegantly is because the Lean programming language
 has unified Propositions with the Type system of the language.
 
-Next up [Level 2](./Level2.lean.md)
+Next up [Level 2](./Level2.lean.md).
 -/

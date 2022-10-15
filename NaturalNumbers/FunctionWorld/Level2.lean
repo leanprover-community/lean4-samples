@@ -60,5 +60,5 @@ reminder later on.
 See also [intro tactic](../Tactics/intro.lean.md)
 
 
-Next up [Level 3](./Level3.lean.md)
+Next up [Level 3](./Level3.lean.md).
 -/

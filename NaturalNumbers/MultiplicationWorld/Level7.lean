@@ -25,7 +25,7 @@ just try `simp`.
 
 Addition is distributive over multiplication.
 In other words, for all natural numbers `a`, `b` and `t`, we have
-`(a + b) * t = at + bt.`
+`(a + b) * t = at + bt`.
 -/
 lemma add_mul (a b t : MyNat) : (a + b) * t = a * t + b * t := by
   induction b with
@@ -52,7 +52,7 @@ def right_distrib := add_mul -- alternative name
 -- BUGBUG
 
 /-!
-Lean would add that you have also proved that they are a `distrib`.
+Lean would add that you have also proved they are a `distrib`.
 However this concept has no mathematical name at all -- this says something
 about the regard with which mathematicians hold this collectible.
 This is an artifact of the set-up of collectibles in Lean. You consider politely

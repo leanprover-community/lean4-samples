@@ -1,8 +1,8 @@
 import Mathlib.Tactic.LeftRight
 /-!
-# Advanced proposition world.
+# Advanced Proposition World
 
-## Level 6: Or, and the [`left` and `right` tactics](../Tactics/leftright.lean.md).
+## Level 6: Or, and the [`left` and `right` tactics](../Tactics/leftright.lean.md)
 
 `P ∨ Q` means "`P` or `Q`". So to prove it, you need to choose one of `P` or `Q`, and prove that
 one. If `⊢ P ∨ Q` is your goal, then `left` changes this goal to `⊢ P`, and `right` changes it to `⊢ Q`.
@@ -10,7 +10,7 @@ Note that you can take a wrong turn here. Let's start with trying to prove `Q �
 the `intro`, one of `left` and `right` leads to an impossible goal, the other to an easy finish.
 
 ## Lemma
-If `P` and `Q` are true/false statements, then `Q ⟹(P ∨ Q).`
+If `P` and `Q` are true/false statements, then `Q ⟹(P ∨ Q)`.
 -/
 example (P Q : Prop) : Q → (P ∨ Q) := by
   intro q
@@ -41,5 +41,5 @@ require mathlib from git
 This specifies a precise version of mathlib4 by commit Id.
 
 
-Next up [Level 7](./Level7.lean.md)
+Next up [Level 7](./Level7.lean.md).
 -/

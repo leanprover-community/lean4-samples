@@ -13,7 +13,7 @@ open MyNat
 Now you have `eq_zero_or_eq_zero_of_mul_eq_zero` this is pretty straightforward.
 
 ## Theorem
-`ab = 0`, if and only if at least one of `a` or `b` is equal to zero.
+`ab = 0` if and only if at least one of `a` or `b` is equal to zero.
 -/
 theorem mul_eq_zero_iff (a b : MyNat): a * b = 0 ↔ a = 0 ∨ b = 0 := by
   constructor
@@ -34,5 +34,5 @@ theorem mul_eq_zero_iff (a b : MyNat): a * b = 0 ↔ a = 0 ∨ b = 0 := by
 
 /-!
 
-Next up [Level 4](./Level4.lean.md)
+Next up [Level 4](./Level4.lean.md).
 -/

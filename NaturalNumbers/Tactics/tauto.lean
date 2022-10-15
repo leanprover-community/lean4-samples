@@ -14,8 +14,8 @@ goals.
 logical reasoning -- for example it will close the following goal:
 
 ```
-P Q : Prop,
-hP : P,
+P Q : Prop
+hP : P
 hQ : Q
 ⊢ P ∧ Q
 ```

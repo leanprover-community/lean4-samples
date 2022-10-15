@@ -29,5 +29,5 @@ theorem add_right_cancel_iff (t a b : MyNat) :  a + t = b + t ↔ a = b := by
   rw [h]
 
 /-!
-Next up [Level 8](./Level8.lean.md)
+Next up [Level 8](./Level8.lean.md).
 -/

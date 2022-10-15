@@ -2,9 +2,9 @@ import MyNat.Definition
 namespace MyNat
 open MyNat
 /-!
-# Proposition world.
+# Proposition World
 
-## Level 3: `have`.
+## Level 3: `have`
 
 Say you have a whole bunch of propositions and implications between them, and your goal is to build
 a certain proof of a certain proposition. If it helps, you can build intermediate proofs of other
@@ -66,15 +66,15 @@ in this proof in Visual Studio Code, and note that the tactic state at the begin
 this mess:
 
 ```
-P Q R S T U : Prop,
-p : P,
-h : P → Q,
-i : Q → R,
-j : Q → T,
-k : S → T,
-l : T → U,
-q : Q,
-t : T,
+P Q R S T U : Prop
+p : P
+h : P → Q
+i : Q → R
+j : Q → T
+k : S → T
+l : T → U
+q : Q
+t : T
 u : U
 ⊢ U
 ```
@@ -83,5 +83,5 @@ It was already bad enough to start with, and we added three more terms to it. In
 learn about the `apply` tactic which solves the level using another technique, without leaving so
 much junk behind.
 
-Next up [Level 4](./Level4.lean.md)
+Next up [Level 4](./Level4.lean.md).
 -/

@@ -2,7 +2,7 @@ import MyNat.Addition -- imports addition.
 namespace MyNat
 open MyNat
 /-!
-# Addition world
+# Addition World
 
 ## Level 2: `add_assoc` -- associativity of addition.
 

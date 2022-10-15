@@ -6,7 +6,7 @@ namespace MyNat
 open MyNat
 /-!
 
-# Inequality world.
+# Inequality World
 
 ## Level 3: `le_succ_of_le`
 
@@ -57,5 +57,5 @@ Now what about if you do `use 1 + c`? Can you work out
 what is going on? Does it help if I tell you that the *definition*
 of `1` is `succ 0`?
 
-Next up [Level 4](./Level4.lean.md)
+Next up [Level 4](./Level4.lean.md).
 -/

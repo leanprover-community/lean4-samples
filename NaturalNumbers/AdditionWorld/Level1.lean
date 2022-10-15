@@ -3,9 +3,9 @@ namespace MyNat
 open MyNat
 
 /-!
-# Addition World.
+# Addition World
 
-## Level 1: the `induction` tactic.
+## Level 1: the `induction` tactic
 
 OK so let's see induction in action. We're going to prove
 
@@ -24,7 +24,7 @@ if you've used Goto Definition (F12) on this theorem you can even see it). To pr
 need to use induction on `n`. While we're here, note that `zero_add` is about zero add something,
 and `add_zero` is about something add zero. The names of the proofs tell you what the theorems are.
 
-**Lemma**
+## Lemma
 
 For all natural numbers `n`, we have `0 + n = n.`
 -/
@@ -41,8 +41,8 @@ Notice that the [induction tactic](../Tactics/induction.lean.md) has created *tw
 which you can match using vertical bar pattern patching.
 
 The induction tactic has generated for us a base case with `n = zero` (the goal at the top)
-and an inductive step (the goal underneath). The golden rule: **Tactics operate on the first goal**
-- the goal at the top. So let's just worry about that top goal now, the base case.
+and an inductive step (the goal underneath). The golden rule: **Tactics operate on the first goal**.
+- The goal at the top. So let's just worry about that top goal now, the base case.
 If you place the cursor right after the `=>` symbol you will see the goal listed in
 the InfoView as `⊢ 0 + zero = zero`.
 

@@ -6,7 +6,7 @@ namespace MyNat
 open MyNat
 /-!
 
-# Inequality world.
+# Inequality World
 
 ## Level 4: `zero_le`
 
@@ -20,5 +20,5 @@ lemma zero_le (a : MyNat) : 0 ≤ a := by
   rw [zero_add]
 
 /-!
-Next up [Level 5](./Level5.lean.md)
+Next up [Level 5](./Level5.lean.md).
 -/

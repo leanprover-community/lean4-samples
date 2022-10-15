@@ -5,18 +5,18 @@ namespace MyNat
 open MyNat
 /-!
 
-# Inequality world.
+# Inequality World
 
 ## Level 10: `le_succ_self`
 
 Another simple one.
 
-## Lemma : le_succ_self
+## Lemma : `le_succ_self`
 For all naturals `a`, `a ≤ succ a.`
 -/
 lemma le_succ_self (a : MyNat) : a ≤ succ a := by
   use 1
 
 /-!
-Next up [Level 11](./Level11.lean.md)
+Next up [Level 11](./Level11.lean.md).
 -/

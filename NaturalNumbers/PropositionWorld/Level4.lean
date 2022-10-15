@@ -3,9 +3,9 @@ namespace MyNat
 open MyNat
 /-!
 
-# Proposition world.
+# Proposition World
 
-## Level 4: `apply`.
+## Level 4: `apply`
 
 Let's do the same level again a different way:
 
@@ -21,7 +21,7 @@ Our goal is to prove `U`. But `l:T ⟹ U` is
 an implication which we are assuming, so it would suffice to prove `T`.
 Tell Lean this by starting the proof below with
 
-`apply l,`
+`apply l`
 
 and notice that our assumptions don't change but *the goal changes*
 from `⊢ U` to `⊢ T`.
@@ -49,5 +49,5 @@ lemma maze₂ (P Q R S T U: Prop)
   exact p
 
 /-!
-Next up [Level 5](./Level5.lean.md)
+Next up [Level 5](./Level5.lean.md).
 -/

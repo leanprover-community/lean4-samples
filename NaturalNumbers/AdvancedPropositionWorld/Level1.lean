@@ -2,9 +2,9 @@ import MyNat.Definition
 namespace MyNat
 open MyNat
 /-!
-# Advanced Proposition world
+# Advanced Proposition World
 
-## Level 1: the `constructor` tactic.
+## Level 1: the `constructor` tactic
 
 The logical symbol `∧` means "and". If `P` and `Q` are propositions, then `P ∧ Q` is the proposition
 "`P` and `Q`". If your *goal* is `P ∧ Q` then you can make progress with the [`constructor` tactic](../Tactics/constructor.lean.md).,
@@ -22,5 +22,5 @@ example (P Q : Prop) (p : P) (q : Q) : P ∧ Q := by
 /-!
 
 
-Next up [Level 2](./Level2.lean.md)
+Next up [Level 2](./Level2.lean.md).
 -/

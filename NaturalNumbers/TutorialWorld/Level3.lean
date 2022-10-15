@@ -3,9 +3,9 @@ namespace MyNat
 open MyNat
 /-!
 
-# Tutorial world
+# Tutorial World
 
-## Level 3: Peano's axioms.
+## Level 3: Peano's axioms
 
 The import above gives us the type `MyNat` of natural numbers. But it also gives us some other things,
 which we'll take a look at now:

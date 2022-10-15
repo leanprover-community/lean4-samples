@@ -7,7 +7,7 @@ open MyNat
 
 /-!
 
-# Inequality world.
+# Inequality World
 
 ## Level 1: the [`use` tactic](../Tactics/use.lean.md)
 
@@ -54,6 +54,6 @@ lemma one_add_le_self (x : MyNat) : x ≤ 1 + x := by
 /-!
 
 
-Next up [Level 2](./Level2.lean.md)
+Next up [Level 2](./Level2.lean.md).
 
 -/

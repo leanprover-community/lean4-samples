@@ -25,7 +25,7 @@ what the variables are".
 
 **Lemma**
 
-For all natural numbers `a, b`, we have ` (succ a) + b = succ (a + b). `
+For all natural numbers `a` and `b`, we have ` (succ a) + b = succ (a + b). `
 -/
 lemma succ_add (a b : MyNat) : succ a + b = succ (a + b) := by
   induction b with

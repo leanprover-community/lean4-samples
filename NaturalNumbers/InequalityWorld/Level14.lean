@@ -6,18 +6,18 @@ namespace MyNat
 open MyNat
 /-!
 
-# Inequality world.
+# Inequality World
 
 ## Level 14: `add_le_add_left`
 
 I know these are easy and we've done several already, but this is one
 of the axioms for an ordered commutative monoid! The nature of formalizing
 is that we should formalize all "obvious" lemmas, and then when we're
-actually using ` ≤` in real life, everything will be there. Note also,
+actually using `≤` in real life, everything will be there. Note also,
 of course, that all of these lemmas are already formalized in Lean's
-maths library already, for Lean's inbuilt natural numbers.
+maths library, for Lean's inbuilt natural numbers.
 
-## Lemma : add_le_add_left
+## Lemma : `add_le_add_left`
 If `a ≤ b` then for all `t`, `t+a ≤ t+b`.
 -/
 theorem add_le_add_left {a b : MyNat} (h : a ≤ b) (t : MyNat) :
@@ -29,5 +29,5 @@ theorem add_le_add_left {a b : MyNat} (h : a ≤ b) (t : MyNat) :
     rw [add_assoc]
 
 /-!
-Next up [Level 15](./Level15.lean.md)
+Next up [Level 15](./Level15.lean.md).
 -/

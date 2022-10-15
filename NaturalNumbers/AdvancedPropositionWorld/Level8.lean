@@ -2,7 +2,7 @@ import Mathlib.Tactic.LeftRight
 import Mathlib.Tactic.Basic
 import Std.Tactic.RCases
 /-!
-# Advanced proposition world.
+# Advanced Proposition World
 
 ## Level 8: `and_or_distrib_left`
 
@@ -10,7 +10,7 @@ We know that `x(y+z)=xy+xz` for numbers, and this is called distributivity of mu
 addition. The same is true for `∧` and `∨` -- in fact `∧` distributes over `∨` and `∨` distributes
 over `∧`. Let's prove one of these.
 
-Some new tactics are handy here, the `rintro` tactic is a combination of the `intros` tactic with
+Some new tactics are handy here, the `rintro` tactic is a combination of the `intro` tactic with
 `rcases` to allow for destructuring patterns while introducing variables. For example,
 `rintro ⟨HP, HQ | HR⟩` below matches the subgoal `P ∧ (Q ∨ R)` and introduces the new hypothesis
 `HP : P` and breaks the Or `Q ∨ R` into two left and right sub-goals each with
@@ -22,7 +22,7 @@ since the `constructor` produces two sub-goals we need 2 `assumption` tactics to
 can just write `<;> assumption` which runs `assumption` on both sub-goals.
 
 ## Lemma
-If `P`. `Q` and `R` are true/false statements, then
+If `P`, `Q` and `R` are true/false statements, then
 `P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R).`
 -/
 lemma and_or_distrib_left (P Q R : Prop) : P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R) := by
@@ -60,5 +60,5 @@ then runs tacs. If the resulting goal state is not [], throw an error.
 Then restore the remaining goals [g2, ..., gn].
 
 
-Next up [Level 9](./Level9.lean.md)
+Next up [Level 9](./Level9.lean.md).
 -/

@@ -11,7 +11,7 @@ axiom one_eq_succ_zero : (1 : MyNat) = MyNat.succ 0
 /-!
 We've just added `one_eq_succ_zero` (a statement that `1 = succ 0`).
 This is not a proof it is an axiom.  In Lean an `axiom` tells Lean
-don't both looking for a proof for this fact, just trust me, it's true.
+don't go looking for a proof for this fact, just trust me, it's true.
 So you must be very careful in how you use `axiom` because it can
 lead to inconsistencies in subsequent proofs if your axiom contains
 an error.

@@ -3,7 +3,7 @@ namespace MyNat
 open MyNat
 /-!
 
-# Tutorial world
+# Tutorial World
 
 ## Level 4: addition
 
@@ -32,9 +32,9 @@ be the number after it. Note the name of this proof too -- `add_succ` tells you 
 to something. If you ever see `... + succ ...` in your goal, you should be able to use `rewrite [add_succ]`, to
 make progress.
 
-**Lemma**`
+## Lemma
 
-For all natural numbers `a`, we have `a + (succ 0`) = succ a`.
+For all natural numbers `a`, we have `a + (succ 0) = succ a`.
 -/
 lemma add_succ_zero (a : MyNat) : a + (succ 0) = succ a := by
   rewrite [add_succ]
@@ -51,7 +51,7 @@ using `rewrite [add_succ, add_zero]`.
 
 And remember `rw` also does `rfl`, you can replace the whole proof with `rw [add_succ, add_zero]`.
 
-### Examining proofs.
+### Examining proofs
 
 You might want to review this proof now; at three lines long it is your current record.
 Don't worry there are much longer proofs, in fact, the

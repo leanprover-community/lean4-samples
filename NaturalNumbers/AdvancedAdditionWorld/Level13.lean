@@ -15,7 +15,7 @@ The last level in Advanced Addition World is the statement
 that `n ≠ succ n`.
 
 ## Lemma
-For any natural number `n`, we have ` n ≠ succ n`.
+For any natural number `n`, we have `n ≠ succ n`.
 -/
 lemma ne_succ_self (n : MyNat) : n ≠ succ n := by
   induction n with
@@ -28,7 +28,7 @@ lemma ne_succ_self (n : MyNat) : n ≠ succ n := by
     assumption
 
 /-!
-Well that's a wrap on Advanced Addition World !
+Well that's a wrap on Advanced Addition World!
 
 You can now move on to Advanced Multiplication World
 (after first doing [Multiplication World](../MultiplicationWorld.lean.md), if you didn't do it already).

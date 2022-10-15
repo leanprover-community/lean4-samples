@@ -3,9 +3,9 @@ namespace MyNat
 open MyNat
 
 /-!
-# Function world.
+# Function World
 
-## Level 5: `P → (Q → P)`.
+## Level 5: `P → (Q → P)`
 
 In this level, our goal is to construct a function, like in level 2.
 
@@ -29,7 +29,7 @@ So let's start with
 and we then find ourselves in this state:
 
 ```
-P Q : Type,
+P Q : Type
 p : P
 ⊢ Q → P
 ```
@@ -73,8 +73,8 @@ a mathematician writes `6 - 2 - 1` they mean `(6 - 2) - 1` and not `6 - (2 - 1)`
 
 ## Pro tip
 
-`intros p q` is the same as `intro p; intro q`.
+`intro p q` is the same as `intro p; intro q`.
 
 
-Next up [Level 6](./Level6.lean.md)
+Next up [Level 6](./Level6.lean.md).
 -/

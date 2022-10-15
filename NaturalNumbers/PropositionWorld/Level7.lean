@@ -2,15 +2,15 @@ import MyNat.Definition
 namespace MyNat
 open MyNat
 /-!
-# Function world.
+# Function World
 
 ## Level 7: `(P → Q) → ((Q → R) → (P → R))`
 
 If you start with `intro hpq` and then `intro hqr`
 the dust will clear a bit and the level will look like this:
 ```
-P Q R : Prop,
-hpq : P → Q,
+P Q R : Prop
+hpq : P → Q
 hqr : Q → R
 ⊢ P → R
 ```
@@ -34,5 +34,5 @@ The `assumption` tactic tries to solve the goal using a
 hypothesis of compatible type.  Since we have the hypothesis named `p` it finds
 it and completes the proof.
 
-Next up [Level 8](./Level8.lean.md)
+Next up [Level 8](./Level8.lean.md).
 -/

@@ -28,5 +28,5 @@ theorem add_left_cancel (t a b : MyNat) : t + a = t + b → a = b := by
 
 
 /-!
-Next up [Level 7](./Level7.lean.md)
+Next up [Level 7](./Level7.lean.md).
 -/

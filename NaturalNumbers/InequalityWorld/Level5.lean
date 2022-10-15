@@ -8,14 +8,14 @@ namespace MyNat
 open MyNat
 /-!
 
-# Inequality world.
+# Inequality World
 
 ## Level 5: `le_trans`
 
 Another straightforward one.
 
 ## Lemma : le_trans
-≤ is transitive. In other words, if `a ≤ b` and `b ≤ c` then `a ≤ c`.
+`≤` is transitive. In other words, if `a ≤ b` and `b ≤ c` then `a ≤ c`.
 -/
 theorem le_trans (a b c : MyNat) (hab : a ≤ b) (hbc : b ≤ c) : a ≤ c := by
   cases hab with
@@ -35,5 +35,5 @@ instance : Preorder MyNat :=
   ⟨le_refl_mynat, le_trans, lt⟩
 
 /-!
-Next up [Level 6](./Level6.lean.md)
+Next up [Level 6](./Level6.lean.md).
 -/

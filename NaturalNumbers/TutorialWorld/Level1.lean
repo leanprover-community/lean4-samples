@@ -1,9 +1,9 @@
 import MyNat.Definition
 namespace MyNat
 /-!
-# Tutorial world
+# Tutorial World
 
-## Level 1: the rfl tactic
+## Level 1: the `rfl` tactic
 
 Let's learn some tactics! Let's start with the `rfl` tactic. `rfl` stands for "reflexivity", which is
 a fancy way of saying that it will prove any goal of the form `A = A`. It doesn't matter how

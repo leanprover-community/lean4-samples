@@ -9,7 +9,7 @@ namespace MyNat
 open MyNat
 /-!
 
-# Inequality world.
+# Inequality World
 
 ## Level 15: introducing `<`
 
@@ -23,10 +23,10 @@ But a much more usable definition would be this:
 
 `a < b := succ a ≤ b`
 
-Let's prove that these two definitions are the same
+Let's prove that these two definitions are the same.
 
-## Lemma : lt_aux₁
-For all naturals `a` and `b`, `a ≤ b ∧ ¬(b ≤ a) ⟹ succ a ≤ b.`
+## Lemma : `lt_aux₁`
+For all naturals `a` and `b`, `a ≤ b ∧ ¬(b ≤ a) ⟹ succ a ≤ b`.
 -/
 lemma lt_aux₁ (a b : MyNat) : a ≤ b ∧ ¬ (b ≤ a) → succ a ≤ b := by
   intro h
@@ -47,5 +47,5 @@ lemma lt_aux₁ (a b : MyNat) : a ≤ b ∧ ¬ (b ≤ a) → succ a ≤ b := by
         rw [succ_add]
 
 /-!
-Next up [Level 16](./Level16.lean.md)
+Next up [Level 16](./Level16.lean.md).
 -/

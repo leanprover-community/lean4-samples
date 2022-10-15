@@ -41,5 +41,5 @@ example {a b : MyNat} (h : succ (succ a) = succ (succ b)) :  a = b := by
   exact succ_inj (succ_inj h)
 
 /-!
-Next up [Level 3](./Level3.lean.md)
+Next up [Level 3](./Level3.lean.md).
 -/

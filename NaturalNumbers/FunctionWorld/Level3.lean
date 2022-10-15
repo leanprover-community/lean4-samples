@@ -23,7 +23,7 @@ functions looks like this pictorially:
 
 ![diagram](../assets/function_diag.svg)
 
-and so it's clear how to make the element of `U` from the element of `P.`
+and so it's clear how to make the element of `U` from the element of `P`.
 Indeed, we could solve this level in one move by typing
 
 `exact l (j (h p))`
@@ -67,15 +67,15 @@ in this proof in Visual Studio Code, and note that the tactic state at the begin
 this mess:
 
 ```
-P Q R S T U : Type,
-p : P,
-h : P → Q,
-i : Q → R,
-j : Q → T,
-k : S → T,
-l : T → U,
-q : Q,
-t : T,
+P Q R S T U : Type
+p : P
+h : P → Q
+i : Q → R
+j : Q → T
+k : S → T
+l : T → U
+q : Q
+t : T
 u : U
 ⊢ U
 ```
@@ -85,5 +85,5 @@ terms to it. In level 4 we will learn about the `apply` tactic
 which solves the level using another technique, without leaving
 so much junk behind.
 
-Next up [Level 4](./Level4.lean.md)
+Next up [Level 4](./Level4.lean.md).
 -/
