@@ -1,6 +1,6 @@
 import MyNat.Definition
 /-!
-# Tactic contradiction
+# Tactic `contradiction`
 
 The `contradiction` tactic closes the main goal if its hypotheses
 are "trivially contradictory".

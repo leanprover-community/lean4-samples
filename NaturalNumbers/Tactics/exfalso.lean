@@ -1,6 +1,6 @@
 import MyNat.Definition
 /-!
-# Tactic exfalso
+# Tactic `exfalso`
 
 ## Summary
 
@@ -14,10 +14,10 @@ is what the `exfalso` tactic does. The theorem that `False → P` is called `Fal
 so one can achieve the same effect with `apply False.elim`.
 
 You might think this is a step backwards, but if you have a hypothesis `h : ¬ P`
-then after `rw [not_iff_imp_false] at h,` you can `apply h,` to make progress.
+then after `rw [not_iff_imp_false] at h` you can `apply h` to make progress.
 
 This tactic can also be used in a proof by contradiction, where the hypotheses are enough
 to deduce a contradiction and the goal happens to be some random statement (possibly
-a False one) which you just want to simplify to `False`.
+a false one) which you just want to simplify to `False`.
 
 -/

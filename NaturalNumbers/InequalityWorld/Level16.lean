@@ -18,7 +18,7 @@ open MyNat
 
 Now let's go the other way.
 
-## Lemma : `lt_aux₂`
+## Lemma: `lt_aux₂`
 For all naturals `a` and `b`, `succ a ≤ b  ⟹ a ≤ b ∧ ¬ (b ≤ a)`.
 -/
 lemma lt_aux₂ (a b : MyNat) : succ a ≤ b → a ≤ b ∧ ¬ (b ≤ a) := by

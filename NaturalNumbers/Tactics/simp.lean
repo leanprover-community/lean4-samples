@@ -1,12 +1,12 @@
 import MyNat.Definition
 /-!
-# Tactic : simp
+# Tactic `simp`
 
 The `simp` tactic uses lemmas and hypotheses to simplify the main goal target or
 non-dependent hypotheses. It has many variants:
 - `simp` simplifies the main goal target using lemmas tagged with the attribute `[simp]`.
 - `simp [h₁, h₂, ..., hₙ]` simplifies the main goal target using the lemmas tagged
-  with the attribute `[simp]` and the given `hᵢ`'s, where the `hᵢ`'s are expressions.
+  with the attribute `[simp]` and the given `hᵢ`s, where the `hᵢ`s are expressions.
   If an `hᵢ` is a defined constant `f`, then the equational lemmas associated with
   `f` are used. This provides a convenient way to unfold `f`.
 - `simp [*]` simplifies the main goal target using the lemmas tagged with the
@@ -18,7 +18,7 @@ non-dependent hypotheses. It has many variants:
   the target or another hypothesis depends on `hᵢ`, a new simplified hypothesis
   `hᵢ` is introduced, but the old one remains in the local context.
 - `simp at *` simplifies all the hypotheses and the target.
-- `simp [*] at *` simplifies target and all (propositional) hypotheses using the
+- `simp [*] at *` simplifies the target and all (propositional) hypotheses using the
   other hypotheses.
 
 -/

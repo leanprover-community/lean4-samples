@@ -1,6 +1,6 @@
 import MyNat.Definition
 /-!
-# Tactic cases
+# Tactic `cases`
 
 `cases` is similar to `induction` only it drops the inductive hypothesis.
 

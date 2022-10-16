@@ -14,7 +14,7 @@ In this level, you'll prove that addition is commutative.
 ## Lemma
 
 On the set of natural numbers, addition is commutative.
-In other words, for all natural numbers `a` and `b`, we have `a + b = b + a.`
+In other words, for all natural numbers `a` and `b`, we have `a + b = b + a`.
 -/
 lemma add_comm (a b : MyNat) : a + b = b + a := by
   induction b with

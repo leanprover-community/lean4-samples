@@ -12,9 +12,9 @@ open MyNat
 
 Here's a nice easy one.
 
-## Level 2: le_refl
+## Level 2: `le_refl`
 
-## Lemma :
+## Lemma
 The `≤` relation is reflexive. In other words, if `x` is a natural number,
 then `x ≤ x`.
 -/

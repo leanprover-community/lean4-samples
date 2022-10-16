@@ -15,8 +15,8 @@ you're now equipped with which we'll need in this world.
 
 ## Data:
 
-  * a type called `MyNat`
-  * a term `0 : MyNat`, interpreted as the number zero.
+  * a type called `MyNat`.
+  * a term `0 : MyNat`, interpreted as the number `zero`.
   * a function `succ : MyNat → MyNat`, with `succ n` interpreted as "the number after `n`".
   * Usual numerical notation 0,1,2 etc (although 2 onwards will be of no use to us until much later ;-) ).
   * Addition (with notation `a + b`).

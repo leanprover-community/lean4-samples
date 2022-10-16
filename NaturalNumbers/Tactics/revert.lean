@@ -1,6 +1,6 @@
 import MyNat.Definition
 /-!
-## Tactic : revert
+## Tactic `revert`
 
 ## Summary
 

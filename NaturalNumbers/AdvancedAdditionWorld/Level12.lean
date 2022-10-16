@@ -17,7 +17,7 @@ We have
 but sometimes the other way is also convenient.
 
 ## Theorem
-For any natural number `d`, we have ` d+1 = succ d`.
+For any natural number `d`, we have `d+1 = succ d`.
 -/
 theorem add_one_eq_succ (d : MyNat) : d + 1 = succ d := by
   rw [succ_eq_add_one]

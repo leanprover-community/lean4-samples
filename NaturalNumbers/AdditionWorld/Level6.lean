@@ -22,8 +22,8 @@ If you hadn't picked up on this already, `rw [add_assoc]` will
 change `(x + y) + z` to `x + (y + z)`, but to change it back
 you will need `rw [← add_assoc]`. Get the left arrow by typing `\l`
 then the space bar (note that this is L for left, not a number 1).
-Similarly, if `h : a = b` then `rw [h]` will change `a`'s to `b`'s
-and `rw [← h]` will change `b`'s to `a`'s.
+Similarly, if `h : a = b` then `rw [h]` will change `a`s to `b`s
+and `rw [← h]` will change `b`s to `a`s.
 
 Also, you can be (and will need to be, in this level) more precise
 about where to rewrite theorems. `rw [add_comm]` will just find the
@@ -45,7 +45,7 @@ to some players, are mentioned below the lemma.
 
 ## Lemma
 
-For all natural numbers `a, b` and `c`, we have `a + b + c = a + c + b.`
+For all natural numbers `a, b` and `c`, we have `a + b + c = a + c + b`.
 -/
 lemma add_right_comm (a b c : MyNat) : a + b + c = a + c + b := by
   rw [add_assoc]

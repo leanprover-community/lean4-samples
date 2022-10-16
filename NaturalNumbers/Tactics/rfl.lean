@@ -1,6 +1,6 @@
 import MyNat.Definition
 /-!
-# Tactic : rfl
+# Tactic `rfl`
 
 `rfl` stands for "reflexivity", which is a fancy way of saying that it will prove any
 goal of the form `A = A`. It doesn't matter how complicated `A` is.

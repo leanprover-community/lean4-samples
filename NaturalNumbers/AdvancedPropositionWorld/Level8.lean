@@ -12,9 +12,9 @@ over `∧`. Let's prove one of these.
 
 Some new tactics are handy here, the `rintro` tactic is a combination of the `intro` tactic with
 `rcases` to allow for destructuring patterns while introducing variables. For example,
-`rintro ⟨HP, HQ | HR⟩` below matches the subgoal `P ∧ (Q ∨ R)` and introduces the new hypothesis
-`HP : P` and breaks the Or `Q ∨ R` into two left and right sub-goals each with
-hypothesis `HQ : Q` and `HR : R`.
+`rintro ⟨HP, HQ | HR⟩` below matches the subgoal `P ∧ (Q ∨ R)`, introduces the new hypothesis
+`HP : P`, and breaks `Q ∨ R` into a left subgoal with hypothesis `HQ : Q` and a right sub-goal with
+hypothesis`HR : R`.
 
 Notice here that you can use a semi-colon to separate multiple tactics on the same line. Another
 trick shown below is the [<;> tactic](../Tactics/concatenate.lean.md). We could have written `left; constructor; assumption; assumption`
@@ -23,7 +23,7 @@ can just write `<;> assumption` which runs `assumption` on both sub-goals.
 
 ## Lemma
 If `P`, `Q` and `R` are true/false statements, then
-`P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R).`
+`P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R)`.
 -/
 lemma and_or_distrib_left (P Q R : Prop) : P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R) := by
   constructor

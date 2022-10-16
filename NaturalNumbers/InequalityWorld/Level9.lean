@@ -11,7 +11,7 @@ open MyNat
 
 ## Level 9: `le_total`
 
-## Lemma : `le_total`
+## Lemma: `le_total`
 For all naturals `a` and `b`, either `a ≤ b` or `b ≤ a`.
 -/
 theorem le_total (a b : MyNat) : a ≤ b ∨ b ≤ a := by

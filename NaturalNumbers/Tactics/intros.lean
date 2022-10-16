@@ -1,6 +1,6 @@
 import MyNat.Definition
 /-!
-# Tactic intros
+# Tactic `intros`
 
 The `intros` tactic is like `intro` only it can introduce multiple hypotheses at once.
 

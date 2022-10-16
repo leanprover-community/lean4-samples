@@ -2,7 +2,7 @@ import MyNat.Definition
 namespace MyNat
 open MyNat
 /-!
-# Proposition ∑orld
+# Proposition World
 
 ## Level 5 : `P → (Q → P)`
 

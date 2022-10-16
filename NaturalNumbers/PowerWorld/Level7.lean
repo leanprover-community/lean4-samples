@@ -12,7 +12,7 @@ open MyNat
 Boss level! What will the collectible be?
 
 ## Lemma
-For all naturals `a`, `m`, `n`, we have `(a ^ m) ^ n = a ^ mn`.
+For all naturals `a`, `m` and `n`, we have `(a ^ m) ^ n = a ^ mn`.
 -/
 lemma pow_pow (a m n : MyNat) : (a ^ m) ^ n = a ^ (m * n) := by
   induction n with

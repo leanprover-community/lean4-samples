@@ -17,7 +17,7 @@ intro p
 repeat rw [not_iff_imp_false] at h
 ```
 
-in the below, you are left with
+below you are left with
 ```
 P Q : Prop
 h : (Q → False) → P → False
@@ -27,7 +27,7 @@ p : P
 
 The tools you have are not sufficient to continue. But you can just prove this, and any other basic
 lemmas of this form like `¬ ¬ P → P`, using the [`by_cases` tactic](../Tactics/by_cases.lean.md). Here we start with the usual
-`intros` to turn the implication into hypotheses `h : ¬ Q → ¬ P` and `p : P` which leaves with the
+`intro` to turn the implication into hypotheses `h : ¬ Q → ¬ P` and `p : P` which leaves with the
 goal of `⊢ Q`.  But how can you prove `Q` using these hypotheses?  You can use this tactic:
 
 `by_cases q : Q`
@@ -42,8 +42,7 @@ The `contradiction` tactic closes the main goal if its hypotheses
 are "trivially contradictory".
 
 ## Lemma
-If `P` and `Q` are true/false statements, then
-`(¬ Q ⟹ ¬ P) ⟹ (P ⟹ Q).`
+If `P` and `Q` are true/false statements, then `(¬ Q ⟹ ¬ P) ⟹ (P ⟹ Q)`.
 -/
 lemma contrapositive2 (P Q : Prop) : (¬ Q → ¬ P) → (P → Q) := by
   intro h

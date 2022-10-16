@@ -26,7 +26,7 @@ no theorems at all which mention `1`. Let's prove one now.
 
 ## Theorem
 
-For any natural number `n`, we have `succ n = n + 1.`
+For any natural number `n`, we have `succ n = n + 1`.
 -/
 theorem succ_eq_add_one (n : MyNat) : succ n = n + 1 := by
   rw [one_eq_succ_zero]

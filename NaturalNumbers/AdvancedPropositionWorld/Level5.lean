@@ -9,7 +9,7 @@ open MyNat
 
 Let's try `iff_trans` again. Try proving it in other ways.
 
-### A trick.
+### A trick
 
 Instead of using `cases` on `h : P ↔ Q` you can just access the proofs of `P → Q` and `Q → P`
 directly with `h.mp` and `h.mpr`.

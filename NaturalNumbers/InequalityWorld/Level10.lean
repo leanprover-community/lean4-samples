@@ -11,7 +11,7 @@ open MyNat
 
 Another simple one.
 
-## Lemma : `le_succ_self`
+## Lemma: `le_succ_self`
 For all naturals `a`, `a ≤ succ a.`
 -/
 lemma le_succ_self (a : MyNat) : a ≤ succ a := by

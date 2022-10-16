@@ -20,7 +20,7 @@ Notice `exact add_right_cancel _ _ _` means "let Lean figure out the missing inp
 so we don't have to spell it out like we did in Level 6.
 
 ## Theorem
-For all naturals `a`, `b` and `t`, `a + t = b + t ↔ a = b.`
+For all naturals `a`, `b` and `t`, `a + t = b + t ↔ a = b`.
 -/
 theorem add_right_cancel_iff (t a b : MyNat) :  a + t = b + t ↔ a = b := by
   constructor

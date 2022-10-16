@@ -5,7 +5,7 @@ open MyNat
 /-!
 # Function World
 
-## Level 3: the `have` tactic.
+## Level 3: the `have` tactic
 
 Say you have a whole bunch of sets and functions between them,
 and your goal is to build a certain element of a certain set.
@@ -37,8 +37,8 @@ and then we note that `j q` is an element of `T`
 
 `have t : T := j q`
 
-(notice how on this occasion we explicitly told Lean what set we thought `t` was in, with
-that `: T` thing before the `:=`) and we could even define `u` to be `l t`:
+Notice how on this occasion we explicitly told Lean what set we thought `t` was in, with
+that `: T` thing before the `:=`. We could even define `u` to be `l t`:
 
 `have u : U := l t`
 

@@ -14,7 +14,7 @@ open MyNat
 Turns out that `¬ P` is *by definition* `P → False`, so you can just
 start this one with `intro h` if you like.
 
-##  Lemma : `not_succ_le_self`
+##  Lemma: `not_succ_le_self`
 For all naturals `a`, `succ a` is not at most `a`.
 -/
 theorem not_succ_le_self (a : MyNat) : ¬ (succ a ≤ a) := by

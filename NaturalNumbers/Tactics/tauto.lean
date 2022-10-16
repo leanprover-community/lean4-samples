@@ -1,7 +1,7 @@
 import MyNat.Definition
 /-!
 
-## Tactic : tauto
+## Tactic `tauto`
 
 ## Summary
 

@@ -12,7 +12,7 @@ We proved `add_right_eq_zero` back in advanced addition world.
 Remember that you can do things like `have h2 := add_right_eq_zero h1`
 if `h1 : a + c = 0`.
 
-### Lemma : `le_zero`
+### Lemma: `le_zero`
 For all naturals `a`, if `a ≤ 0` then `a = 0`.
 -/
 lemma le_zero (a : MyNat) (h : a ≤ 0) : a = 0 := by

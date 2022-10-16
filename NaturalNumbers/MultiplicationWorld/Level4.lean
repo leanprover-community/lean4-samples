@@ -29,7 +29,7 @@ an alternative name for the proof of this lemma.
 
 Multiplication is distributive over addition.
 In other words, for all natural numbers `a`, `b` and `t`, we have
-` t(a + b) = ta + tb`.
+`t(a + b) = ta + tb`.
 -/
 
 lemma mul_add (t a b : MyNat) : t * (a + b) = t * a + t * b := by

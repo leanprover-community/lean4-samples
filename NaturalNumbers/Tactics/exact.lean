@@ -1,6 +1,6 @@
 import MyNat.Definition
 /-!
-# Tactic exact
+# Tactic `exact`
 
 `exact e` closes the main goal if its target type matches that of `e`.
 

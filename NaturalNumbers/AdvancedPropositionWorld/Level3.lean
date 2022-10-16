@@ -4,7 +4,7 @@ open MyNat
 /-!
 # Advanced Proposition World
 
-## Level 3: and_trans
+## Level 3: `and_trans`
 
 With this proof we can use the first `cases` tactic to extract hypotheses `p : P` and `q : Q` from
 `hpq : P ∧ Q` and then we can use another `cases` tactic to extract hypotheses `q' : Q` and `r : R` from

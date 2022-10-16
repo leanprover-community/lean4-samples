@@ -31,7 +31,7 @@ What happens if you just try `apply f`? Can you figure out what just happened? T
 `apply` easter egg. Why is it mathematically valid?
 
 ## Definition
-Whatever the sets `P` and `Q` and `R` are, we
+Whatever the sets `P`, `Q` and `R` are, we
 make an element of \\(\operatorname{Hom}(\operatorname{Hom}(P,\operatorname{Hom}(Q,R)),
 \operatorname{Hom}(\operatorname{Hom}(P,Q),\operatorname{Hom}(P,R)))\\).
 -/

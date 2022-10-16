@@ -10,7 +10,7 @@ axiom succ_inj {a b : MyNat} : succ a = succ b → a = b
 
 # Advanced Addition World
 
-## Level 1: `succ_inj`. A function
+## Level 1: `succ_inj`
 
 Let's learn how to use `succ_inj`. You should know a couple of ways to prove the below -- one
 directly using an `exact`, and one which uses an `apply` first. But either way you'll need to use

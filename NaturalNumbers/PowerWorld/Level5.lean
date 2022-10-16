@@ -11,7 +11,7 @@ open MyNat
 ## Level 5: `pow_add`
 
 ## Lemma
-For all naturals `a`, `m`, `n`, we have `a^(m + n) = a ^ m * a ^ n`.
+For all naturals `a`, `m` and `n`, we have `a^(m + n) = a ^ m * a ^ n`.
 -/
 lemma pow_add (a m n : MyNat) : a ^ (m + n) = a ^ m * a ^ n := by
   induction n with

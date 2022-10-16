@@ -1,6 +1,6 @@
 import MyNat.Definition
 /-!
-# Tactic intro
+# Tactic `intro`
 
 If your goal is `⊢ P → Q` then `intro p` will introduce a new
 hypothesis `p : P` and change the goal to `⊢ Q`.

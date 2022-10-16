@@ -17,7 +17,7 @@ hqr : Q → R
 So this level is really about showing transitivity of `⟹`,
 if you like that sort of language.
 
-## Lemma : imp_trans
+## Lemma: `imp_trans`
 
 From `P ⟹ Q` and `Q ⟹ R` we can deduce `P ⟹ R`.
 -/

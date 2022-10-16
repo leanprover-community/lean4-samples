@@ -12,7 +12,7 @@ open MyNat
 
 Another easy one.
 
-## Lemma : zero_le
+## Lemma: `zero_le`
 For all naturals `a`, `0 ≤ a`.
 -/
 lemma zero_le (a : MyNat) : 0 ≤ a := by

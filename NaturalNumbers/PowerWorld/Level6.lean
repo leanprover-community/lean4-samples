@@ -15,7 +15,7 @@ Here we use the `attribute [simp]` additions we made in
 so that the `simp` tactic can simplify expressions involving `*`.
 
 ## Lemma
-For all naturals `a`, `b`, `n`, we have `(ab) ^ n = a ^ n * b ^ n`.
+For all naturals `a`, `b` and `n`, we have `(ab) ^ n = a ^ n * b ^ n`.
 -/
 lemma mul_pow (a b n : MyNat) : (a * b) ^ n = a ^ n * b ^ n := by
   induction n with

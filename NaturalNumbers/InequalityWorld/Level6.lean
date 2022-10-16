@@ -24,7 +24,7 @@ a hypothesis `h : c + d = 0` then you can write
 
 `have h := eq_zero_of_add_right_eq_self hd`
 
-## Lemma : `le_antisymm`
+## Lemma: `le_antisymm`
 `≤` is antisymmetric. In other words, if `a ≤ b` and `b ≤ a` then `a = b`.
 -/
 theorem le_antisymm (a b : MyNat) (hab : a ≤ b) (hba : b ≤ a) : a = b := by

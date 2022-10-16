@@ -7,8 +7,8 @@ open MyNat
 ## Level 2: `intro`
 
 Let's prove an implication. Let `P` be a true/false statement, and let's prove that `P → P`. You
-will see that our goal in the lemma below starts out with `P → P`. Constructing a term of type `P →
-P` (which is what solving this goal *means*) in this case amounts to proving that `P → P`, and
+will see that our goal in the lemma below starts out with `P → P`. Constructing a term of type `P → P`
+(which is what solving this goal *means*) in this case amounts to proving that `P → P`, and
 computer scientists think of this as coming up with a function which sends proofs of `P` to proofs
 of `P`.
 
@@ -52,7 +52,7 @@ confuse a true/false statement (which could be false!) with a proof.
 We will stick with the convention of capital letters for propositions
 and small letters for proofs.
 
-## Lemma : imp_self
+## Lemma: `imp_self`
 If `P` is a proposition then `P → P`.
 -/
 lemma imp_self (P : Prop) : P → P := by

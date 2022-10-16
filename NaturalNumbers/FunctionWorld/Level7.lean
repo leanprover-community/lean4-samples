@@ -18,7 +18,7 @@ functor.
 
 ## Definition
 
-Whatever the sets `P` and `Q` and `F` are, we
+Whatever the sets `P`, `Q` and `F` are, we
 make an element of \\(\operatorname{Hom}(\operatorname{Hom}(P,Q),
 \operatorname{Hom}(\operatorname{Hom}(Q,F),\operatorname{Hom}(P,F)))\\).
 -/

@@ -11,7 +11,7 @@ open MyNat
 
 ## Level 12: `le_of_succ_le_succ`
 
-## Lemma : `le_of_succ_le_succ`
+## Lemma: `le_of_succ_le_succ`
 For all naturals `a` and `b`, `succ a ≤ succ b ⟹ a ≤ b`.
 -/
 theorem le_of_succ_le_succ (a b : MyNat) : succ a ≤ succ b → a ≤ b := by

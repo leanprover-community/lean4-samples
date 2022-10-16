@@ -26,7 +26,7 @@ and `add_zero` is about something add zero. The names of the proofs tell you wha
 
 ## Lemma
 
-For all natural numbers `n`, we have `0 + n = n.`
+For all natural numbers `n`, we have `0 + n = n`.
 -/
 lemma zero_add (n : MyNat) : 0 + n = n := by
   induction n with

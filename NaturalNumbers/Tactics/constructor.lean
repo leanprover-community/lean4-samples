@@ -1,6 +1,6 @@
 import MyNat.Definition
 /-!
-# Tactic constructor
+# Tactic `constructor`
 
 If the main goal's target type is an inductive type, `constructor` solves it with
 the first matching constructor, or else fails.
