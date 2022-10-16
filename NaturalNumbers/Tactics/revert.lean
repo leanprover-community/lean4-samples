@@ -1,6 +1,6 @@
 import MyNat.Definition
 /-!
-## Tactic : revert
+## Tactic `revert`
 
 ## Summary
 
@@ -11,7 +11,7 @@ import MyNat.Definition
 If the tactic state looks like this
 
 ```
-P Q : Prop,
+P Q : Prop
 h : P
 ⊢ Q
 ```

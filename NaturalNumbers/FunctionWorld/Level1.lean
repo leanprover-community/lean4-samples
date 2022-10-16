@@ -5,7 +5,7 @@ open MyNat
 /-!
 # Function World
 
-## Level 1: the `exact` tactic.
+## Level 1: the `exact` tactic
 
 Given an element of `P` and a function from `P` to `Q`,
 we define an element of `Q`.
@@ -21,8 +21,8 @@ If you place your cursor at the end of the `example` line above
 the tactic state will look like this:
 
 ```
-P Q : Type,
-p : P,
+P Q : Type
+p : P
 h : P → Q
 ⊢ Q
 ```
@@ -66,8 +66,8 @@ might think of as either sets or propositions),
 and the local context looks like this:
 
 ```
-p : P,
-h : P → Q,
+p : P
+h : P → Q
 j : Q → R
 ⊢ R
 ```
@@ -83,5 +83,5 @@ because `j (h p)` is easily checked to be a term of type `R`
 (i.e., an element of the set `R`, or a proof of the proposition `R`).
 
 
-Next up [Level 2](./Level2.lean.md)
+Next up [Level 2](./Level2.lean.md).
 -/

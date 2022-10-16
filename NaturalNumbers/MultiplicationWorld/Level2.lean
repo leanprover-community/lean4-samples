@@ -20,7 +20,7 @@ behaves with respect to multiplication.
 
 ## Lemma
 
-For any natural number `m`, we have `m * 1 = m.`
+For any natural number `m`, we have `m * 1 = m`.
 -/
 lemma mul_one (m : MyNat) : m * 1 = m := by
   rw [one_eq_succ_zero]

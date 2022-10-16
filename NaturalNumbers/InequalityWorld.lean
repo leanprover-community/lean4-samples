@@ -18,7 +18,7 @@ import InequalityWorld.Level17
 -- import InequalityWorld.Level18 -- BUGBUG
 
 /-!
-# Inequality world.
+# Inequality World
 
 A new `import MyNat.Inequality` gives us a new definition. If `a` and `b` are naturals,
 `a ≤ b` is *defined* to mean
@@ -26,7 +26,7 @@ A new `import MyNat.Inequality` gives us a new definition. If `a` and `b` are na
 `∃ (c : MyNat), b = a + c`
 
 The backwards E means "there exists". So in words, `a ≤ b`
-if and only if there exists a natural `c` such that `b=a+c`.
+if and only if there exists a natural number `c` such that `b=a+c`.
 
 If you really want to change an `a ≤ b` to `∃ c, b = a + c` then
 you can do so with `rw [le_iff_exists_add]`:
@@ -46,6 +46,6 @@ There are two situations. Firstly we need to know how to solve a goal
 of the form `⊢ ∃ c, ...`, and secondly we need to know how to use a hypothesis
 of the form `∃ c, ...`.
 
-Let's dive in [Level 1](./InequalityWorld/Level1.lean.md)
+Let's dive in [Level 1](./InequalityWorld/Level1.lean.md).
 
 -/

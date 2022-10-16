@@ -3,9 +3,9 @@ namespace MyNat
 open MyNat
 
 /-!
-# Function world.
+# Function World
 
-## Level 9: a big maze.
+## Level 9: a big maze
 
 In [Proposition World](../PropositionWorld.lean.md) you will see a variant of this example
 which can be solved by a tactic. It would be an interesting project to make a tactic

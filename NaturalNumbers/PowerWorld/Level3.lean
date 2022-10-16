@@ -21,5 +21,5 @@ lemma pow_one (a : MyNat) : a ^ (1 : MyNat) = a := by
 
 
 /-!
-Next up [Level 4](./Level4.lean.md)
+Next up [Level 4](./Level4.lean.md).
 -/

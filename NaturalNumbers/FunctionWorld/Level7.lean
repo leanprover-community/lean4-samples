@@ -18,17 +18,17 @@ functor.
 
 ## Definition
 
-Whatever the sets  `P ` and  `Q ` and  `F ` are, we
+Whatever the sets `P`, `Q` and `F` are, we
 make an element of \\(\operatorname{Hom}(\operatorname{Hom}(P,Q),
 \operatorname{Hom}(\operatorname{Hom}(Q,F),\operatorname{Hom}(P,F)))\\).
 -/
 example (P Q F : Type) : (P → Q) → ((Q → F) → (P → F)) := by
-  intros f h p
+  intro f h p
   apply h
   apply f
   exact p
 
 /-!
 
-Next up [Level 8](./Level8.lean.md)
+Next up [Level 8](./Level8.lean.md).
 -/

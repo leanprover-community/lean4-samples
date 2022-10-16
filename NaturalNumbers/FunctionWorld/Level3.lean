@@ -5,7 +5,7 @@ open MyNat
 /-!
 # Function World
 
-## Level 3: the `have` tactic.
+## Level 3: the `have` tactic
 
 Say you have a whole bunch of sets and functions between them,
 and your goal is to build a certain element of a certain set.
@@ -23,7 +23,7 @@ functions looks like this pictorially:
 
 ![diagram](../assets/function_diag.svg)
 
-and so it's clear how to make the element of `U` from the element of `P.`
+and so it's clear how to make the element of `U` from the element of `P`.
 Indeed, we could solve this level in one move by typing
 
 `exact l (j (h p))`
@@ -37,8 +37,8 @@ and then we note that `j q` is an element of `T`
 
 `have t : T := j q`
 
-(notice how on this occasion we explicitly told Lean what set we thought `t` was in, with
-that `: T` thing before the `:=`) and we could even define `u` to be `l t`:
+Notice how on this occasion we explicitly told Lean what set we thought `t` was in, with
+that `: T` thing before the `:=`. We could even define `u` to be `l t`:
 
 `have u : U := l t`
 
@@ -67,15 +67,15 @@ in this proof in Visual Studio Code, and note that the tactic state at the begin
 this mess:
 
 ```
-P Q R S T U : Type,
-p : P,
-h : P → Q,
-i : Q → R,
-j : Q → T,
-k : S → T,
-l : T → U,
-q : Q,
-t : T,
+P Q R S T U : Type
+p : P
+h : P → Q
+i : Q → R
+j : Q → T
+k : S → T
+l : T → U
+q : Q
+t : T
 u : U
 ⊢ U
 ```
@@ -85,5 +85,5 @@ terms to it. In level 4 we will learn about the `apply` tactic
 which solves the level using another technique, without leaving
 so much junk behind.
 
-Next up [Level 4](./Level4.lean.md)
+Next up [Level 4](./Level4.lean.md).
 -/

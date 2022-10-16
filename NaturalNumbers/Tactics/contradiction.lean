@@ -1,6 +1,6 @@
 import MyNat.Definition
 /-!
-# Tactic contradiction
+# Tactic `contradiction`
 
 The `contradiction` tactic closes the main goal if its hypotheses
 are "trivially contradictory".
@@ -11,7 +11,7 @@ Inductive type/family with no applicable constructors
 
 Injectivity of constructors
 
-- `example (h : none = some true) : p := by contradiction  --`
+- `example (h : none = some true) : p := by contradiction`
 
 Decidable false proposition
 

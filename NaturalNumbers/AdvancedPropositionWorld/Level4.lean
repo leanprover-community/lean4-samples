@@ -3,9 +3,9 @@ namespace MyNat
 open MyNat
 /-!
 
-# Advanced proposition world.
+# Advanced Proposition World
 
-## Level 4: `iff_trans`.
+## Level 4: `iff_trans`
 
 The mathematical statement `P ↔ Q` is equivalent to `(P ⟹ Q) ∧ (Q ⟹ P)`. The `cases`
 and `split` tactics work on hypotheses and goals (respectively) of the form `P ↔ Q`.
@@ -41,5 +41,5 @@ lemma iff_trans (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) := by
 /-!
 
 
-Next up [Level 5](./Level5.lean.md)
+Next up [Level 5](./Level5.lean.md).
 -/

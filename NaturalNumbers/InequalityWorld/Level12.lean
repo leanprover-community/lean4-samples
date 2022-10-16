@@ -7,12 +7,12 @@ namespace MyNat
 open MyNat
 /-!
 
-# Inequality world.
+# Inequality World
 
 ## Level 12: `le_of_succ_le_succ`
 
-## Lemma : le_of_succ_le_succ
-For all naturals `a` and `b`, `succ a ≤ succ b ⟹ a ≤ b.`
+## Lemma: `le_of_succ_le_succ`
+For all naturals `a` and `b`, `succ a ≤ succ b ⟹ a ≤ b`.
 -/
 theorem le_of_succ_le_succ (a b : MyNat) : succ a ≤ succ b → a ≤ b := by
   intro h
@@ -24,5 +24,5 @@ theorem le_of_succ_le_succ (a b : MyNat) : succ a ≤ succ b → a ≤ b := by
     exact succ_add a c
 
 /-!
-Next up [Level 13](./Level13.lean.md)
+Next up [Level 13](./Level13.lean.md).
 -/

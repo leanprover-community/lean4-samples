@@ -9,10 +9,10 @@ import PropositionWorld.Level8
 import PropositionWorld.Level9
 /-!
 
-# Proposition world.
+# Proposition world
 
 A Proposition is a true/false statement, like `2 + 2 = 4` or `2 + 2 = 5`.
-Just like we can have concrete sets in Lean like `MyNat`, and abstract
+Just as we can have concrete sets in Lean like `MyNat`, and abstract
 sets called things like `X`, we can also have concrete propositions like
 `2 + 2 = 5` and abstract propositions called things like `P`.
 
@@ -52,5 +52,5 @@ theorems, not constructing elements of sets. Or are we?
 In Lean, Propositions, like sets, are types, and proofs, like elements of sets, are terms.
 
 
-Let's get started [Level 1](./PropositionWorld/Level1.lean.md)
+Let's get started [Level 1](./PropositionWorld/Level1.lean.md).
 -/

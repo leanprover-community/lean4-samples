@@ -1,6 +1,6 @@
 import MyNat.Definition
 /-!
-# Tactic use
+# Tactic `use`
 
 ## Summary
 
@@ -15,7 +15,7 @@ more unwise `use 0` will turn it into the impossible-to-prove
 `P(c)` is some proposition which depends on `c`. With a goal of this
 form, `use 0` will turn the goal into `⊢ P(0)`, `use x + y` (assuming
 `x` and `y` are natural numbers in your local context) will turn
-the goal into `P(x + y)` and so on.
+the goal into `P(x + y)`, and so on.
 
 
 

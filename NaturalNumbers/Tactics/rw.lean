@@ -1,6 +1,6 @@
 import MyNat.Definition
 /-!
-# Tactic : rw
+# Tactic `rw`
 
 The `rw` tactic is simply the `rewrite` tactic followed by `rfl`.
 

@@ -6,7 +6,7 @@ namespace MyNat
 open MyNat
 /-!
 
-# Inequality world.
+# Inequality World
 
 ## Level 3: `le_succ_of_le`
 
@@ -38,8 +38,8 @@ elected not to do the definitional rewriting) so
 gives you the natural number `c` and the hypothesis `hc : b = a + c`.
 Now use `use` wisely and you're home.
 
-## Lemma : le_succ
-For all naturals `a`, `b`, if `a ≤ b` then `a ≤ succ b`.
+## Lemma: `le_succ`
+For all naturals `a` and `b`, if `a ≤ b` then `a ≤ succ b`.
 -/
 theorem le_succ (a b : MyNat) : a ≤ b → a ≤ (succ b) := by
   intro h
@@ -57,5 +57,5 @@ Now what about if you do `use 1 + c`? Can you work out
 what is going on? Does it help if I tell you that the *definition*
 of `1` is `succ 0`?
 
-Next up [Level 4](./Level4.lean.md)
+Next up [Level 4](./Level4.lean.md).
 -/

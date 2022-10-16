@@ -24,7 +24,7 @@ it with
 
 and the second one you could solve by looking up the name of the theorem
 you proved in the last level and doing `exact <that name>`, or alternatively
-you could get some more `intro` practice and seeing if you can prove it
+you could get some more `intro` practice and see if you can prove it
 using `intro` and `rw`.
 
 Remember that `succ_inj` is `succ a = succ b → a = b`.
@@ -39,5 +39,5 @@ theorem succ_eq_succ_iff (a b : MyNat) : succ a = succ b ↔ a = b := by
 
 
 /-!
-Next up [Level 5](./Level5.lean.md)
+Next up [Level 5](./Level5.lean.md).
 -/

@@ -17,8 +17,8 @@ to do rewriting of hypotheses rather than the goal.
 
 ## Theorem
 On the set of natural numbers, addition has the right cancellation property.
-In other words, if there are natural numbers `a, b` and `c` such that
-` a + t = b + t ` then we have `a = b`.
+In other words, if there are natural numbers `a`, `b` and `c` such that
+`a + t = b + t` then we have `a = b`.
 -/
 theorem add_right_cancel (a t b : MyNat) : a + t = b + t → a = b := by
   intro h
@@ -35,5 +35,5 @@ theorem add_right_cancel (a t b : MyNat) : a + t = b + t → a = b := by
     exact succ_inj h
 
 /-!
-Next up [Level 6](./Level6.lean.md)
+Next up [Level 6](./Level6.lean.md).
 -/

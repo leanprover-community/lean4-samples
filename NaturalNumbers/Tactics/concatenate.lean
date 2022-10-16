@@ -1,6 +1,6 @@
 import MyNat.Definition
 /-!
-# Tactic <;>
+# Tactic `<;>`
 
 `tac1 <;> tac2` runs `tac1` on the main goal and `tac2` on each produced goal,
 concatenating all goals produced by `tac2`.

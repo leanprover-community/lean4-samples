@@ -7,7 +7,7 @@ open MyNat
 
 /-!
 
-# Inequality world.
+# Inequality World
 
 ## Level 1: the [`use` tactic](../Tactics/use.lean.md)
 
@@ -29,7 +29,7 @@ So try
 
 and now the goal becomes `⊢ 1 + x = x + 1`. You can solve this by
 `exact add_comm 1 x`, or if you are lazy you can just use the `ring` tactic,
-which is a powerful AI which will solve any equality in algebra which can
+a powerful AI which will solve any equality in algebra that can
 be proved using the standard rules of addition and multiplication. Now
 look at your proof. We're going to remove a line.
 
@@ -43,7 +43,7 @@ this does not formally make sense, but you can do the calculation in your head).
 If you have written `rw [le_iff_exists_add]` below, then just put two minus signs `--`
 before it and comment it out. See that the proof still compiles.
 
-## Lemma : one_add_le_self
+## Lemma: `one_add_le_self`
 If `x` is a natural number, then `x ≤ 1+x`.
 -/
 lemma one_add_le_self (x : MyNat) : x ≤ 1 + x := by
@@ -54,6 +54,6 @@ lemma one_add_le_self (x : MyNat) : x ≤ 1 + x := by
 /-!
 
 
-Next up [Level 2](./Level2.lean.md)
+Next up [Level 2](./Level2.lean.md).
 
 -/

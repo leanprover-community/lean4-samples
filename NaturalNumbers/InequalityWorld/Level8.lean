@@ -6,13 +6,13 @@ namespace MyNat
 open MyNat
 /-!
 
-# Inequality world.
+# Inequality World
 
 ## Level 8: `succ_le_succ`
 
 Another straightforward one.
 
-## Lemma : succ_le_succ
+## Lemma: `succ_le_succ`
 For all naturals `a` and `b`, if `a ≤ b`, then `succ a ≤ succ b`.
 -/
 lemma succ_le_succ (a b : MyNat) (h : a ≤ b) : succ a ≤ succ b := by
@@ -24,5 +24,5 @@ lemma succ_le_succ (a b : MyNat) (h : a ≤ b) : succ a ≤ succ b := by
 
 
 /-!
-Next up [Level 9](./Level9.lean.md)
+Next up [Level 9](./Level9.lean.md).
 -/

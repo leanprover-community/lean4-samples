@@ -8,7 +8,7 @@ namespace MyNat
 open MyNat
 /-!
 
-# Inequality world.
+# Inequality World
 
 ## Level 6: `le_antisymm`
 
@@ -16,7 +16,7 @@ In Advanced Addition World you proved
 
 `eq_zero_of_add_right_eq_self (a b : MyNat) : a + b = a → b = 0`.
 
-This might be useful in this level.
+That might be useful in this level.
 
 Another tip: if you want to create a new hypothesis, you can use the `have` tactic.
 For example, if you have a hypothesis `hd : a + (c + d) = a` and you want
@@ -24,7 +24,7 @@ a hypothesis `h : c + d = 0` then you can write
 
 `have h := eq_zero_of_add_right_eq_self hd`
 
-## Lemma : le_antisymm
+## Lemma: `le_antisymm`
 `≤` is antisymmetric. In other words, if `a ≤ b` and `b ≤ a` then `a = b`.
 -/
 theorem le_antisymm (a b : MyNat) (hab : a ≤ b) (hba : b ≤ a) : a = b := by
@@ -47,5 +47,5 @@ This proved that the natural numbers are a partial order!
 -- instance : partial_order MyNat := by structure_helper
 
 /-!
-Next up [Level 7](./Level7.lean.md)
+Next up [Level 7](./Level7.lean.md).
 -/

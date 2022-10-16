@@ -9,7 +9,7 @@ open MyNat
 
 ## Lemma
 
-For all natural numbers `m`, we have ` 0 * m = 0. `
+For all natural numbers `m`, we have ` 0 * m = 0`.
 -/
 lemma zero_mul (m : MyNat) : 0 * m = 0 := by
   induction m with

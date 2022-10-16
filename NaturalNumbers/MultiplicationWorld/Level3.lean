@@ -21,7 +21,7 @@ identity for addition with `add_zero` and `zero_add`).
 
 ## Lemma
 
-For any natural number `m`, we have `1 * m = m.`
+For any natural number `m`, we have `1 * m = m`.
 -/
 lemma one_mul (m : MyNat) : 1 * m = m := by
   induction m with

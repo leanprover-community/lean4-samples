@@ -2,9 +2,9 @@ import MyNat.Definition
 namespace MyNat
 open MyNat
 /-!
-# Proposition world.
+# Proposition World
 
-## Level 9: a big maze.
+## Level 9: a big maze
 
 Hint: Lean's "congruence closure" tactic `cc` is good at mazes. You might want to try it now.
 Perhaps I should have mentioned it earlier.

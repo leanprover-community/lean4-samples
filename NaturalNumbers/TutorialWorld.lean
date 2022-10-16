@@ -19,7 +19,7 @@ Start](https://leanprover.github.io/lean4/doc/quickstart.html) for more informat
 
 To run this tutorial in Visual Studio Code, first
 clone the [https://github.com/leanprover/lean4-samples](https://github.com/leanprover/lean4-samples)
-repo.  Then you must open the `NaturalNumbers` folder in Visual Studio Code using `File/Open folder` in order
+repo.  Then you must open the `NaturalNumbers` folder in Visual Studio Code using `File/Open Folder` in order
 for it to function correctly.
 
 ## How to use this sample

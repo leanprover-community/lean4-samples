@@ -27,9 +27,7 @@ The Lean tactic for "let `x ∈ X` be arbitrary" is `intro x`.
 If your goal is `P → Q` then `intro p` will make progress.
 
 To solve the goal below, you have to come up with a function from `MyNat`
-to `MyNat`. We can start with `intro n`
-
-(i.e. "let `n ∈ ℕ` be arbitrary") and note that our
+to `MyNat`. We can start with `intro n` (i.e. "let `n ∈ ℕ` be arbitrary") and note that our
 local context now looks like this:
 
 ```
@@ -57,8 +55,8 @@ example : MyNat → MyNat := by
 You can hover your mouse over the tactics `intro` and `exact`
 to the documentation on these tactics in case you need a
 reminder later on.
-See also [intro tactic](../Tactics/intro.lean.md)
+See also [intro tactic](../Tactics/intro.lean.md).
 
 
-Next up [Level 3](./Level3.lean.md)
+Next up [Level 3](./Level3.lean.md).
 -/

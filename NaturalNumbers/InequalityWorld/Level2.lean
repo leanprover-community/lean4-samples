@@ -8,13 +8,13 @@ namespace MyNat
 open MyNat
 /-!
 
-# Inequality world.
+# Inequality World
 
 Here's a nice easy one.
 
-## Level 2: le_refl
+## Level 2: `le_refl`
 
-## Lemma :
+## Lemma
 The `≤` relation is reflexive. In other words, if `x` is a natural number,
 then `x ≤ x`.
 -/
@@ -70,5 +70,5 @@ different places. `rfl` closes a goal of the form `X = Y` if `X` and `Y` are
 definitionally equal.
 
 
-Next up [Level 3](./Level3.lean.md)
+Next up [Level 3](./Level3.lean.md).
 -/

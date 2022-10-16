@@ -1,6 +1,6 @@
 import MyNat.Definition
 /-!
-# Tactic : induction
+# Tactic `induction`
 
 Assuming `x` is a variable in the local context with an inductive type, `induction x` applies induction
 on `x` to the main goal, producing one goal for each constructor of the inductive type, in which the

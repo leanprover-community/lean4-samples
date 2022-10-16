@@ -3,14 +3,14 @@ namespace MyNat
 open MyNat
 
 /-!
-# Proposition world.
+# Proposition World
 
-## Level 8 : `(P → Q) → (¬ Q → ¬ P)`
+## Level 8: `(P → Q) → (¬ Q → ¬ P)`
 
-There is a false proposition `false`, with no proof. It is easy to check that `¬ Q` is equivalent to
-`Q ⟹ false`, and in this tutorial we call this
+There is a false proposition `False`, with no proof. It is easy to check that `¬ Q` is equivalent to
+`Q ⟹ False`, and in this tutorial we call this
 
-`not_iff_imp_false (P : Prop) : ¬ P ↔ (P → false)`
+`not_iff_imp_false (P : Prop) : ¬ P ↔ (P → False)`
 
 which we can prove here using the `simp` tactic:
 -/
@@ -22,10 +22,10 @@ So you can start the proof of the contrapositive below with
 `repeat rw [not_iff_imp_false]`
 
 to get rid of the two occurrences of `¬`, and I'm sure you can take it from there. At some point
-your goal might be to prove `false`. At that point I guess you must be proving something by
+your goal might be to prove `False`. At that point I guess you must be proving something by
 contradiction. Or are you?
 
-## Lemma : contrapositive
+## Lemma: `contrapositive`
 If `P` and `Q` are propositions, and `P⟹ Q`, then
 `¬ Q⟹ ¬ P`.
 -/
@@ -47,5 +47,5 @@ that if `P ⟺ Q` then `P = Q`, and mathematicians use this whether or not they 
 -/
 
 /-!
-Next up [Level 9](./Level9.lean.md)
+Next up [Level 9](./Level9.lean.md).
 -/

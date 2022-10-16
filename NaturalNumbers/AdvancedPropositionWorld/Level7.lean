@@ -2,7 +2,7 @@ import Mathlib.Tactic.LeftRight
 import Mathlib.Tactic.Basic
 import Mathlib.Tactic.Cases
 /-!
-# Advanced proposition world.
+# Advanced Proposition World
 
 ## Level 7: `or_symm`
 
@@ -14,7 +14,7 @@ happens: because there are two ways to prove `P ∨ Q` (namely, proving `P` or p
 using the `left` and `right` tactics we used in [Level 6](./Level6.lean.md).
 
 ## Lemma
-If `P` and `Q` are true/false statements, then `P ∨ Q ⟹ Q ∨ P.`
+If `P` and `Q` are true/false statements, then `P ∨ Q ⟹ Q ∨ P`.
 -/
 lemma or_symm (P Q : Prop) : P ∨ Q → Q ∨ P := by
   intro h
@@ -29,5 +29,5 @@ lemma or_symm (P Q : Prop) : P ∨ Q → Q ∨ P := by
 /-!
 
 
-Next up [Level 8](./Level8.lean.md)
+Next up [Level 8](./Level8.lean.md).
 -/

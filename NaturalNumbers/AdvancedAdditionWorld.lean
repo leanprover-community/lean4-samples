@@ -12,7 +12,7 @@ import AdvancedAdditionWorld.Level11
 import AdvancedAdditionWorld.Level12
 import AdvancedAdditionWorld.Level13
 /-!
-# Advanced Addition World.
+# Advanced Addition World
 
 Peano's original collection of axioms for the natural numbers contained two further
 assumptions, which have not yet been mentioned in the tutorial:
@@ -31,6 +31,6 @@ For `zero_ne_succ` the trick is that `X ≠ Y` is *defined to mean* `X = Y ⟹ f
 understood through [Proposition world](../PropositionWorld.lean.md), you now have the required Lean
 skills (i.e., you know the required tactics) to work with these implications.
 
-Let's dive in: [Level 1](./AdvancedAdditionWorld/Level1.lean.md)
+Let's dive in: [Level 1](./AdvancedAdditionWorld/Level1.lean.md).
 
 -/

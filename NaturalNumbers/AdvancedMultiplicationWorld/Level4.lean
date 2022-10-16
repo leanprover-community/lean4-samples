@@ -14,7 +14,7 @@ This is the last of the bonus multiplication levels. `mul_left_cancel` will be u
 world.
 
 People find this level hard. I have probably had more questions about this level than all the other
-levels put together, in fact. Many levels in this game can just be solved by "running at it" -- do
+levels put together. Many levels in this game can just be solved by "running at it" -- do
 induction on one of the variables, keep your head, and you're done. In fact, if you like a
 challenge, it might be instructive if you stop reading after the end of this paragraph and try
 solving this level now by induction, seeing the trouble you run into, and reading the rest of these
@@ -44,7 +44,7 @@ If you do not modify your technique in this way, then this level seems
 to be impossible (judging by the comments I've had about it!)
 
 ## Theorem
-If `a ≠ 0`, `b` and `c` are natural numbers such that ` ab = ac, ` then `b = c`.
+If `a ≠ 0`, `b` and `c` are natural numbers such that `ab = ac`, then `b = c`.
 -/
 
 set_option trace.Meta.Tactic.simp true

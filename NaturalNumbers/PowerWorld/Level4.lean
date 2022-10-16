@@ -23,5 +23,5 @@ lemma one_pow (m : MyNat) : (1 : MyNat) ^ m = 1 := by
 
 
 /-!
-Next up [Level 5](./Level5.lean.md)
+Next up [Level 5](./Level5.lean.md).
 -/

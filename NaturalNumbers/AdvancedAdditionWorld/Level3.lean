@@ -7,7 +7,7 @@ open MyNat
 
 # Advanced Addition World
 
-## Level 3: `succ_eq_succ_of_eq`.
+## Level 3: `succ_eq_succ_of_eq`
 
 We are going to prove something completely obvious: if `a=b` then
 `succ a = succ b`. This is *not* `succ_inj`!
@@ -22,5 +22,5 @@ theorem succ_eq_succ_of_eq {a b : MyNat} : a = b → succ a = succ b := by
   rw [h]
 
 /-!
-Next up [Level 4](./Level4.lean.md)
+Next up [Level 4](./Level4.lean.md).
 -/

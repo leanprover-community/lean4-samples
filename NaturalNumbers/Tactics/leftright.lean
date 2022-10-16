@@ -1,6 +1,6 @@
 import MyNat.Definition
 /-!
-# Tactic left and right
+# Tactics `left` and `right`
 
 The tactics `left` and `right` work on a goal which is a type with two constructors, the classic example
 being `P ∨ Q`. To prove `P ∨ Q` it suffices to either prove `P` or prove `Q`, and once you know which one

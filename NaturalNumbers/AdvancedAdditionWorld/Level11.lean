@@ -24,5 +24,5 @@ lemma add_right_eq_zero {a b : MyNat} : a + b = 0 → a = 0 := by
 
 
 /-!
-Next up [Level 12](./Level12.lean.md)
+Next up [Level 12](./Level12.lean.md).
 -/

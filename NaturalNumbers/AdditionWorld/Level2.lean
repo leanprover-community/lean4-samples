@@ -2,9 +2,9 @@ import MyNat.Addition -- imports addition.
 namespace MyNat
 open MyNat
 /-!
-# Addition world
+# Addition World
 
-## Level 2: `add_assoc` -- associativity of addition.
+## Level 2: `add_assoc` -- associativity of addition
 
 It's well-known that (1 + 2) + 3 = 1 + (2 + 3) -- if you have three numbers
 to add up, it doesn't matter which of the additions you do first. This fact
@@ -22,11 +22,11 @@ in explicitly.
 Reminder: you are done when you see "Goals accomplished 🎉" in the InfoView, and no
 errors in the VS Code Problems list.
 
-**Lemma**
+## Lemma
 
 On the set of natural numbers, addition is associative.
-In other words, for all natural numbers `a, b` and `c`, we have
-` (a + b) + c = a + (b + c). `
+In other words, for all natural numbers `a` , `b` and `c`, we have
+`(a + b) + c = a + (b + c)`.
 -/
 
 lemma add_assoc (a b c : MyNat) : (a + b) + c = a + (b + c) := by

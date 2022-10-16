@@ -11,7 +11,7 @@ is the proof that `(succ a) + b = succ (a + b)` for `a` and `b` in your
 natural number type. You need to prove this now, because you will need
 to use this result in our proof that `a + b = b + a` in the next level.
 
-Think about why computer scientists called this result `succ_add` .
+Think about why computer scientists called this result `succ_add`.
 There is a logic to all the names.
 
 Note that if you want to be more precise about exactly where you want
@@ -23,9 +23,9 @@ is a function -- it takes as input two variables `a` and `b` and outputs a proof
 that `a + succ b = succ (a + b)`. The tactic `rw [add_succ]` just says to Lean "guess
 what the variables are".
 
-**Lemma**
+## Lemma
 
-For all natural numbers `a, b`, we have ` (succ a) + b = succ (a + b). `
+For all natural numbers `a` and `b`, we have ` (succ a) + b = succ (a + b)`.
 -/
 lemma succ_add (a b : MyNat) : succ a + b = succ (a + b) := by
   induction b with

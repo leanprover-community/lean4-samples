@@ -21,7 +21,7 @@ to complete the goal?
 
 Multiplication is associative.
 In other words, for all natural numbers `a`, `b` and `c`, we have
-` (ab)c = a(bc). `
+`(ab)c = a(bc)`.
 -/
 lemma mul_assoc (a b c : MyNat) : (a * b) * c = a * (b * c) := by
   induction c with

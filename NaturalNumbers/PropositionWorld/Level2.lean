@@ -2,13 +2,13 @@ import MyNat.Definition
 namespace MyNat
 open MyNat
 /-!
-# Proposition world.
+# Proposition World
 
-## Level 2: `intro`.
+## Level 2: `intro`
 
 Let's prove an implication. Let `P` be a true/false statement, and let's prove that `P → P`. You
-will see that our goal in the lemma below starts out with `P → P`. Constructing a term of type `P →
-P` (which is what solving this goal *means*) in this case amounts to proving that `P → P`, and
+will see that our goal in the lemma below starts out with `P → P`. Constructing a term of type `P → P`
+(which is what solving this goal *means*) in this case amounts to proving that `P → P`, and
 computer scientists think of this as coming up with a function which sends proofs of `P` to proofs
 of `P`.
 
@@ -16,7 +16,7 @@ To define an implication `P ⟹ Q` we need to choose an arbitrary proof `p : P` 
 perhaps using `p`, construct a proof of `Q`.  The Lean way to say "let's assume `P` is true" is
 `intro p`, i.e., "let's assume we have a proof of `P`".
 
-## Note for worriers.
+## Note for worriers
 
 Those of you who know something about the subtle differences between truth and provability
 discovered by Goedel -- these are not relevant here. Imagine we are working in a fixed model of
@@ -37,7 +37,7 @@ To solve the goal below, you have to come up with a function from
 local context now looks like this:
 
 ```
-P : Prop,
+P : Prop
 p : P
 ⊢ P
 ```
@@ -52,7 +52,7 @@ confuse a true/false statement (which could be false!) with a proof.
 We will stick with the convention of capital letters for propositions
 and small letters for proofs.
 
-## Lemma : imp_self
+## Lemma: `imp_self`
 If `P` is a proposition then `P → P`.
 -/
 lemma imp_self (P : Prop) : P → P := by
@@ -61,5 +61,5 @@ lemma imp_self (P : Prop) : P → P := by
 
 
 /-!
-Next up [Level 3](./Level3.lean.md)
+Next up [Level 3](./Level3.lean.md).
 -/

@@ -2,7 +2,7 @@ import MyNat.Definition
 namespace MyNat
 /-!
 
-# Tutorial world
+# Tutorial World
 
 ## Level 2: The `rewrite` tactic
 

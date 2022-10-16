@@ -19,7 +19,7 @@ Re-read the docs for `rw` so you know all the tricks.
 You can see them in the [Tactics section](../Tactics.lean.md) on the left.
 
 ## Lemma
-For all natural numbers `a` `b` and `c`, we have `a(bc) = b(ac)`
+For all natural numbers `a` `b` and `c`, we have `a(bc) = b(ac)`.
 -/
 lemma mul_left_comm (a b c : MyNat) : a * (b * c) = b * (a * c) := by
   rw [←mul_assoc]

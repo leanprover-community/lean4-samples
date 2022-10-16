@@ -18,5 +18,5 @@ lemma zero_pow_succ (m : MyNat) : (0 : MyNat) ^ (succ m) = 0 := by
 
 
 /-!
-Next up [Level 3](./Level3.lean.md)
+Next up [Level 3](./Level3.lean.md).
 -/

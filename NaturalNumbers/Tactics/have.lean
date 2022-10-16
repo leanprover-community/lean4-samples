@@ -1,6 +1,6 @@
 import MyNat.Definition
 /-!
-# Tactic have
+# Tactic `have`
 
 `have h : t := e` adds the hypothesis `h : t` to the current goal if `e` is a term
 of type `t`.
