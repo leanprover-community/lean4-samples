@@ -6,7 +6,7 @@ package naturalNumberGame {
 }
 
 require mathlib from git
-  "https://github.com/leanprover-community/mathlib4.git" @ "26e9fca192b99ddb1f666481254da73917e713e9"
+  "https://github.com/leanprover-community/mathlib4.git" @ "9efcb9508435caeb4281b14455f37b88f8ffc2e5"
 
 
 lean_lib MyNat

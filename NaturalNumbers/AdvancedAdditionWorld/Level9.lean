@@ -1,6 +1,6 @@
 import MyNat.Definition
 import MyNat.Addition
-import MyNat.Symm -- symm
+import Mathlib.Tactic.Relation.Symm
 namespace MyNat
 open MyNat
 
