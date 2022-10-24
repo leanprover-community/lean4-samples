@@ -37,5 +37,5 @@ def tsxTarget (pkg : Package) (tsxName : String) [Fact (pkg.name = _package.name
 target rubiksJs (pkg : Package) : FilePath := tsxTarget pkg "rubiks"
 
 -- TODO: https://github.com/leanprover/lake/issues/86#issuecomment-1185028364
-@[defaultTarget]
+@[default_target]
 lean_lib Rubiks

@@ -85,6 +85,11 @@ jobs:
         run: |
           echo 11 75 82 | ./GuessMyNumber/build/bin/guess
 
+      - name: Build NaturalNumbers
+        run: |
+          cd NaturalNumbers
+          lake build MyNat TutorialWorld AdditionWorld MultiplicationWorld PowerWorld FunctionWorld PropositionWorld AdvancedPropositionWorld AdvancedAdditionWorld AdvancedMultiplicationWorld InequalityWorld
+
       - name: Build SimpleMonads
         run: |
           cd SimpleMonads

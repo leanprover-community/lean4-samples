@@ -9,7 +9,7 @@ lean_lib CSVParser {
   -- add library configuration options here
 }
 
-@[defaultTarget]
+@[default_target]
 lean_exe csv {
   root := `Main
 }

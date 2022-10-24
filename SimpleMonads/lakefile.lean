@@ -13,7 +13,7 @@ lean_lib Test {
   -- add library configuration options here
 }
 
-@[defaultTarget]
+@[default_target]
 lean_exe simpleMonads {
   root := `Main
 }

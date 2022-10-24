@@ -9,7 +9,7 @@ lean_lib GuessMyNumber {
   -- add library configuration options here
 }
 
-@[defaultTarget]
+@[default_target]
 lean_exe guess {
   root := `Main
 }

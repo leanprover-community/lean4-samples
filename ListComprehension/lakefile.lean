@@ -9,7 +9,7 @@ lean_lib ListComprehension {
   -- add library configuration options here
 }
 
-@[defaultTarget]
+@[default_target]
 lean_exe listComprehension {
   root := `Main
 }
