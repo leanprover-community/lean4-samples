@@ -116,6 +116,7 @@
   - [rw](./Tactics/rw.lean.md)
   - [induction](./Tactics/induction.lean.md)
   - [simp](./Tactics/simp.lean.md)
+  - [symm](./Tactics/symm.lean.md)
   - [repeat](./Tactics/repeat.lean.md)
   - [exact](./Tactics/exact.lean.md)
   - [intro](./Tactics/intro.lean.md)
