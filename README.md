@@ -56,3 +56,8 @@ in 3D which can be animated with the movement of a slider.
 
 Explore how you can extend the Lean syntax to implement the popular python-style
 [List Comprehension](ListComprehension/README.md).
+
+
+## Quine
+
+A simple [quine](https://en.wikipedia.org/wiki/Quine_(computing)): a program that outputs its own source code.
