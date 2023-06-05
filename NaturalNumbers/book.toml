@@ -9,7 +9,7 @@ title = "The Lean Natural Numbers"
 build-dir = "docs"
 
 [output.html]
-git-repository-url = "https://github.com/leanprover/lean4-samples/NaturalNumbers"
+git-repository-url = "https://github.com/leanprover/lean4-samples/tree/main/NaturalNumbers"
 additional-css = ["assets/alectryon.css", "assets/pygments.css", "assets/custom.css"]
 additional-js = ["assets/alectryon.js"]
 mathjax-support = true
