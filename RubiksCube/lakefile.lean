@@ -17,7 +17,7 @@ target packageLock : FilePath := do
       cwd := some widgetDir
     }
 
-def tsxTarget (pkg : Package) (tsxName : String) 
+def tsxTarget (pkg : Package) (tsxName : String) [Fact (pkg.name = _package.name)]
     : IndexBuildM (BuildJob FilePath) := do
   let widgetDir := __dir__ / "widget"
   let jsFile := widgetDir / "dist" / s!"{tsxName}.js"
