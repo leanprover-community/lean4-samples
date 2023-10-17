@@ -20,6 +20,7 @@ then `x ≤ x`.
 -/
 lemma le_refl_mynat (x : MyNat) : x ≤ x := by
   use 0
+  rfl
 
 /-!
 ## Upgrading the `rfl` tactic

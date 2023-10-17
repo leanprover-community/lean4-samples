@@ -16,6 +16,7 @@ For all naturals `a`, `a ≤ succ a.`
 -/
 lemma le_succ_self (a : MyNat) : a ≤ succ a := by
   use 1
+  rfl
 
 /-!
 Next up [Level 11](./Level11.lean.md)

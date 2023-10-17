@@ -47,6 +47,7 @@ theorem le_succ (a b : MyNat) : a ≤ b → a ≤ (succ b) := by
   | _ c hc => -- a = 0, b = 0
     rw [hc]
     use c + 1
+    rfl
 
 /-!
 
