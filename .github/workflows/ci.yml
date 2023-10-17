@@ -67,6 +67,15 @@ jobs:
         run: |
           ./HelloWorld/build/bin/hello
 
+      - name: Build ListComprehension
+        run: |
+          cd ListComprehension
+          lake build
+
+      - name: Run ListComprehension
+        run: |
+          ./ListComprehension/build/bin/listComprehension
+
       - name: Build CSVParser
         run: |
           cd CSVParser
