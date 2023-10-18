@@ -3,7 +3,8 @@ import MyNat.Inequality -- le_iff_exists_add
 import Mathlib.Tactic.Use -- use tactic
 import AdditionWorld.Level2 -- add_assoc
 import InequalityWorld.Level2 -- le_refl_mynat
-import Mathlib.Init.Algebra.Order
+import Mathlib.Init.Order.Defs
+
 namespace MyNat
 open MyNat
 /-!
