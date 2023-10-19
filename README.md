@@ -1,4 +1,22 @@
-# lean4-samples
+# Deprecated lean4-samples repository.
+
+This repository was prepared during the early development of Lean, and is now deprecated and unmaintained.
+
+We do not recommend using it as a source for examples or teaching materials. Please see
+
+* the Lean [language documentation](https://lean-lang.org/documentation/) and
+* the Lean [community webpage](https://leanprover-community.github.io/)
+
+for getting started.
+
+## The future of this repo
+
+If someone has a clear plan for this repository, and would like to take over maintainership and develop it into an up-to-date resource,
+please contact us on [zulip](https://leanprover.zulipchat.com/).
+
+----
+
+# Old README contents
 Code samples for Lean 4.  These samples are designed to work inside Visual Studio Code with the
 Lean4 "extension".  The extension will install the Lean4 compiler and language service for you so it
 is easy to setup - see the [Quick Start](https://leanprover.github.io/lean4/doc/quickstart.html) for
